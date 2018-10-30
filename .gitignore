@@ -23,3 +23,4 @@ yarn-debug.log*
 
 #snapshots
 src/components/__tests__/__snapshots__/
+src/components/layout/__tests__/__snapshots__/

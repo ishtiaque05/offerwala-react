@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import App from 'components/App';
+import Navbar from 'components/layout/Navbar';
 
-describe('App', () => {
+describe('Navbar', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<App />);
+    component = shallow(<Navbar />);
   });
 
   it('renders properly', () => {
