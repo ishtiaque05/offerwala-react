@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {
   Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   UncontrolledDropdown,
@@ -25,19 +24,16 @@ class JossNavbar extends Component {
     };
   }
 
-  toggle = () => this.setState({ isOpen: !this.state.isOpen });
-
   render() {
     return (
       <div>
-        <Navbar color="dark" dark expand="md">
+        <Navbar color="dark" fixed={'top'} dark expand="md">
           <NavbarBrand href="/">
             <Logo />
           </NavbarBrand>
           <Form>
             <Input type="text" name="search" id="search" placeholder="Search" />
           </Form>
-          <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <UncontrolledDropdown nav inNavbar>
