@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import JossNavbar from 'components/layout/JossNavbar';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <h1>Joss Deals</h1>
+        <JossNavbar />
       </div>
     );
   }
