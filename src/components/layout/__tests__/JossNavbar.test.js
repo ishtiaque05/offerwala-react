@@ -20,6 +20,6 @@ describe('Navbar', () => {
   });
 
   it('contains a search bar', () => {
-    expect(component.find('input#search').length).toEqual(1);
+    expect(component.find('#search').length).toEqual(1);
   });
 });
