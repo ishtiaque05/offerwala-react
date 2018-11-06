@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import JossNavbar from 'components/layout/JossNavbar';
-import Sidebar from 'components/layout/Sidebar';
+import { JossNavbar, Sidebar } from 'components/layout';
 
 class App extends Component {
   render() {

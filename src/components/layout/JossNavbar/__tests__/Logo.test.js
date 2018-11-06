@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Logo from 'components/layout/Logo';
+import Logo from 'components/layout/JossNavbar/Logo';
 
 describe('Logo', () => {
   const logoImageLink = 'jossdeals_logo.png';

@@ -16,11 +16,11 @@ describe('App', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('contains a JossNavbar', () => {
+  it('contains a Index', () => {
     expect(component.find('JossNavbar').length).toEqual(1);
   });
 
-  it('contains a Sidebar', () => {
+  it('contains a Index', () => {
     expect(component.find('Sidebar').length).toEqual(1);
   });
 });

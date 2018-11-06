@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Category from 'components/layout/Category';
+import Category from 'components/layout/Sidebar/Category';
 
 describe('Category', () => {
   const component = shallow(<Category />);

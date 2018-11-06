@@ -2,9 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import JossNavbar from 'components/layout/JossNavbar';
-import Logo from 'components/layout/Logo';
+import Logo from 'components/layout/JossNavbar/Logo';
 
-describe('Navbar', () => {
+describe('JossNavbar', () => {
   let component;
 
   beforeEach(() => {
