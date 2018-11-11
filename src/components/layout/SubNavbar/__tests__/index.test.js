@@ -1,16 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import SubNavbar from 'components/layout/SubNavbar';
 
-import App from 'components/App';
-
-describe('App', () => {
+describe('SubNavbar', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<App />);
+    component = shallow(<SubNavbar />);
   });
 
-  it('renders properly', () => {
+  it('renders correctly', () => {
     expect(component).toMatchSnapshot();
   });
 });

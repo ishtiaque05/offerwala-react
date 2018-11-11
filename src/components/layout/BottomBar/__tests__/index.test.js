@@ -1,17 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import BottomBar from 'components/layout/BottomBar';
 
-import { Logo } from 'components/layout/JossNavbar/Logo';
-
-describe('Logo', () => {
+describe('BottomBar', () => {
   let component;
   let testProps;
 
   beforeEach(() => {
-    testProps = {
-      width: ''
-    };
-    component = shallow(<Logo {...testProps} />);
+    testProps = { classes: { root: '' } };
+    component = shallow(<BottomBar {...testProps} />);
   });
 
   it('renders correctly', () => {

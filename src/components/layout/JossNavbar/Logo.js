@@ -1,16 +1,22 @@
-import React from 'react';
-import logoImageLink from 'assets/images/jossdeals_logo.png';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { withWidth } from '@material-ui/core';
 
-const Logo = () => {
-  return (
-    <div>
-      <img
-        src={logoImageLink}
-        alt="Jossdeals Logo"
-        style={{ height: '40px' }}
-      />
-    </div>
-  );
+import { getImageLink } from 'utils';
+
+export const Logo = ({ width }) => (
+  <Fragment>
+    <img
+      id="logo"
+      src={getImageLink(width)}
+      alt="Jossdeals Logo"
+      style={{ height: '40px' }}
+    />
+  </Fragment>
+);
+
+Logo.propTypes = {
+  width: PropTypes.string.isRequired
 };
 
-export default Logo;
+export default withWidth()(Logo);

@@ -1,22 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Category extends Component {
-  render() {
-    const items = [
-      'Beauty & Fitness',
-      'Food & Dining',
-      'Shopping',
-      'Supermarkets & Services'
-    ];
+const items = [
+  'Beauty & Fitness',
+  'Food & Dining',
+  'Shopping',
+  'Supermarkets & Services'
+];
 
-    const renderedItems = items.map((item, index) => (
+const Category = () => (
+  <div>
+    {items.map((item, index) => (
       <div key={index} className="items">
         {item}
       </div>
-    ));
-
-    return <div>{renderedItems}</div>;
-  }
-}
+    ))}
+  </div>
+);
 
 export default Category;

@@ -1,13 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import App from 'components/App';
+import JossNavbar from 'components/layout/JossNavbar';
 
-describe('App', () => {
+describe('JossNavbar', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<App />);
+    component = shallow(<JossNavbar />);
+  });
+
+  afterEach(() => {
+    component.unmount();
   });
 
   it('renders properly', () => {
