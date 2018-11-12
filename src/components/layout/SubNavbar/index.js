@@ -6,6 +6,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 import Content from 'components/Content';
+import Onlinedeals from '../../Content/Onlinedeals';
+import Shopdeals from '../../Content/Shopdeals';
 import TabContainer from 'components/layout/SubNavbar/TabContainer';
 
 const styles = theme => ({
@@ -54,8 +56,16 @@ class SubNavbar extends Component {
             <Content />
           </TabContainer>
         )}
-        {value === 1 && <TabContainer>Online Deals</TabContainer>}
-        {value === 2 && <TabContainer>Shop Deals</TabContainer>}
+        {value === 1 && (
+          <TabContainer>
+            <Onlinedeals />
+          </TabContainer>
+        )}
+        {value === 2 && (
+          <TabContainer>
+            <Shopdeals />
+          </TabContainer>
+        )}
         {value === 3 && <TabContainer>Coupons</TabContainer>}
       </div>
     );

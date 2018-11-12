@@ -25,7 +25,7 @@ const styles = theme => ({
   }
 });
 
-class Shopdeals extends Component {
+class Onlinedeals extends Component {
   componentDidMount() {
     this.props.dispatch(fetchDeals());
   }
@@ -52,7 +52,7 @@ class Shopdeals extends Component {
   };
 }
 
-Shopdeals.propTypes = {
+Onlinedeals.propTypes = {
   classes: PropTypes.object.isRequired,
   deals: PropTypes.array.isRequired
 };
@@ -63,4 +63,4 @@ const mapStateToProps = state => ({
   error: state.deals.error
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(Shopdeals));
+export default connect(mapStateToProps)(withStyles(styles)(Onlinedeals));
