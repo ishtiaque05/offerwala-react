@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 
+import Root from 'Root';
 import Content from 'components/Content';
 
 describe('Content', () => {
@@ -19,11 +20,19 @@ describe('Content', () => {
         }
       ]
     };
-    component = shallow(<Content {...testProps} />);
+    component = shallow(
+      <Root>
+        <Content {...testProps} />
+      </Root>
+    );
   });
 
   it('renders correctly', () => {
-    const tree = renderer.create(<Content {...testProps} />);
+    const tree = renderer.create(
+      <Root>
+        <Content {...testProps} />
+      </Root>
+    );
     expect(tree.toJSON()).toMatchSnapshot();
   });
 });

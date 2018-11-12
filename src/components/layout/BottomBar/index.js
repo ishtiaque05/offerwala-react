@@ -27,17 +27,22 @@ class BottomBar extends Component {
     this.setState({ value });
   };
 
-  render = ({ classes }) => (
-    <BottomNavigation
-      value={this.state.value}
-      onChange={this.handleChange}
-      showLabels
-      className={classes.root}>
-      <BottomNavigationAction label="Categories" icon={<CategoryIcon />} />
-      <BottomNavigationAction label="Favorite" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="User" icon={<UserIcon />} />
-    </BottomNavigation>
-  );
+  render = () => {
+    const { classes } = this.props;
+    const { value } = this.state;
+
+    return (
+      <BottomNavigation
+        value={value}
+        onChange={this.handleChange}
+        showLabels
+        className={classes.root}>
+        <BottomNavigationAction label="Categories" icon={<CategoryIcon />} />
+        <BottomNavigationAction label="Favorite" icon={<FavoriteIcon />} />
+        <BottomNavigationAction label="User" icon={<UserIcon />} />
+      </BottomNavigation>
+    );
+  };
 }
 
 BottomBar.propTypes = {

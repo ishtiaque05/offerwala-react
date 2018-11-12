@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
+
+import * as actions from 'actions';
 
 import Deal from 'components/Content/Deal';
 import PropTypes from 'prop-types';
@@ -37,4 +40,7 @@ Content.propTypes = {
   deals: PropTypes.array.isRequired
 };
 
-export default withStyles(styles)(Content);
+export default connect(
+  null,
+  actions
+)(withStyles(styles)(Content));
