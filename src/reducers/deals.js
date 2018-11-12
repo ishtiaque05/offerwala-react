@@ -1,10 +1,37 @@
-import { LOAD_DEALS } from 'actions/types';
+import {
+  FETCH_DEALS_SUCCESS,
+  FETCH_DEALS_BEGIN,
+  FETCH_DEALS_FAILURE
+} from 'actions/types';
 
-export default (initialState = [], action) => {
+const initialState = {
+  items: [],
+  loading: false,
+  error: null
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_DEALS:
-      return [...initialState, action.payload];
+    case FETCH_DEALS_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      };
+    case FETCH_DEALS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        items: action.payload.deals
+      };
+    case FETCH_DEALS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        items: []
+      };
     default:
-      return initialState;
+      return state;
   }
 };

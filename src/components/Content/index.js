@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 
-import * as actions from 'actions';
+import { fetchDeals } from 'actions';
 
 import Deal from 'components/Content/Deal';
 import PropTypes from 'prop-types';
@@ -25,22 +25,42 @@ const styles = theme => ({
   }
 });
 
-const Content = ({ classes, deals }) => (
-  <div className={classes.root}>
-    <GridList cellHeight={160} cols={3}>
-      {deals.map((deal, index) => (
-        <Deal className={classes.gridItem} key={index} deal={deal} />
-      ))}
-    </GridList>
-  </div>
-);
+class Content extends Component {
+  componentDidMount() {
+    this.props.dispatch(fetchDeals());
+  }
+
+  render = () => {
+    const { classes, error, loading, deals } = this.props;
+    if (error) {
+      return <div>Error! {error.message}</div>;
+    }
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+
+    return (
+      <div className={classes.root}>
+        <GridList cellHeight={160} cols={3}>
+          {deals.map(deal => (
+            <Deal className={classes.gridItem} key={deal.id} deal={deal} />
+          ))}
+        </GridList>
+      </div>
+    );
+  };
+}
 
 Content.propTypes = {
   classes: PropTypes.object.isRequired,
   deals: PropTypes.array.isRequired
 };
 
-export default connect(
-  null,
-  actions
-)(withStyles(styles)(Content));
+const mapStateToProps = state => ({
+  deals: state.deals.items,
+  loading: state.deals.loading,
+  error: state.deals.error
+});
+
+export default connect(mapStateToProps)(withStyles(styles)(Content));

@@ -1,9 +1,9 @@
 import dealsReducer from 'reducers/deals';
-import { LOAD_DEALS } from 'actions/types';
+import { FETCH_DEALS } from 'actions/types';
 
-it('handles actions of type LOAD_DEALS', () => {
+it('handles actions of type FETCH_DEALS', () => {
   const action = {
-    type: LOAD_DEALS,
+    type: FETCH_DEALS,
     payload: 'Deals'
   };
 

@@ -51,7 +51,7 @@ class SubNavbar extends Component {
         </AppBar>
         {value === 0 && (
           <TabContainer>
-            <Content deals={this.props.deals} />
+            <Content />
           </TabContainer>
         )}
         {value === 1 && <TabContainer>Online Deals</TabContainer>}

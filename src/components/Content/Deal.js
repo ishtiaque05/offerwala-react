@@ -7,9 +7,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
+import DefaultImage from 'assets/images/default_deal.jpg';
+
 const styles = theme => ({
   card: {
-    maxWidth: 345,
+    width: 375,
     maxHeight: 700,
     margin: theme.spacing.unit * 1.5
   }
@@ -22,16 +24,15 @@ const Deal = ({ classes, deal }) => (
         component="img"
         alt="Contemplative Reptile"
         className={classes.media}
-        height="140"
-        image={deal.imgUrl}
+        image={deal.picture.url !== null ? deal.picture.url : DefaultImage}
         title={deal.title}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
           {deal.title}
         </Typography>
-        <Typography>{deal.storeName}</Typography>
-        <Typography>{deal.validUntil}</Typography>
+        <Typography>{deal.shop.title}</Typography>
+        <Typography>{deal.end_date}</Typography>
       </CardContent>
     </CardActionArea>
   </Card>
