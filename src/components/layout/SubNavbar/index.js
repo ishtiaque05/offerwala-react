@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-
-import Content from 'components/Content';
-import OnlineDeals from 'components/Content/OnlineDeals';
-import StoreDeals from 'components/Content/StoreDeals';
-import TabContainer from 'components/layout/SubNavbar/TabContainer';
 
 const styles = theme => ({
   root: {
@@ -45,28 +41,16 @@ class SubNavbar extends Component {
             indicatorColor="primary"
             textColor="primary"
             scrollable>
-            <Tab label="All Deals" />
-            <Tab label="Online Deals" />
-            <Tab label="Shop Deals" />
+            <Tab label="All Deals" component={Link} to="/" />
+            <Tab
+              label="Online Deals"
+              component={Link}
+              to="/deals/online-deals"
+            />
+            <Tab label="Store Deals" component={Link} to="/deals/store-deals" />
             <Tab label="Coupons" />
           </Tabs>
         </AppBar>
-        {value === 0 && (
-          <TabContainer>
-            <Content />
-          </TabContainer>
-        )}
-        {value === 1 && (
-          <TabContainer>
-            <OnlineDeals />
-          </TabContainer>
-        )}
-        {value === 2 && (
-          <TabContainer>
-            <StoreDeals />
-          </TabContainer>
-        )}
-        {value === 3 && <TabContainer>Coupons</TabContainer>}
       </div>
     );
   }

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -23,24 +25,26 @@ const styles = theme => ({
 
 const Deal = ({ classes, deal }) => (
   <Card className={classes.card}>
-    <CardActionArea>
-      <CardMedia
-        component="img"
-        alt="Contemplative Reptile"
-        className={classes.media}
-        image={deal.picture.url !== null ? deal.picture.url : DefaultImage}
-        title={deal.title}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          {deal.title}
-        </Typography>
-        <div className={classes.flex}>
-          <Typography>{deal.shop.title}</Typography>
-          <Typography>{deal.end_date}</Typography>
-        </div>
-      </CardContent>
-    </CardActionArea>
+    <Link to={`/deals/${deal.id}`}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          alt="Contemplative Reptile"
+          className={classes.media}
+          image={deal.picture.url !== null ? deal.picture.url : DefaultImage}
+          title={deal.title}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {deal.title}
+          </Typography>
+          <div className={classes.flex}>
+            <Typography>{deal.shop.title}</Typography>
+            <Typography>{deal.end_date}</Typography>
+          </div>
+        </CardContent>
+      </CardActionArea>
+    </Link>
   </Card>
 );
 
