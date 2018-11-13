@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Category from 'components/layout/Sidebar/Category';
 
 const Sidebar = () => (

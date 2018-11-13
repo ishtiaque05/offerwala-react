@@ -1,4 +1,8 @@
+// @flow
+
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Menu from '@material-ui/core/Menu/Menu';
 import MenuItem from '@material-ui/core/MenuItem/MenuItem';
 
@@ -20,5 +24,11 @@ const SubMenu = ({ anchorEl, onClose, open }) => (
     </MenuItem>
   </Menu>
 );
+
+SubMenu.propTypes = {
+  anchorEl: PropTypes.object,
+  onClose: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired
+};
 
 export default SubMenu;

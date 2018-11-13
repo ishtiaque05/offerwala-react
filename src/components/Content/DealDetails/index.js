@@ -1,4 +1,7 @@
+// @flow
+
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -10,8 +13,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 import { fetchDealWithId } from 'actions';
-
-// import PropTypes from 'prop-types';
 
 const styles = theme => ({
   root: {
@@ -80,10 +81,12 @@ class DealDetails extends Component {
   };
 }
 
-// Shopdeals.propTypes = {
-//   classes: PropTypes.object.isRequired,
-//   deals: PropTypes.array.isRequired
-// };
+DealDetails.propTypes = {
+  classes: PropTypes.object.isRequired,
+  deal: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.object
+};
 
 const mapStateToProps = state => ({
   deal: state.deal.item,

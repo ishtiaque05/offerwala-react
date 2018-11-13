@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withWidth } from '@material-ui/core';

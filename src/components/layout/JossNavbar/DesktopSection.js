@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import SubMenu from './SubMenu';
+
+import SubMenu from 'components/layout/JossNavbar/SubMenu';
 
 const styles = theme => ({
   sectionDesktop: {
@@ -63,5 +66,9 @@ class DesktopSection extends Component {
     );
   }
 }
+
+DesktopSection.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(DesktopSection);

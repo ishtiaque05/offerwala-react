@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -51,5 +53,9 @@ class MobileSection extends Component {
     );
   }
 }
+
+MobileSection.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(MobileSection);

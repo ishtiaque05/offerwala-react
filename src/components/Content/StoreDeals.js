@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
@@ -54,7 +56,9 @@ class StoreDeals extends Component {
 
 StoreDeals.propTypes = {
   classes: PropTypes.object.isRequired,
-  deals: PropTypes.array.isRequired
+  deals: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.object
 };
 
 const mapStateToProps = state => ({
