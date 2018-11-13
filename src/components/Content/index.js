@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 
-import { fetchDeals } from 'actions';
+import { fetchAllDeals } from 'actions';
 
 import Deal from 'components/Content/Deal';
 import PropTypes from 'prop-types';
@@ -27,7 +27,7 @@ const styles = theme => ({
 
 class Content extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchDeals());
+    this.props.dispatch(fetchAllDeals());
   }
 
   render = () => {

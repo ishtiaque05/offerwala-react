@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 
-import { fetchDeals } from 'actions';
+import { fetchStoreDeals } from 'actions';
 
 import Deal from 'components/Content/Deal';
 import PropTypes from 'prop-types';
@@ -25,9 +25,9 @@ const styles = theme => ({
   }
 });
 
-class Onlinedeals extends Component {
+class StoreDeals extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchDeals());
+    this.props.dispatch(fetchStoreDeals());
   }
 
   render = () => {
@@ -52,7 +52,7 @@ class Onlinedeals extends Component {
   };
 }
 
-Onlinedeals.propTypes = {
+StoreDeals.propTypes = {
   classes: PropTypes.object.isRequired,
   deals: PropTypes.array.isRequired
 };
@@ -63,4 +63,4 @@ const mapStateToProps = state => ({
   error: state.deals.error
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(Onlinedeals));
+export default connect(mapStateToProps)(withStyles(styles)(StoreDeals));

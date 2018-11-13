@@ -14,10 +14,10 @@ const styles = theme => ({
     width: 375,
     maxHeight: 700,
     margin: theme.spacing.unit * 1.5
-  }, 
+  },
   flex: {
-    display: 'flex', 
-    justifyContent:'space-between' 
+    display: 'flex',
+    justifyContent: 'space-between'
   }
 });
 
@@ -35,7 +35,7 @@ const Deal = ({ classes, deal }) => (
         <Typography gutterBottom variant="h5" component="h2">
           {deal.title}
         </Typography>
-        <div className={ classes.flex }>
+        <div className={classes.flex}>
           <Typography>{deal.shop.title}</Typography>
           <Typography>{deal.end_date}</Typography>
         </div>

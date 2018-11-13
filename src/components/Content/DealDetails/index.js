@@ -26,7 +26,7 @@ const styles = theme => ({
   }
 });
 
-const Shopdeals = ({ classes }) => (
+const DealDetails = ({ classes }) => (
   <div className={classes.root}>
     <Grid container spacing={24}>
       <Grid item xs={12}>
@@ -67,4 +67,4 @@ const Shopdeals = ({ classes }) => (
 //   deals: PropTypes.array.isRequired
 // };
 
-export default withStyles(styles)(Shopdeals);
+export default withStyles(styles)(DealDetails);
