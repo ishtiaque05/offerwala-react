@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withWidth } from '@material-ui/core';
@@ -12,7 +10,7 @@ export const Logo = ({ width }) => (
       id="logo"
       src={getImageLink(width)}
       alt="Jossdeals Logo"
-      style={{ height: '40px' }}
+      style={{ height: '52px' }}
     />
   </Fragment>
 );

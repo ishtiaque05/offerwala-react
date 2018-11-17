@@ -1,9 +1,14 @@
 import React from 'react';
+import Banner from 'assets/images/Banner.png';
 
 const Carousel = () => {
   return (
     <div style={{ paddingLeft: '320px' }}>
-      <img src="https://via.placeholder.com/1120x436" alt="Placeholder" />
+      <img
+        src={Banner}
+        alt="Placeholder"
+        style={{ width: '960px', height: 'auto' }}
+      />
     </div>
   );
 };

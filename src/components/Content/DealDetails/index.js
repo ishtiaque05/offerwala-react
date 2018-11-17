@@ -1,35 +1,12 @@
-// @flow
-
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
+import { withWidth } from '@material-ui/core';
+import DesktopDealDetails from 'components/Content/DealDetails/DesktopDealDetails';
+import MobileDealDetails from 'components/Content/DealDetails/MobileDealDetails';
 
 import { fetchDealWithId } from 'actions';
-
-const styles = theme => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper
-  },
-  gridList: {
-    width: 500,
-    height: 450
-  },
-  gridItem: {
-    marginRight: theme.spacing.unit
-  }
-});
+import PropTypes from 'prop-types';
 
 class DealDetails extends Component {
   componentDidMount() {
@@ -38,51 +15,18 @@ class DealDetails extends Component {
     );
   }
 
-  render = () => {
-    const { classes, loading, error, deal } = this.props;
+  render() {
+    const { loading, error, deal, width } = this.props;
 
-    if (loading) {
-      return <div>Loading...</div>;
-    }
-
-    if (error) {
-      return <div>Error! {error.message}</div>;
-    }
-
-    return (
-      <div className={classes.root}>
-        <Grid container spacing={24}>
-          <Grid item xs={12}>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Contemplative Reptile"
-                  className={classes.media}
-                  height="140"
-                  image={deal.picture !== undefined ? deal.picture.url : ''}
-                  title={deal.title}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {deal.title}
-                  </Typography>
-                  <Typography>
-                    {deal.shop !== undefined ? deal.shop.title : ''}{' '}
-                  </Typography>
-                  <Typography>{deal.description}</Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-        </Grid>
-      </div>
+    return width === 'xs' ? (
+      <MobileDealDetails deal={deal} loading={loading} error={error} />
+    ) : (
+      <DesktopDealDetails deal={deal} loading={loading} error={error} />
     );
-  };
+  }
 }
 
 DealDetails.propTypes = {
-  classes: PropTypes.object.isRequired,
   deal: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.object
@@ -94,4 +38,4 @@ const mapStateToProps = state => ({
   error: state.deal.error
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(DealDetails));
+export default connect(mapStateToProps)(withWidth()(DealDetails));

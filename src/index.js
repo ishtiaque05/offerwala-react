@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-import { red, grey } from '@material-ui/core/colors';
+import { grey } from '@material-ui/core/colors';
 
 import 'typeface-open-sans';
 
@@ -12,7 +12,9 @@ import App from 'components/App';
 
 const theme = createMuiTheme({
   palette: {
-    primary: red,
+    primary: {
+      main: '#D51F1F'
+    },
     secondary: {
       main: grey['900']
     },

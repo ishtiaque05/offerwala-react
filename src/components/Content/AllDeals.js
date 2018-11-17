@@ -2,9 +2,9 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Masonry from 'react-masonry-component';
 
-import { withStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
+import { Typography, withStyles } from '@material-ui/core';
 
 import { fetchAllDeals } from 'actions';
 
@@ -13,23 +13,24 @@ import PropTypes from 'prop-types';
 
 const styles = theme => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing.unit * 150,
-      marginLeft: theme.spacing.unit * 42.5
+      marginLeft: theme.spacing.unit * 42
     }
   },
-  gridList: {
-    width: 500,
-    height: 450
+  masonry: {
+    width: '100%'
   },
-  gridItem: {
-    marginRight: theme.spacing.unit
+  deal: {
+    [theme.breakpoints.down('xs')]: {
+      width: '100%'
+    }
   }
 });
+
+const masonryOptions = {
+  transitionDuration: 3
+};
 
 class AllDeals extends Component {
   componentDidMount() {
@@ -38,24 +39,38 @@ class AllDeals extends Component {
 
   render = () => {
     const { classes, error, loading, deals } = this.props;
+
+    const childElements = deals.map(deal => (
+      <div key={deal.id} className={classes.deal}>
+        <Deal deal={deal} />
+      </div>
+    ));
+
     if (error) {
-      return <div className={classes.root}>Error! {error.message}</div>;
+      return (
+        <div className={classes.root}>
+          <Typography variant="body1">Error! {error.message}</Typography>
+        </div>
+      );
     }
 
     if (loading) {
-      return <div className={classes.root}>Loading...</div>;
+      return (
+        <div className={classes.root}>
+          <Typography variant="body1">Loading...</Typography>
+        </div>
+      );
     }
 
     return (
       <div className={classes.root}>
-        <GridList
-          cellHeight={160}
-          cols={3}
-          style={{ justifyContent: 'center' }}>
-          {deals.map(deal => (
-            <Deal className={classes.gridItem} key={deal.id} deal={deal} />
-          ))}
-        </GridList>
+        <Masonry
+          className={classes.masonry}
+          elementType={'div'}
+          options={masonryOptions}
+          updateOnEachImageLoad={false}>
+          {childElements}
+        </Masonry>
       </div>
     );
   };
