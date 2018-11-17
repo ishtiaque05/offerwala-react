@@ -10,7 +10,7 @@ export const Logo = ({ width }) => (
       id="logo"
       src={getImageLink(width)}
       alt="Jossdeals Logo"
-      style={{ height: '52px' }}
+      style={{ height: '64px' }}
     />
   </Fragment>
 );

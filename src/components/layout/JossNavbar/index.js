@@ -10,20 +10,24 @@ import MobileSection from 'components/layout/JossNavbar/MobileSection';
 import DesktopSection from 'components/layout/JossNavbar/DesktopSection';
 import SearchBar from 'components/layout/JossNavbar/SearchBar';
 
-const styles = () => ({
+const styles = theme => ({
   root: {
     width: '100%'
   },
   grow: {
     flexGrow: 1
+  },
+  toolBar: {
+    height: theme.spacing.unit * 10,
+    paddingLeft: theme.spacing.unit * 12
   }
 });
 
 const JossNavbar = ({ classes }) => (
   <div className={classes.root}>
-    <AppBar position="fixed" color="default">
-      <Toolbar>
-        <IconButton>
+    <AppBar position="fixed" color="default" style={{ background: '#F8F8F8' }}>
+      <Toolbar className={classes.toolBar}>
+        <IconButton style={{ padding: 0 }}>
           <Logo />
         </IconButton>
         <SearchBar />

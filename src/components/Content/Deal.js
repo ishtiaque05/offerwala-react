@@ -18,6 +18,8 @@ const styles = theme => ({
     width: theme.spacing.unit * 43.75,
     maxHeight: theme.spacing.unit * 100,
     margin: theme.spacing.unit * 1.5,
+    background: '#FFF',
+    boxShadow: '0 4px 6px #D4D4D4',
     [theme.breakpoints.down('xs')]: {
       marginLeft: 'auto',
       marginRight: 'auto'
@@ -34,9 +36,12 @@ const styles = theme => ({
     textDecoration: 'none'
   },
   shopName: {
-    backgroundColor: '#000',
+    backgroundColor: '#4B4B4B',
     color: '#FFF',
-    padding: theme.spacing.unit * 0.5
+    padding: theme.spacing.unit * 0.5,
+    paddingLeft: theme.spacing.unit * 1.5,
+    paddingRight: theme.spacing.unit * 1.5,
+    borderRadius: theme.spacing.unit * 0.5
   }
 });
 
@@ -45,6 +50,7 @@ const Deal = ({ classes, deal }) => (
     <Link to={`/deals/${deal.id}`} className={classes.link}>
       <CardActionArea>
         <CardMedia
+          style={{ padding: '16px', paddingBottom: '0px' }}
           component="img"
           alt="Contemplative Reptile"
           className={classes.media}

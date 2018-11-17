@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-component';
+// import InfiniteScroll from 'react-infinite-scroller';
 
 import { Typography, withStyles } from '@material-ui/core';
 
@@ -37,6 +38,10 @@ class AllDeals extends Component {
     this.props.dispatch(fetchAllDeals());
   }
 
+  // handleLoadMore = page => {
+  //   this.props.dispatch(fetchAllDeals(page));
+  // };
+
   render = () => {
     const { classes, error, loading, deals } = this.props;
 
@@ -64,6 +69,16 @@ class AllDeals extends Component {
 
     return (
       <div className={classes.root}>
+        {/*<InfiniteScroll*/}
+        {/*pageStart={0}*/}
+        {/*loadMore={this.handleLoadMore}*/}
+        {/*hasMore={true || false}*/}
+        {/*loader={*/}
+        {/*<div className="loader" key={0}>*/}
+        {/*Loading ...*/}
+        {/*</div>*/}
+        {/*}*/}
+        {/*useWindow={false}>*/}
         <Masonry
           className={classes.masonry}
           elementType={'div'}
@@ -71,6 +86,7 @@ class AllDeals extends Component {
           updateOnEachImageLoad={false}>
           {childElements}
         </Masonry>
+        {/*</InfiniteScroll>*/}
       </div>
     );
   };

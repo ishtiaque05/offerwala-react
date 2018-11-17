@@ -21,7 +21,7 @@ const styles = theme => ({
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing.unit * 50,
+      marginLeft: theme.spacing.unit * 42,
       marginRight: theme.spacing.unit * 50,
       width: 'auto'
     },
@@ -32,12 +32,14 @@ const styles = theme => ({
   },
   searchIcon: {
     width: theme.spacing.unit * 6,
-    height: '100%',
     position: 'absolute',
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    borderRight: '1px solid #D4D4D4',
+    height: theme.spacing.unit * 3,
+    top: theme.spacing.unit * 1.5,
     '& img': {
       width: theme.spacing.unit * 4,
       height: theme.spacing.unit * 4
@@ -47,15 +49,21 @@ const styles = theme => ({
     color: 'inherit',
     width: '100%',
     background: '#E9E9E9',
+    borderRadius: theme.spacing.unit * 0.5,
+    boxShadow: 'inset -2px 2px 4px #D4D4D4',
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 90
+      width: theme.spacing.unit * 90,
+      height: theme.spacing.unit * 5.75
+    },
+    '& input': {
+      color: '#2F2F2F'
     }
   },
-  inputInput: {
+  searchInput: {
     paddingTop: theme.spacing.unit,
     paddingRight: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 6,
+    paddingLeft: theme.spacing.unit * 8,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
@@ -73,7 +81,7 @@ const SearchBar = ({ classes }) => (
       placeholder="Search…"
       classes={{
         root: classes.inputRoot,
-        input: classes.inputInput
+        input: classes.searchInput
       }}
     />
   </div>

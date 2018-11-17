@@ -3,9 +3,10 @@ import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-import { grey } from '@material-ui/core/colors';
 
 import 'typeface-open-sans';
+import 'typeface-raleway';
+import 'typeface-source-sans-pro';
 
 import Root from 'Root';
 import App from 'components/App';
@@ -16,12 +17,12 @@ const theme = createMuiTheme({
       main: '#D51F1F'
     },
     secondary: {
-      main: grey['900']
+      main: '#323232'
     },
-    background: '#F9F9F9'
+    background: '#F8F8F8'
   },
   typography: {
-    fontFamily: '"Open Sans", "Roboto", "Helvetica", "Arian", sans-serif'
+    fontFamily: '"Source Sans Pro"'
   }
 });
 

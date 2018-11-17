@@ -7,7 +7,7 @@ const Carousel = () => {
       <img
         src={Banner}
         alt="Placeholder"
-        style={{ width: '960px', height: 'auto' }}
+        style={{ width: '1120px', height: 'auto' }}
       />
     </div>
   );

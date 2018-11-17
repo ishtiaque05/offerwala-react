@@ -11,6 +11,8 @@ const Routes = () => (
     <Route exact path="/deals/online-deals" component={OnlineDeals} />
     <Route exact path="/deals/store-deals" component={StoreDeals} />
     <Route exact path="/deals/:id" component={DealDetails} />
+    {/*// TODO: Implement Search Functionality*/}
+    {/*<Route exact path="/search/deals/:tagName" component={SearchDeals} />*/}
   </Switch>
 );
 

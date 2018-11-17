@@ -8,13 +8,18 @@ import {
   FETCH_DEALS_SUCCESS
 } from 'actions/types';
 
-export const fetchAllDeals = () => {
+export const fetchAllDeals = (page = 1) => {
   return async dispatch => {
     dispatch(fetchDealsBegin());
 
     try {
       const response = await axios.get(
-        'http://www.jossdeals.com/api/v1/guests/deals/all_deals'
+        'http://www.jossdeals.com/api/v1/guests/deals/all_deals',
+        {
+          params: {
+            page
+          }
+        }
       );
       dispatch(fetchDealsSuccess(response.data.deals));
       return response.data.deals;

@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import {
   withStyles,
@@ -13,6 +14,8 @@ import {
   Button
 } from '@material-ui/core';
 
+import PhoneIcon from '@material-ui/icons/Phone';
+
 import DefaultImage from 'assets/images/default_deal.jpg';
 
 const styles = theme => ({
@@ -20,7 +23,7 @@ const styles = theme => ({
     padding: '30px'
   },
   card: {
-    background: '#F9F9F9',
+    background: '#F8F8F8',
     maxWidth: theme.spacing.unit * 150,
     padding: '30px'
   },
@@ -31,13 +34,13 @@ const styles = theme => ({
     float: 'left'
   },
   shopName: {
-    background: '#000',
+    background: '#4B4B4B',
     color: '#FFF',
     display: 'inline-block',
     padding: theme.spacing.unit * 0.5,
     paddingRight: theme.spacing.unit * 1.5,
     paddingLeft: theme.spacing.unit * 1.5,
-    borderRadius: theme.spacing.unit * 0.25,
+    borderRadius: theme.spacing.unit * 0.5,
     float: 'left'
   },
   title: {
@@ -53,6 +56,9 @@ const styles = theme => ({
     display: 'inline-block',
     marginLeft: theme.spacing.unit * 2.5,
     marginRight: theme.spacing.unit * 2.5
+  },
+  icon: {
+    display: 'inline-block'
   }
 });
 
@@ -66,6 +72,7 @@ class DesktopDealDetails extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
+    this.props.history.goBack();
   };
 
   render = () => {
@@ -103,6 +110,14 @@ class DesktopDealDetails extends Component {
                   {deal.shop !== undefined ? deal.shop.title : ''}
                 </Typography>
                 <hr width="1" size="25" className={classes.hr} />
+                {/* TODO: Add Facebook Icon*/}
+                <div className={classes.icon}>
+                  <PhoneIcon
+                    style={{
+                      marginBottom: '8px'
+                    }}
+                  />
+                </div>
               </div>
             </CardContent>
             <CardContent>
@@ -117,7 +132,11 @@ class DesktopDealDetails extends Component {
               />
             </CardContent>
             <CardContent>
-              <Typography variant="body1">{deal.description}</Typography>
+              <Typography variant="body1">
+                {deal.description !== undefined
+                  ? deal.description.replace(/&nbsp;|"|<[^>]+>/g, '')
+                  : ''}
+              </Typography>
               <Button
                 variant="contained"
                 color="primary"
@@ -139,4 +158,4 @@ DesktopDealDetails.propTypes = {
   error: PropTypes.object
 };
 
-export default withStyles(styles)(DesktopDealDetails);
+export default withRouter(withStyles(styles)(DesktopDealDetails));
