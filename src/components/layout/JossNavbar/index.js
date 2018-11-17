@@ -21,7 +21,7 @@ const styles = () => ({
 
 const JossNavbar = ({ classes }) => (
   <div className={classes.root}>
-    <AppBar position="fixed">
+    <AppBar position="fixed" color="default">
       <Toolbar>
         <IconButton>
           <Logo />

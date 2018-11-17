@@ -4,9 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+
+import SearchIcon from 'assets/images/search.png';
 
 const styles = theme => ({
   search: {
@@ -20,7 +21,8 @@ const styles = theme => ({
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing.unit * 3,
+      marginLeft: theme.spacing.unit * 50,
+      marginRight: theme.spacing.unit * 50,
       width: 'auto'
     },
     [theme.breakpoints.down('xs')]: {
@@ -31,22 +33,29 @@ const styles = theme => ({
   searchIcon: {
     width: theme.spacing.unit * 6,
     height: '100%',
-    right: theme.spacing.unit * 0.25,
     position: 'absolute',
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    '& img': {
+      width: theme.spacing.unit * 4,
+      height: theme.spacing.unit * 4
+    }
   },
   inputRoot: {
     color: 'inherit',
-    width: '100%'
+    width: '100%',
+    background: '#E9E9E9',
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing.unit * 90
+    }
   },
   inputInput: {
     paddingTop: theme.spacing.unit,
     paddingRight: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing.unit * 6,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
@@ -58,7 +67,7 @@ const styles = theme => ({
 const SearchBar = ({ classes }) => (
   <div className={classes.search}>
     <div className={classes.searchIcon}>
-      <SearchIcon />
+      <img src={SearchIcon} alt="Search Icon" />
     </div>
     <InputBase
       placeholder="Search…"

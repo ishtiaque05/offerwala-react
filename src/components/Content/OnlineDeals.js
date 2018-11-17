@@ -15,7 +15,11 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing.unit * 150,
+      marginLeft: theme.spacing.unit * 42.5
+    }
   },
   gridList: {
     width: 500,
@@ -43,7 +47,10 @@ class OnlineDeals extends Component {
 
     return (
       <div className={classes.root}>
-        <GridList cellHeight={160} cols={3}>
+        <GridList
+          cellHeight={160}
+          cols={3}
+          style={{ justifyContent: 'center' }}>
           {deals.map(deal => (
             <Deal className={classes.gridItem} key={deal.id} deal={deal} />
           ))}

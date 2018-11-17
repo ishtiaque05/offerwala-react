@@ -15,13 +15,16 @@ import DefaultImage from 'assets/images/default_deal.jpg';
 
 const styles = theme => ({
   card: {
-    width: 375,
-    maxHeight: 700,
+    width: theme.spacing.unit * 43.75,
+    maxHeight: theme.spacing.unit * 100,
     margin: theme.spacing.unit * 1.5
   },
   flex: {
-    display: 'flex',
-    justifyContent: 'space-between'
+    display: 'flex'
+    // justifyContent: 'space-between'
+  },
+  media: {
+    height: 'auto'
   }
 });
 

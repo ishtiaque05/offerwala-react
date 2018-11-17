@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 
@@ -15,7 +16,11 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing.unit * 150,
+      marginLeft: theme.spacing.unit * 42.5
+    }
   },
   gridList: {
     width: 500,
@@ -34,16 +39,19 @@ class AllDeals extends Component {
   render = () => {
     const { classes, error, loading, deals } = this.props;
     if (error) {
-      return <div>Error! {error.message}</div>;
+      return <div className={classes.root}>Error! {error.message}</div>;
     }
 
     if (loading) {
-      return <div>Loading...</div>;
+      return <div className={classes.root}>Loading...</div>;
     }
 
     return (
       <div className={classes.root}>
-        <GridList cellHeight={160} cols={3}>
+        <GridList
+          cellHeight={160}
+          cols={3}
+          style={{ justifyContent: 'center' }}>
           {deals.map(deal => (
             <Deal className={classes.gridItem} key={deal.id} deal={deal} />
           ))}

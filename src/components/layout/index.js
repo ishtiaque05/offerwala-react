@@ -1,15 +1,4 @@
 import JossNavbar from 'components/layout/JossNavbar';
-import LeftSidebar from 'components/layout/LeftSidebar';
-import RightSidebar from 'components/layout/RightSidebar';
-import DesktopSubNav from 'components/layout/DesktopSubNav';
-import FilterBar from 'components/layout/FilterBar';
-import MainContentArea from 'components/layout/MainContentArea';
-import BottomBar from 'components/layout/BottomBar';
+import Container from 'components/layout/Container';
 
-export { JossNavbar, 
-        LeftSidebar, 
-        RightSidebar, 
-        DesktopSubNav, 
-        FilterBar, 
-        MainContentArea, 
-        BottomBar };
+export { JossNavbar, Container };
