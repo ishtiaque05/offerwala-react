@@ -5,7 +5,10 @@ import {
   FETCH_DEAL_WITH_ID_SUCCESS,
   FETCH_DEALS_BEGIN,
   FETCH_DEALS_FAILURE,
-  FETCH_DEALS_SUCCESS
+  FETCH_DEALS_SUCCESS,
+  FETCH_SEARCHED_DEALS_BEGIN,
+  FETCH_SEARCHED_DEALS_FAILURE,
+  FETCH_SEARCHED_DEALS_SUCCESS
 } from 'actions/types';
 
 export const fetchAllDeals = (page = 1) => {
@@ -110,5 +113,36 @@ export const fetchDealWithIdSuccess = deal => ({
 
 export const fetchDealWithIdFailure = error => ({
   type: FETCH_DEAL_WITH_ID_FAILURE,
+  payload: { error }
+});
+
+export const fetchSearchedDeals = tagName => {
+  return async dispatch => {
+    dispatch(fetchSearchedDealsBegin());
+
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/v1/guests/search/deals?deal_name=${tagName}`
+      );
+      dispatch(fetchSearchedDealsSuccess(response.data.deals));
+      return response.data.deals;
+    } catch (error) {
+      dispatch(fetchSearchedDealsFailure(error));
+      throw new Error(error);
+    }
+  };
+};
+
+export const fetchSearchedDealsBegin = () => ({
+  type: FETCH_SEARCHED_DEALS_BEGIN
+});
+
+export const fetchSearchedDealsSuccess = deals => ({
+  type: FETCH_SEARCHED_DEALS_SUCCESS,
+  payload: { deals }
+});
+
+export const fetchSearchedDealsFailure = error => ({
+  type: FETCH_SEARCHED_DEALS_FAILURE,
   payload: { error }
 });
