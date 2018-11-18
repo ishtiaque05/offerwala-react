@@ -1,9 +1,8 @@
-// @flow
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-component';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { withStyles, Typography } from '@material-ui/core';
 
@@ -33,15 +32,35 @@ const masonryOptions = {
 };
 
 class OnlineDeals extends Component {
-  componentDidMount() {
-    this.props.dispatch(fetchOnlineDeals());
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 0,
+      deals: []
+    };
   }
 
-  render = () => {
-    const { classes, error, loading, deals } = this.props;
+  componentDidMount() {
+    this.props.fetchOnlineDeals();
+  }
 
-    const childElements = deals.map(deal => (
+  fetchMoreData = () => {
+    this.setState({ page: this.state.page + 1 });
+    this.props.fetchOnlineDeals(this.state.page);
+    this.setState({ deals: [...this.state.deals, ...this.props.deals] });
+  };
+
+  render = () => {
+    const { classes, error } = this.props;
+
+    const childElements = this.props.deals.map(deal => (
       <div key={deal.id} className={classes.deal}>
+        <Deal deal={deal} />
+      </div>
+    ));
+
+    const moreElements = this.state.deals.map((deal, index) => (
+      <div key={index} className={classes.deal}>
         <Deal deal={deal} />
       </div>
     ));
@@ -54,23 +73,22 @@ class OnlineDeals extends Component {
       );
     }
 
-    if (loading) {
-      return (
-        <div className={classes.root}>
-          <Typography variant="body1">Loading...</Typography>
-        </div>
-      );
-    }
-
     return (
       <div className={classes.root}>
-        <Masonry
-          className={classes.masonry}
-          elementType={'div'}
-          options={masonryOptions}
-          updateOnEachImageLoad={false}>
-          {childElements}
-        </Masonry>
+        <InfiniteScroll
+          dataLength={moreElements.length}
+          next={this.fetchMoreData}
+          hasMore={true}
+          loader={<h4>Loading...</h4>}>
+          <Masonry
+            className={classes.masonry}
+            elementType={'div'}
+            options={masonryOptions}
+            updateOnEachImageLoad={false}>
+            {childElements}
+            {moreElements}
+          </Masonry>
+        </InfiniteScroll>
       </div>
     );
   };
@@ -89,4 +107,7 @@ const mapStateToProps = state => ({
   error: state.deals.error
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(OnlineDeals));
+export default connect(
+  mapStateToProps,
+  { fetchOnlineDeals }
+)(withStyles(styles)(OnlineDeals));
