@@ -1,9 +1,7 @@
-// @flow
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-component';
-// import InfiniteScroll from 'react-infinite-scroller';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { Typography, withStyles } from '@material-ui/core';
 
@@ -34,19 +32,34 @@ const masonryOptions = {
 };
 
 class AllDeals extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 0,
+      deals: []
+    };
+  }
   componentDidMount() {
-    this.props.dispatch(fetchAllDeals());
+    this.props.fetchAllDeals();
   }
 
-  // handleLoadMore = page => {
-  //   this.props.dispatch(fetchAllDeals(page));
-  // };
+  fetchMoreData = () => {
+    this.setState({ page: this.state.page + 1 });
+    this.props.fetchAllDeals(this.state.page);
+    this.setState({ deals: [...this.state.deals, ...this.props.deals] });
+  };
 
   render = () => {
-    const { classes, error, loading, deals } = this.props;
+    const { classes, error } = this.props;
 
-    const childElements = deals.map(deal => (
-      <div key={deal.id} className={classes.deal}>
+    const childElements = this.props.deals.map((deal, index) => (
+      <div key={index} className={classes.deal}>
+        <Deal deal={deal} />
+      </div>
+    ));
+
+    const moreElements = this.state.deals.map((deal, index) => (
+      <div key={index} className={classes.deal}>
         <Deal deal={deal} />
       </div>
     ));
@@ -59,34 +72,22 @@ class AllDeals extends Component {
       );
     }
 
-    if (loading) {
-      return (
-        <div className={classes.root}>
-          <Typography variant="body1">Loading...</Typography>
-        </div>
-      );
-    }
-
     return (
       <div className={classes.root}>
-        {/*<InfiniteScroll*/}
-        {/*pageStart={0}*/}
-        {/*loadMore={this.handleLoadMore}*/}
-        {/*hasMore={true || false}*/}
-        {/*loader={*/}
-        {/*<div className="loader" key={0}>*/}
-        {/*Loading ...*/}
-        {/*</div>*/}
-        {/*}*/}
-        {/*useWindow={false}>*/}
-        <Masonry
-          className={classes.masonry}
-          elementType={'div'}
-          options={masonryOptions}
-          updateOnEachImageLoad={false}>
-          {childElements}
-        </Masonry>
-        {/*</InfiniteScroll>*/}
+        <InfiniteScroll
+          dataLength={moreElements.length}
+          next={this.fetchMoreData}
+          hasMore={true}
+          loader={<h4>Loading...</h4>}>
+          <Masonry
+            className={classes.masonry}
+            elementType={'div'}
+            options={masonryOptions}
+            updateOnEachImageLoad={false}>
+            {childElements}
+            {moreElements}
+          </Masonry>
+        </InfiniteScroll>
       </div>
     );
   };
@@ -105,4 +106,7 @@ const mapStateToProps = state => ({
   error: state.deals.error
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(AllDeals));
+export default connect(
+  mapStateToProps,
+  { fetchAllDeals }
+)(withStyles(styles)(AllDeals));

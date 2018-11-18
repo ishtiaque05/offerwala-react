@@ -16,9 +16,7 @@ export const fetchAllDeals = (page = 1) => {
       const response = await axios.get(
         'http://www.jossdeals.com/api/v1/guests/deals/all_deals',
         {
-          params: {
-            page
-          }
+          params: { page }
         }
       );
       dispatch(fetchDealsSuccess(response.data.deals));
@@ -30,13 +28,16 @@ export const fetchAllDeals = (page = 1) => {
   };
 };
 
-export const fetchOnlineDeals = () => {
+export const fetchOnlineDeals = (page = 1) => {
   return async dispatch => {
     dispatch(fetchDealsBegin());
 
     try {
       const response = await axios.get(
-        'http://www.jossdeals.com/api/v1/guests/deals/online_deals'
+        'http://www.jossdeals.com/api/v1/guests/deals/online_deals',
+        {
+          params: { page }
+        }
       );
       dispatch(fetchDealsSuccess(response.data.deals));
       return response.data.deals;
@@ -47,13 +48,16 @@ export const fetchOnlineDeals = () => {
   };
 };
 
-export const fetchStoreDeals = () => {
+export const fetchStoreDeals = (page = 1) => {
   return async dispatch => {
     dispatch(fetchDealsBegin());
 
     try {
       const response = await axios.get(
-        'http://www.jossdeals.com/api/v1/guests/deals/store_deals'
+        'http://www.jossdeals.com/api/v1/guests/deals/store_deals',
+        {
+          params: { page }
+        }
       );
       dispatch(fetchDealsSuccess(response.data.deals));
       return response.data.deals;
