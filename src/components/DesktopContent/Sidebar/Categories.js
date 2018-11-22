@@ -6,15 +6,15 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { Typography } from '@material-ui/core';
 
-import EverythingIcon from 'assets/images/everything.png';
-import BeautyAndFitnessIcon from 'assets/images/beauty_and_fitness.png';
-import FoodAndDiningIcon from 'assets/images/food.png';
-import ShoppingIcon from 'assets/images/market.png';
-import ServicesIcon from 'assets/images/services.png';
-import MobileAndInternetIcon from 'assets/images/mobile_and_internet.png';
-import ElectronicsAndHomeIcon from 'assets/images/home_electronics.png';
-import HotelsAndTravelsIcon from 'assets/images/travels.png';
-import BanksAndCards from 'assets/images/cards_and_banks.png';
+import EverythingIcon from '../../../assets/images/everything.png';
+import BeautyAndFitnessIcon from '../../../assets/images/beauty_and_fitness.png';
+import FoodAndDiningIcon from '../../../assets/images/food.png';
+import ShoppingIcon from '../../../assets/images/market.png';
+import ServicesIcon from '../../../assets/images/services.png';
+import MobileAndInternetIcon from '../../../assets/images/mobile_and_internet.png';
+import ElectronicsAndHomeIcon from '../../../assets/images/home_electronics.png';
+import HotelsAndTravelsIcon from '../../../assets/images/travels.png';
+import BanksAndCards from '../../../assets/images/cards_and_banks.png';
 
 const styles = theme => ({
   list: {

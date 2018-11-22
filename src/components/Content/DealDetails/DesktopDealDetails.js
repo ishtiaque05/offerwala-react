@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -16,7 +14,7 @@ import {
 
 import PhoneIcon from '@material-ui/icons/Phone';
 
-import DefaultImage from 'assets/images/default_deal.jpg';
+import DefaultImage from '../../../assets/images/default_deal.jpg';
 
 const styles = theme => ({
   root: {

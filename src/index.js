@@ -8,8 +8,8 @@ import 'typeface-open-sans';
 import 'typeface-raleway';
 import 'typeface-source-sans-pro';
 
-import Root from 'Root';
-import App from 'components/App';
+import Root from './Root';
+import App from './components/App';
 
 const theme = createMuiTheme({
   palette: {

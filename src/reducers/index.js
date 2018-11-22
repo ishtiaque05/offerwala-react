@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-import dealsReducer from 'reducers/deals';
-import dealReducer from 'reducers/deal';
-import searchedDealsReducer from 'reducers/search';
+
+import dealsReducer from './deals';
+import dealReducer from './deal';
+import searchedDealsReducer from './search';
 
 export default combineReducers({
   deals: dealsReducer,

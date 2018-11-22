@@ -1,8 +1,8 @@
 import {
-  FETCH_DEAL_WITH_ID_SUCCESS,
   FETCH_DEAL_WITH_ID_BEGIN,
-  FETCH_DEAL_WITH_ID_FAILURE
-} from 'actions/types';
+  FETCH_DEAL_WITH_ID_FAILURE,
+  FETCH_DEAL_WITH_ID_SUCCESS
+} from '../actions/types';
 
 const initialState = {
   item: {},

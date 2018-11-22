@@ -6,9 +6,9 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { withStyles, Typography } from '@material-ui/core';
 
-import { fetchOnlineDeals } from 'actions';
+import { fetchOnlineDeals } from '../../actions';
 
-import Deal from 'components/Content/Deal';
+import Deal from './Deal';
 
 const styles = theme => ({
   root: {

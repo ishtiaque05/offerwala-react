@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 
-import Categories from 'components/DesktopContent/Sidebar/Categories';
+import Categories from './Categories';
 
 const styles = theme => ({
   sidebar: {

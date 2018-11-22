@@ -9,7 +9,7 @@ import {
   FETCH_SEARCHED_DEALS_BEGIN,
   FETCH_SEARCHED_DEALS_FAILURE,
   FETCH_SEARCHED_DEALS_SUCCESS
-} from 'actions/types';
+} from './types';
 
 export const fetchAllDeals = (page = 1) => {
   return async dispatch => {

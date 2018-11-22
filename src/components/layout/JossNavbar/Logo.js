@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withWidth } from '@material-ui/core';
 
-import { getImageLink } from 'utils';
+import { getImageLink } from '../../../utils';
 
 export const Logo = ({ width }) => (
   <Fragment>

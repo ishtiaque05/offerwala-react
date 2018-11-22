@@ -5,10 +5,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
 
-import Logo from 'components/layout/JossNavbar/Logo';
-import MobileSection from 'components/layout/JossNavbar/MobileSection';
-import DesktopSection from 'components/layout/JossNavbar/DesktopSection';
-import SearchBar from 'components/layout/JossNavbar/SearchBar';
+import Logo from './Logo';
+import SearchBar from './SearchBar';
+import DesktopSection from './DesktopSection';
+import MobileSection from './MobileSection';
 
 const styles = theme => ({
   root: {

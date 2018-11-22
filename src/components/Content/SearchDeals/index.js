@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSearchedDeals } from 'actions';
 import Masonry from 'react-masonry-component';
 import { Typography, withStyles } from '@material-ui/core';
 
-import Deal from 'components/Content/Deal';
+import { fetchSearchedDeals } from '../../../actions';
+import Deal from '../Deal';
 
 const styles = theme => ({
   root: {

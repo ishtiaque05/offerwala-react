@@ -1,4 +1,4 @@
-import JossNavbar from 'components/layout/JossNavbar';
-import Container from 'components/layout/Container';
+import JossNavbar from './JossNavbar';
+import Container from './Container';
 
 export { JossNavbar, Container };

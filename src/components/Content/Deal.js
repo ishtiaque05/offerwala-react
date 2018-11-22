@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -11,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-import DefaultImage from 'assets/images/default_deal.jpg';
+import DefaultImage from '../../assets/images/default_deal.jpg';
 
 const styles = theme => ({
   card: {

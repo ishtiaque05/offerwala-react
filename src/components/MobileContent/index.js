@@ -1,8 +1,9 @@
 import React from 'react';
 
-import SubNavbar from 'components/MobileContent/SubNavbar';
-import BottomBar from 'components/MobileContent/BottomBar';
-import Routes from 'Routes';
+import SubNavbar from './SubNavbar';
+import BottomBar from './BottomBar';
+
+import Routes from '../../Routes';
 
 const MobileContent = () => (
   <div>

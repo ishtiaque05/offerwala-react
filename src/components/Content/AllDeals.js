@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-component';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { Typography, withStyles } from '@material-ui/core';
 
-import { fetchAllDeals } from 'actions';
+import { fetchAllDeals } from '../../actions';
 
-import Deal from 'components/Content/Deal';
-import PropTypes from 'prop-types';
+import Deal from './Deal';
 
 const styles = theme => ({
   root: {
