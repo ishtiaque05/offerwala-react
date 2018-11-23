@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -10,6 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 import DefaultImage from '../../assets/images/default_deal.jpg';
+import DesktopDealDetails from './DealDetails/DesktopDealDetails';
 
 const styles = theme => ({
   card: {
@@ -43,33 +44,57 @@ const styles = theme => ({
   }
 });
 
-const Deal = ({ classes, deal }) => (
-  <Card className={classes.card}>
-    <Link to={`/deals/${deal.id}`} className={classes.link}>
-      <CardActionArea>
-        <CardMedia
-          style={{ padding: '16px', paddingBottom: '0px' }}
-          component="img"
-          alt="Contemplative Reptile"
-          className={classes.media}
-          image={deal.picture !== undefined ? deal.picture.url : DefaultImage}
-          title={deal.title}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {deal.title}
-          </Typography>
-          <div className={classes.flex}>
-            <Typography className={classes.shopName}>
-              {deal.shop !== undefined ? deal.shop.title : ''}
-            </Typography>
-            <Typography>{deal.end_date}</Typography>
-          </div>
-        </CardContent>
-      </CardActionArea>
-    </Link>
-  </Card>
-);
+class Deal extends Component {
+
+  state = {
+    open: false
+  }
+
+  clickHandler = () => {
+    this.setState({
+      open: true
+    });
+  }
+
+  
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  render() {
+
+    const { classes, deal } = this.props;
+
+    return (
+      <Fragment>
+          <DesktopDealDetails deal={ deal } onClose={ this.handleClose } open={ this.state.open } />
+          <Card onClick={ this.clickHandler } className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                style={{ padding: '16px', paddingBottom: '0px' }}
+                component="img"
+                alt="Contemplative Reptile"
+                className={classes.media}
+                image={deal.picture !== undefined ? deal.picture.url : DefaultImage}
+                title={deal.title}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {deal.title}
+                </Typography>
+                <div className={classes.flex}>
+                  <Typography className={classes.shopName}>
+                    {deal.shop !== undefined ? deal.shop.title : ''}
+                  </Typography>
+                  <Typography>{deal.end_date}</Typography>
+                </div>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+      </Fragment>
+    )
+  }
+};
 
 Deal.propTypes = {
   classes: PropTypes.object.isRequired,
