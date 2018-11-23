@@ -1,13 +1,17 @@
 // @flow
 
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import{ Redirect } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
+import { fetchSearchedDeals } from 'actions';
 import SearchIcon from 'assets/images/search.png';
+import { format } from 'util';
 
 const styles = theme => ({
   search: {
@@ -72,23 +76,62 @@ const styles = theme => ({
   }
 });
 
-const SearchBar = ({ classes }) => (
-  <div className={classes.search}>
-    <div className={classes.searchIcon}>
-      <img src={SearchIcon} alt="Search Icon" />
-    </div>
-    <InputBase
-      placeholder="Search…"
-      classes={{
-        root: classes.inputRoot,
-        input: classes.searchInput
-      }}
-    />
-  </div>
-);
+class SearchBar extends Component { 
+  state = {
+    keyword: '', 
+    submit: false
+  }
 
+  searchHandler = e => {
+    this.setState({
+      keyword: e.target.value
+    });
+
+    if(e.key === 'Enter' && e.target.value) {
+      this.setState({
+        submit: true
+      });
+
+      this.setState({
+        submit: false
+      });
+    }
+  }
+
+  render() {
+
+    const { classes } = this.props;
+    console.log(window.location.href);
+
+    return (
+      <div className={classes.search}>
+        <div className={classes.searchIcon}>
+          <img src={SearchIcon} alt="Search Icon" />
+        </div>
+        <InputBase
+          placeholder="Search…"
+          classes={{
+            root: classes.inputRoot,
+            input: classes.searchInput
+          }}
+          onKeyUp={ (e) => this.searchHandler(e) }
+        />
+
+        {
+          this.state.submit ? 
+            <Redirect 
+              to={{
+                pathname: `${window.location.href}deals?deal_name=${this.state.keyword}`
+              }}
+            /> : null
+        }
+
+      </div>
+    );
+  }
+}
 SearchBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SearchBar);
+export default connect(null, { fetchSearchedDeals })(withStyles(styles)(SearchBar));

@@ -122,7 +122,7 @@ export const fetchSearchedDeals = tagName => {
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/v1/guests/search/deals?deal_name=${tagName}`
+        `http://www.jossdeals.com/api/v1/guests/search/deals?deal_name=${tagName}`
       );
       dispatch(fetchSearchedDealsSuccess(response.data.deals));
       return response.data.deals;

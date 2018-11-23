@@ -10,12 +10,12 @@ import Password from './Sign-up/Password';
 const App = () => (
   <div style={{ background: '#F8F8F8' }}>
     <CssBaseline />
-    {/* <JossNavbar /> */}
-    {/* <Container /> */}
+    <JossNavbar />
+    <Container />
     {/* <Signup /> */}
     {/* <Welcome /> */}
     {/* <Name /> */}
-    <Password />
+    {/* <Password /> */}
   </div>
 );
 
