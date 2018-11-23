@@ -10,7 +10,12 @@ const SubMenu = ({ anchorEl, onClose, open }) => (
     anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
     open={open}
-    onClose={onClose}>
+    onClose={onClose}
+    PaperProps={{
+      style: {
+        backgroundColor: '#fff'
+      }
+    }}>
     <MenuItem onClick={onClose}>
       <p>About Us</p>
     </MenuItem>

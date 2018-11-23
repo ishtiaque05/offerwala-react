@@ -79,7 +79,7 @@ class DesktopSubNav extends Component {
               <Typography variant="headline">Shop deals</Typography>
             </Link>
           </li>
-          <li className={classes.li}>
+          {/* <li className={classes.li}>
             <Link
               onClick={event => this.handleListItemClick(event, 3)}
               className={
@@ -88,7 +88,7 @@ class DesktopSubNav extends Component {
               to="/coupon">
               <Typography variant="headline">Coupons</Typography>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     );

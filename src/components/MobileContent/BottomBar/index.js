@@ -5,8 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import CategoryIcon from '@material-ui/icons/Apps';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import UserIcon from '@material-ui/icons/Person';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
+// import UserIcon from '@material-ui/icons/Person';
 
 const styles = {
   root: {
@@ -41,8 +41,8 @@ class BottomBar extends Component {
         showLabels
         className={classes.root}>
         <BottomNavigationAction label="Categories" icon={<CategoryIcon />} />
-        <BottomNavigationAction label="Favorite" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="User" icon={<UserIcon />} />
+        {/* <BottomNavigationAction label="Favorite" icon={<FavoriteIcon />} /> */}
+        {/* <BottomNavigationAction label="User" icon={<UserIcon />} /> */}
       </BottomNavigation>
     );
   };
