@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 // @flow
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+=======
+import React from 'react';
+>>>>>>> ef71538c65550e2ac89e6e64ebef877d9b9fe17c
 import PropTypes from 'prop-types';
 import{ Redirect } from 'react-router-dom';
 
@@ -9,9 +13,13 @@ import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
+<<<<<<< HEAD
 import { fetchSearchedDeals } from 'actions';
 import SearchIcon from 'assets/images/search.png';
 import { format } from 'util';
+=======
+import SearchIcon from '../../../assets/images/search.png';
+>>>>>>> ef71538c65550e2ac89e6e64ebef877d9b9fe17c
 
 const styles = theme => ({
   search: {

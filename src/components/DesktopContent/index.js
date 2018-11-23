@@ -2,11 +2,12 @@ import React from 'react';
 
 import { withStyles } from '@material-ui/core';
 
-import Carousel from 'components/layout/Carousel';
-import Sidebar from 'components/DesktopContent/Sidebar';
-import FilterBar from 'components/DesktopContent/FilterBar';
-import SubNav from 'components/DesktopContent/SubNav';
-import Routes from 'Routes';
+import Sidebar from './Sidebar';
+import SubNav from './SubNav';
+import FilterBar from './FilterBar';
+
+import Carousel from '../layout/Carousel';
+import Routes from '../../Routes';
 
 const styles = theme => ({
   main: {

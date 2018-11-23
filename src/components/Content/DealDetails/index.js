@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { withWidth } from '@material-ui/core';
-import DesktopDealDetails from 'components/Content/DealDetails/DesktopDealDetails';
-import MobileDealDetails from 'components/Content/DealDetails/MobileDealDetails';
+import DesktopDealDetails from './DesktopDealDetails';
+import MobileDealDetails from './MobileDealDetails';
 
-import { fetchDealWithId } from 'actions';
-import PropTypes from 'prop-types';
+import { fetchDealWithId } from '../../../actions';
 
 class DealDetails extends Component {
   componentDidMount() {

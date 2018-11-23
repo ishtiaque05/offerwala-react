@@ -1,8 +1,8 @@
 import {
   FETCH_SEARCHED_DEALS_BEGIN,
-  FETCH_SEARCHED_DEALS_SUCCESS,
-  FETCH_SEARCHED_DEALS_FAILURE
-} from 'actions/types';
+  FETCH_SEARCHED_DEALS_FAILURE,
+  FETCH_SEARCHED_DEALS_SUCCESS
+} from '../actions/types';
 
 const initialState = {
   items: [],
