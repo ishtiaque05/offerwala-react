@@ -8,13 +8,6 @@ const App = () => (
     <CssBaseline />
     <JossNavbar />
     <Container />
-<<<<<<< HEAD
-    {/* <Signup /> */}
-    {/* <Welcome /> */}
-    {/* <Name /> */}
-    {/* <Password /> */}
-=======
->>>>>>> ef71538c65550e2ac89e6e64ebef877d9b9fe17c
   </div>
 );
 

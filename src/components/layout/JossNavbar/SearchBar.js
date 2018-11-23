@@ -1,25 +1,15 @@
-<<<<<<< HEAD
-// @flow
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-=======
-import React from 'react';
->>>>>>> ef71538c65550e2ac89e6e64ebef877d9b9fe17c
+
 import PropTypes from 'prop-types';
-import{ Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
-<<<<<<< HEAD
-import { fetchSearchedDeals } from 'actions';
-import SearchIcon from 'assets/images/search.png';
-import { format } from 'util';
-=======
+import { fetchSearchedDeals } from '../../../actions';
 import SearchIcon from '../../../assets/images/search.png';
->>>>>>> ef71538c65550e2ac89e6e64ebef877d9b9fe17c
 
 const styles = theme => ({
   search: {
@@ -84,18 +74,18 @@ const styles = theme => ({
   }
 });
 
-class SearchBar extends Component { 
+class SearchBar extends Component {
   state = {
-    keyword: '', 
+    keyword: '',
     submit: false
-  }
+  };
 
   searchHandler = e => {
     this.setState({
       keyword: e.target.value
     });
 
-    if(e.key === 'Enter' && e.target.value) {
+    if (e.key === 'Enter' && e.target.value) {
       this.setState({
         submit: true
       });
@@ -104,10 +94,9 @@ class SearchBar extends Component {
         submit: false
       });
     }
-  }
+  };
 
   render() {
-
     const { classes } = this.props;
     console.log(window.location.href);
 
@@ -122,18 +111,18 @@ class SearchBar extends Component {
             root: classes.inputRoot,
             input: classes.searchInput
           }}
-          onKeyUp={ (e) => this.searchHandler(e) }
+          onKeyUp={e => this.searchHandler(e)}
         />
 
-        {
-          this.state.submit ? 
-            <Redirect 
-              to={{
-                pathname: `${window.location.href}deals?deal_name=${this.state.keyword}`
-              }}
-            /> : null
-        }
-
+        {this.state.submit ? (
+          <Redirect
+            to={{
+              pathname: `${window.location.href}deals?deal_name=${
+                this.state.keyword
+              }`
+            }}
+          />
+        ) : null}
       </div>
     );
   }
@@ -142,4 +131,7 @@ SearchBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default connect(null, { fetchSearchedDeals })(withStyles(styles)(SearchBar));
+export default connect(
+  null,
+  { fetchSearchedDeals }
+)(withStyles(styles)(SearchBar));
