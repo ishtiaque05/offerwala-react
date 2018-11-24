@@ -18,8 +18,10 @@ const styles = theme => ({
     flexGrow: 1
   },
   toolBar: {
-    height: theme.spacing.unit * 10,
-    paddingLeft: theme.spacing.unit * 12
+    [theme.breakpoints.up('sm')]: {
+      height: theme.spacing.unit * 10,
+      paddingLeft: theme.spacing.unit * 12
+    }
   }
 });
 
