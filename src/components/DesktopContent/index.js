@@ -1,11 +1,10 @@
 import React from 'react';
-
+import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core';
 
 import Sidebar from './Sidebar';
 import SubNav from './SubNav';
 import FilterBar from './FilterBar';
-
 import Carousel from '../layout/Carousel';
 import Routes from '../../Routes';
 
@@ -18,15 +17,20 @@ const styles = theme => ({
   }
 });
 
-const DesktopContent = ({ classes }) => (
-  <div className={classes.main}>
-    <Sidebar />
-    <Carousel />
-    <SubNav />
-    <FilterBar />
+const DesktopContent = ({ classes, location }) => {
+  let curLocation = location.pathname;
+  console.warn(curLocation);
+  return (
+    <div className={classes.main}>
+      <Sidebar />
+      {(curLocation === '/' ||
+        curLocation === '/deals/online-deals' ||
+        curLocation === '/deals/store-deals') && <Carousel />}
+      <SubNav />
+      <FilterBar />
+      <Routes />
+    </div>
+  );
+};
 
-    <Routes />
-  </div>
-);
-
-export default withStyles(styles)(DesktopContent);
+export default withRouter(withStyles(styles)(DesktopContent));

@@ -18,18 +18,18 @@ const styles = theme => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25)
     },
-    marginRight: theme.spacing.unit * 2,
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing.unit * 42,
-      marginRight: theme.spacing.unit * 50,
-      width: 'auto'
-    },
-    [theme.breakpoints.down('xs')]: {
-      marginLeft: theme.spacing.unit * 2,
-      width: 'auto'
-    }
+    marginRight: theme.spacing.unit * 2
+    // marginLeft: 0,
+    // width: '100%'
+    // [theme.breakpoints.up('xl')]: {
+    //   marginLeft: theme.spacing.unit * 42,
+    //   marginRight: theme.spacing.unit * 50,
+    //   width: 'auto'
+    // },
+    // [theme.breakpoints.down('xs')]: {
+    //   marginLeft: theme.spacing.unit * 2,
+    //   width: 'auto'
+    // }
   },
   searchIcon: {
     width: theme.spacing.unit * 6,
@@ -41,6 +41,9 @@ const styles = theme => ({
     borderRight: '1px solid #D4D4D4',
     height: theme.spacing.unit * 3,
     top: theme.spacing.unit * 1.5,
+    [theme.breakpoints.down('sm')]: {
+      top: '20%'
+    },
     '& img': {
       width: theme.spacing.unit * 4,
       height: theme.spacing.unit * 4
@@ -55,6 +58,9 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing.unit * 90,
       height: theme.spacing.unit * 5.75
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: theme.spacing.unit * 25
     },
     '& input': {
       color: '#2F2F2F'

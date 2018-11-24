@@ -80,15 +80,15 @@ class DesktopSubNav extends Component {
             </Link>
           </li>
           {/* <li className={classes.li}>
-            <Link
-              onClick={event => this.handleListItemClick(event, 3)}
-              className={
-                this.state.selectedIndex === 3 ? classes.active : classes.link
-              }
-              to="/coupon">
-              <Typography variant="headline">Coupons</Typography>
-            </Link>
-          </li> */}
+        <Link
+        onClick={event => this.handleListItemClick(event, 3)}
+        className={
+        this.state.selectedIndex === 3 ? classes.active : classes.link
+        }
+        to="/coupon">
+        <Typography variant="headline">Coupons</Typography>
+        </Link>
+        </li> */}
         </ul>
       </nav>
     );
