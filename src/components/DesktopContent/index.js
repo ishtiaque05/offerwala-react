@@ -41,12 +41,16 @@ const DesktopContent = ({ classes, location }) => {
               {(curLocation === '/' ||
                 curLocation === '/deals/online-deals' ||
                 curLocation === '/deals/store-deals') && <Carousel />}
-              <SubNav />
-              <FilterBar />
+              <StickyBox offsetTop={80} style={{ zIndex: '1' }}>
+                <div style={{ paddingBottom: '4px', background: '#f8f8f8' }}>
+                  <SubNav />
+                  <FilterBar />
+                </div>
+              </StickyBox>
+              <Grid item>
+                <Routes />
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid item>
-            <Routes />
           </Grid>
         </Grid>
         <Grid item direction="column" spacing={16}>
