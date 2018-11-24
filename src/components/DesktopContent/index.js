@@ -9,6 +9,7 @@ import Carousel from '../layout/Carousel';
 import Routes from '../../Routes';
 
 import RightSidebar from './RightSidebar';
+import StickyBox from 'react-sticky-box/dist/esnext';
 
 const styles = theme => ({
   root: {
@@ -29,9 +30,11 @@ const DesktopContent = ({ classes, location }) => {
         direction="row"
         justify="space-around"
         alignItems="flex-start">
-        <Grid item direction="vertical" justify="center">
+        {/*<Grid item alignItems="flex-start">*/}
+        <StickyBox offsetTop={86}>
           <Sidebar />
-        </Grid>
+        </StickyBox>
+        {/*</Grid>*/}
         <Grid item>
           <Grid item container direction="column" spacing={16}>
             <Grid item>
