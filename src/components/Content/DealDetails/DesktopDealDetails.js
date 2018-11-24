@@ -24,7 +24,8 @@ const styles = theme => ({
   card: {
     background: '#F8F8F8',
     maxWidth: theme.spacing.unit * 150,
-    padding: '30px'
+    padding: '30px', 
+    maxHeight: 'calc(100% - 96px)'
   },
   media: {
     width: theme.spacing.unit * 50,
@@ -69,7 +70,6 @@ const styles = theme => ({
 class DesktopDealDetails extends Component {
   render = () => {
     const { classes, deal, open, onClose } = this.props;
-    console.log(deal.tags);
 
     // if (loading) {
     //   return <div>Loading...</div>;
@@ -83,11 +83,10 @@ class DesktopDealDetails extends Component {
       <Dialog
         className={classes.root}
         open={open}
-        fullWidth={true}
         maxWidth={'md'}
         onClose={onClose}
         aria-labelledby="simple-dialog-title"
-        scroll="body">
+        scroll="paper">
         <Card className={classes.card}>
           <CardContent>
             <div style={{ display: 'block' }}>
@@ -134,8 +133,8 @@ class DesktopDealDetails extends Component {
               </Typography>
 
               <Typography>
-                {deal.tags.map(tag => (
-                  <Chip className={classes.chip} label={tag.title} />
+                {deal.tags.map((tag, index) => (
+                  <Chip key={ index } className={classes.chip} label={tag.title} />
                 ))}
               </Typography>
 
