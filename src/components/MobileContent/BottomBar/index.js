@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import CategoryDialoge from './CategoryDialoge';
+import CategoryDialog from './CategoryDialog';
 
 
 
@@ -106,7 +106,7 @@ class BottomBar extends Component {
         onChange={this.handleChange}
         showLabels
         className={classes.root}>
-          <CategoryDialoge 
+          <CategoryDialog
             categories={ items }
             icons={ icons }
             open={ open } 

@@ -53,7 +53,7 @@ const DesktopContent = ({ classes, location }) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item direction="column" spacing={16}>
+        <Grid item spacing={16}>
           <Grid item>
             <RightSidebar />
           </Grid>

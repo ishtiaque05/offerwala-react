@@ -78,9 +78,7 @@ const styles = theme => ({
     },
 });
 
-
-
-class CategoryDialoge extends Component {
+class CategoryDialog extends Component {
     state = { 
         selectedIndex: 0
     }
@@ -136,8 +134,8 @@ class CategoryDialoge extends Component {
     }
 }
 
-CategoryDialoge.propTypes = {
+CategoryDialog.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CategoryDialoge);
+export default withStyles(styles)(CategoryDialog);

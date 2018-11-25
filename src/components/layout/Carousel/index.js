@@ -1,6 +1,8 @@
 import React from 'react';
-import Banner from '../../../assets/images/Banner.png';
+import Banner from '../../../assets/videos/banner.mp4';
 import { withStyles } from '@material-ui/core';
+
+import { Player, ControlBar } from 'video-react';
 
 const styles = theme => ({
   image: {
@@ -9,15 +11,22 @@ const styles = theme => ({
     },
     [theme.breakpoints.down('lg')]: {
       width: theme.spacing.unit * 94
+    },
+    padding: '0 !important',
+    '& button': {
+      display: 'none'
     }
   }
 });
 
 const Carousel = ({ classes }) => {
   return (
-    <div>
-      <img src={Banner} alt="Placeholder" className={classes.image} />
-    </div>
+    <Player
+      className={classes.image}
+      autoPlay
+      src={Banner}>
+      <ControlBar disableCompletely />
+    </Player>
   );
 };
 
