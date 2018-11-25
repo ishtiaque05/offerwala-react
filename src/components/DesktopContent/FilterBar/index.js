@@ -11,8 +11,9 @@ const styles = theme => ({
     boxShadow: '0 3px 6px rgba(0, 0, 0, .05)',
     opacity: '.8',
     marginBottom: '40px',
-    marginLeft: theme.spacing.unit * 40,
-    width: 'fit-content'
+    width: 'fit-content',
+    paddingLeft: 0,
+    background: '#FAFAFA'
   },
   chip: {
     margin: theme.spacing.unit

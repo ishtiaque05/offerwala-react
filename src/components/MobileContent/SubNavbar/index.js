@@ -49,7 +49,7 @@ class SubNavbar extends Component {
               to="/deals/online-deals"
             />
             <Tab label="Store Deals" component={Link} to="/deals/store-deals" />
-            <Tab label="Coupons" />
+            {/* <Tab label="Coupons" /> */}
           </Tabs>
         </AppBar>
       </div>

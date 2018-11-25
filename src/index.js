@@ -23,10 +23,19 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: '"Source Sans Pro"'
+  },
+  breakpoints: {
+    values: {
+      xl: 1920,
+      lg: 1600,
+      md: 1200,
+      sm: 600,
+      xs: 0
+    }
   }
 });
 
-console.log(theme);
+console.warn(theme);
 
 render(
   <Root>

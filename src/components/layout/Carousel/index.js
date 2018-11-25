@@ -1,16 +1,33 @@
 import React from 'react';
-import Banner from '../../../assets/images/Banner.png';
+import Banner from '../../../assets/videos/banner.mp4';
+import { withStyles } from '@material-ui/core';
 
-const Carousel = () => {
+import { Player, ControlBar } from 'video-react';
+
+const styles = theme => ({
+  image: {
+    [theme.breakpoints.up('xl')]: {
+      width: theme.spacing.unit * 125
+    },
+    [theme.breakpoints.down('lg')]: {
+      width: theme.spacing.unit * 94
+    },
+    padding: '0 !important',
+    '& button': {
+      display: 'none'
+    }
+  }
+});
+
+const Carousel = ({ classes }) => {
   return (
-    <div style={{ paddingLeft: '320px' }}>
-      <img
-        src={Banner}
-        alt="Placeholder"
-        style={{ width: '1120px', height: 'auto' }}
-      />
-    </div>
+    <Player
+      className={classes.image}
+      autoPlay
+      src={Banner}>
+      <ControlBar disableCompletely />
+    </Player>
   );
 };
 
-export default Carousel;
+export default withStyles(styles)(Carousel);

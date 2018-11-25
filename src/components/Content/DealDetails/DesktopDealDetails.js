@@ -9,7 +9,8 @@ import {
   CardMedia,
   Typography,
   CardContent,
-  Button
+  Button,
+  Chip
 } from '@material-ui/core';
 
 import PhoneIcon from '@material-ui/icons/Phone';
@@ -23,13 +24,13 @@ const styles = theme => ({
   card: {
     background: '#F8F8F8',
     maxWidth: theme.spacing.unit * 150,
-    padding: '30px'
+    padding: '30px', 
+    maxHeight: 'calc(100% - 96px)'
   },
   media: {
     width: theme.spacing.unit * 50,
     marginRight: theme.spacing.unit * 3,
-    height: 'auto',
-    float: 'left'
+    height: 'auto'
   },
   shopName: {
     background: '#4B4B4B',
@@ -57,68 +58,62 @@ const styles = theme => ({
   },
   icon: {
     display: 'inline-block'
+  },
+  bottomArea: {
+    display: 'flex'
+  },
+  chip: {
+    margin: '5px'
   }
 });
 
 class DesktopDealDetails extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: true
-    };
-  }
-
-  handleClose = () => {
-    this.setState({ open: false });
-    this.props.history.goBack();
-  };
-
   render = () => {
-    const { classes, loading, error, deal, ...other } = this.props;
+    const { classes, deal, open, onClose } = this.props;
 
-    if (loading) {
-      return <div>Loading...</div>;
-    }
+    // if (loading) {
+    //   return <div>Loading...</div>;
+    // }
 
-    if (error) {
-      return <div>Error! {error.message}</div>;
-    }
+    // if (error) {
+    //   return <div>Error! {error.message}</div>;
+    // }
 
     return (
-      <div className={classes.root}>
-        <Dialog
-          open={this.state.open}
-          fullWidth={true}
-          maxWidth={'md'}
-          onClose={this.handleClose}
-          aria-labelledby="simple-dialog-title"
-          {...other}>
-          <Card className={classes.card}>
-            <CardContent>
-              <div style={{ display: 'block' }}>
-                <Typography variant="h6" className={classes.date}>
-                  {deal.end_date}
-                </Typography>
-                <Typography variant="h4" className={classes.title}>
-                  {deal.title}
-                </Typography>
+      <Dialog
+        className={classes.root}
+        open={open}
+        maxWidth={'md'}
+        onClose={onClose}
+        aria-labelledby="simple-dialog-title"
+        scroll="paper">
+        <Card className={classes.card}>
+          <CardContent>
+            <div style={{ display: 'block' }}>
+              <Typography variant="h6" className={classes.date}>
+                {deal.end_date}
+              </Typography>
+              <Typography variant="h4" className={classes.title}>
+                {deal.title}
+              </Typography>
+            </div>
+            <div>
+              <Typography variant="h6" className={classes.shopName}>
+                {deal.shop !== undefined ? deal.shop.title : ''}
+              </Typography>
+              <hr width="1" size="25" className={classes.hr} />
+              {/* TODO: Add Facebook Icon*/}
+              <div className={classes.icon}>
+                <PhoneIcon
+                  style={{
+                    marginBottom: '8px'
+                  }}
+                />
               </div>
-              <div>
-                <Typography variant="h6" className={classes.shopName}>
-                  {deal.shop !== undefined ? deal.shop.title : ''}
-                </Typography>
-                <hr width="1" size="25" className={classes.hr} />
-                {/* TODO: Add Facebook Icon*/}
-                <div className={classes.icon}>
-                  <PhoneIcon
-                    style={{
-                      marginBottom: '8px'
-                    }}
-                  />
-                </div>
-              </div>
-            </CardContent>
-            <CardContent>
+            </div>
+          </CardContent>
+          <div className={classes.bottomArea}>
+            <CardContent style={{ flexBasis: '50%' }}>
               <CardMedia
                 component="img"
                 alt={deal.title}
@@ -129,31 +124,39 @@ class DesktopDealDetails extends Component {
                 title={deal.title}
               />
             </CardContent>
-            <CardContent>
+            <CardContent
+              style={{ paddingLeft: 0, paddingRight: 0, flexBasis: '50%' }}>
               <Typography variant="body1">
                 {deal.description !== undefined
                   ? deal.description.replace(/&nbsp;|"|<[^>]+>/g, '')
                   : ''}
               </Typography>
+
+              <Typography>
+                {deal.tags.map((tag, index) => (
+                  <Chip key={ index } className={classes.chip} label={tag.title} />
+                ))}
+              </Typography>
+
               <Button
                 variant="contained"
                 color="primary"
-                style={{ float: 'right', marginTop: '16px' }}>
+                style={{ marginTop: '16px' }}>
                 Go to Deal
               </Button>
             </CardContent>
-          </Card>
-        </Dialog>
-      </div>
+          </div>
+        </Card>
+      </Dialog>
     );
   };
 }
 
 DesktopDealDetails.propTypes = {
   classes: PropTypes.object.isRequired,
-  deal: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.object
+  deal: PropTypes.object.isRequired
+  // loading: PropTypes.bool.isRequired,
+  // error: PropTypes.object
 };
 
 export default withRouter(withStyles(styles)(DesktopDealDetails));

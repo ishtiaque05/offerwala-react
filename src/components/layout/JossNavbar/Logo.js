@@ -1,22 +1,39 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { withWidth } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
-import { getImageLink } from '../../../utils';
+import DesktopLogo from '../../../assets/images/jossdeals_logo.png';
+import MobileLogo from '../../../assets/images/jossdeals_logo_small.png';
 
-export const Logo = ({ width }) => (
+const styles = theme => ({
+  desktopLogo: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    }
+  },
+  mobileLogo: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none'
+    }
+  }
+});
+
+const Logo = ({ classes }) => (
   <Fragment>
     <img
+      className={classes.desktopLogo}
       id="logo"
-      src={getImageLink(width)}
-      alt="Jossdeals Logo"
+      src={DesktopLogo}
+      alt="JossDeals Logo"
+      style={{ height: '64px' }}
+    />
+    <img
+      className={classes.mobileLogo}
+      id="logo"
+      src={MobileLogo}
+      alt="JossDeals Logo"
       style={{ height: '64px' }}
     />
   </Fragment>
 );
 
-Logo.propTypes = {
-  width: PropTypes.string.isRequired
-};
-
-export default withWidth()(Logo);
+export default withStyles(styles)(Logo);

@@ -13,8 +13,14 @@ import Deal from './Deal';
 const styles = theme => ({
   root: {
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 150,
-      marginLeft: theme.spacing.unit * 42
+      width: theme.spacing.unit * 150
+    },
+    [theme.breakpoints.down('lg')]: {
+      width: theme.spacing.unit * 100
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: theme.spacing.unit * 42.5,
+      margin: '0 auto'
     }
   },
   masonry: {

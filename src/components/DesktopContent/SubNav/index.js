@@ -6,8 +6,9 @@ import { Typography, withStyles } from '@material-ui/core';
 const styles = theme => ({
   nav: {
     padding: theme.spacing.unit * 2.5,
-    width: theme.spacing.unit * 120,
-    marginLeft: theme.spacing.unit * 40
+    width: '100%',
+    paddingLeft: 0
+    // marginLeft: theme.spacing.unit * 40
   },
   ul: {
     margin: 0,
@@ -16,7 +17,7 @@ const styles = theme => ({
     display: 'flex'
   },
   li: {
-    flex: 1
+    paddingRight: theme.spacing.unit * 5
   },
   link: {
     borderBottom: '1px solid transparent',
@@ -79,16 +80,16 @@ class DesktopSubNav extends Component {
               <Typography variant="headline">Shop deals</Typography>
             </Link>
           </li>
-          <li className={classes.li}>
-            <Link
-              onClick={event => this.handleListItemClick(event, 3)}
-              className={
-                this.state.selectedIndex === 3 ? classes.active : classes.link
-              }
-              to="/coupon">
-              <Typography variant="headline">Coupons</Typography>
-            </Link>
-          </li>
+          {/* <li className={classes.li}>
+        <Link
+        onClick={event => this.handleListItemClick(event, 3)}
+        className={
+        this.state.selectedIndex === 3 ? classes.active : classes.link
+        }
+        to="/coupon">
+        <Typography variant="headline">Coupons</Typography>
+        </Link>
+        </li> */}
         </ul>
       </nav>
     );
