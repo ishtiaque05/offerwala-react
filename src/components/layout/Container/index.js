@@ -1,10 +1,18 @@
-import React from 'react';
-import { withWidth } from '@material-ui/core';
+import React, { Fragment } from 'react';
+import { Hidden } from '@material-ui/core';
 
 import MobileContent from '../../MobileContent';
 import DesktopContent from '../../DesktopContent';
 
-const Container = ({ width }) =>
-  width === 'xs' ? <MobileContent /> : <DesktopContent />;
-
-export default withWidth()(Container);
+const Container = () => (
+  <Fragment>
+    <Hidden smUp>
+      <MobileContent />
+    </Hidden>
+    <Hidden smDown>
+      <DesktopContent />
+    </Hidden>
+    ;
+  </Fragment>
+);
+export default Container;
