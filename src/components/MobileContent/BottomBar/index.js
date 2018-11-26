@@ -75,9 +75,9 @@ class BottomBar extends Component {
   }
 
   dialogeClickHandler = () => {
-    this.setState({
-      open: true
-    });
+    this.setState(prevState => ({
+      open: !prevState.open
+    }));
   }
 
   listClickHandler = index => {

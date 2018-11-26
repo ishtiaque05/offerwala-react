@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import {
   withStyles,
   Dialog,
+  DialogContent, 
   Card,
   CardMedia,
   Typography,
@@ -20,12 +21,13 @@ import DefaultImage from '../../../assets/images/default_deal.jpg';
 const styles = theme => ({
   root: {
     padding: '30px'
-  },
+  }, 
   card: {
     background: '#F8F8F8',
     maxWidth: theme.spacing.unit * 150,
     padding: '30px', 
-    maxHeight: 'calc(100% - 96px)'
+    maxHeight: 'calc(100% - 96px)', 
+    boxShadow: 'none'
   },
   media: {
     width: theme.spacing.unit * 50,
@@ -71,14 +73,6 @@ class DesktopDealDetails extends Component {
   render = () => {
     const { classes, deal, open, onClose } = this.props;
 
-    // if (loading) {
-    //   return <div>Loading...</div>;
-    // }
-
-    // if (error) {
-    //   return <div>Error! {error.message}</div>;
-    // }
-
     return (
       <Dialog
         className={classes.root}
@@ -86,67 +80,72 @@ class DesktopDealDetails extends Component {
         maxWidth={'md'}
         onClose={onClose}
         aria-labelledby="simple-dialog-title"
+        PaperProps={{
+          style: { backgroundColor: '#F8F8F8' }
+        }}
         scroll="paper">
-        <Card className={classes.card}>
-          <CardContent>
-            <div style={{ display: 'block' }}>
-              <Typography variant="h6" className={classes.date}>
-                {deal.end_date}
-              </Typography>
-              <Typography variant="h4" className={classes.title}>
-                {deal.title}
-              </Typography>
-            </div>
-            <div>
-              <Typography variant="h6" className={classes.shopName}>
-                {deal.shop !== undefined ? deal.shop.title : ''}
-              </Typography>
-              <hr width="1" size="25" className={classes.hr} />
-              {/* TODO: Add Facebook Icon*/}
-              <div className={classes.icon}>
-                <PhoneIcon
-                  style={{
-                    marginBottom: '8px'
-                  }}
-                />
+        <DialogContent>
+          <Card className={classes.card}>
+            <CardContent>
+              <div style={{ display: 'block' }}>
+                <Typography variant="h6" className={classes.date}>
+                  {deal.end_date}
+                </Typography>
+                <Typography variant="h4" className={classes.title}>
+                  {deal.title}
+                </Typography>
               </div>
+              <div>
+                <Typography variant="h6" className={classes.shopName}>
+                  {deal.shop !== undefined ? deal.shop.title : ''}
+                </Typography>
+                <hr width="1" size="25" className={classes.hr} />
+                {/* TODO: Add Facebook Icon*/}
+                <div className={classes.icon}>
+                  <PhoneIcon
+                    style={{
+                      marginBottom: '8px'
+                    }}
+                  />
+                </div>
+              </div>
+            </CardContent>
+            <div className={classes.bottomArea}>
+              <CardContent style={{ flexBasis: '50%' }}>
+                <CardMedia
+                  component="img"
+                  alt={deal.title}
+                  className={classes.media}
+                  image={
+                    deal.picture !== undefined ? deal.picture.url : DefaultImage
+                  }
+                  title={deal.title}
+                />
+              </CardContent>
+              <CardContent
+                style={{ paddingLeft: 0, paddingRight: 0, flexBasis: '50%' }}>
+                <Typography variant="body1">
+                  {deal.description !== undefined
+                    ? deal.description.replace(/&nbsp;|"|<[^>]+>/g, '')
+                    : ''}
+                </Typography>
+
+                <div>
+                  {deal.tags.map((tag, index) => (
+                    <Chip key={ index } className={classes.chip} label={tag.title} />
+                  ))}
+                </div>
+
+                <Button
+                  variant="contained"
+                  color="primary"
+                  style={{ marginTop: '16px' }}>
+                  Go to Deal
+                </Button>
+              </CardContent>
             </div>
-          </CardContent>
-          <div className={classes.bottomArea}>
-            <CardContent style={{ flexBasis: '50%' }}>
-              <CardMedia
-                component="img"
-                alt={deal.title}
-                className={classes.media}
-                image={
-                  deal.picture !== undefined ? deal.picture.url : DefaultImage
-                }
-                title={deal.title}
-              />
-            </CardContent>
-            <CardContent
-              style={{ paddingLeft: 0, paddingRight: 0, flexBasis: '50%' }}>
-              <Typography variant="body1">
-                {deal.description !== undefined
-                  ? deal.description.replace(/&nbsp;|"|<[^>]+>/g, '')
-                  : ''}
-              </Typography>
-
-              <Typography>
-                {deal.tags.map((tag, index) => (
-                  <Chip key={ index } className={classes.chip} label={tag.title} />
-                ))}
-              </Typography>
-
-              <Button
-                variant="contained"
-                color="primary"
-                style={{ marginTop: '16px' }}>
-                Go to Deal
-              </Button>
-            </CardContent>
-          </div>
-        </Card>
+          </Card>
+        </DialogContent>
       </Dialog>
     );
   };

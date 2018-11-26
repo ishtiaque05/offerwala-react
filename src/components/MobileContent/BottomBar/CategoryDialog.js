@@ -86,6 +86,7 @@ class CategoryDialog extends Component {
     handleListItemClick = (event, index) => {
         this.setState({ selectedIndex: index });
         this.props.click(index);
+        this.props.close();
     };
 
     

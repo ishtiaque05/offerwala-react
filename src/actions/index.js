@@ -125,9 +125,11 @@ export const fetchSearchedDeals = tagName => {
         `http://www.jossdeals.com/api/v1/guests/search/deals?deal_name=${tagName}`
       );
       dispatch(fetchSearchedDealsSuccess(response.data.deals));
+      console.log(response.data.deals);
       return response.data.deals;
     } catch (error) {
       dispatch(fetchSearchedDealsFailure(error));
+      console.log(error);
       throw new Error(error);
     }
   };

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase/InputBase';
@@ -89,21 +89,16 @@ class SearchBar extends Component {
     this.setState({
       keyword: e.target.value
     });
+    console.log(e.key);
 
     if (e.key === 'Enter' && e.target.value) {
-      this.setState({
-        submit: true
-      });
-
-      this.setState({
-        submit: false
-      });
+      this.props.fetchSearchedDeals(e.target.value);
     }
   };
 
   render() {
     const { classes } = this.props;
-    console.log(window.location.href);
+    // console.log(window.location.href);
 
     return (
       <div className={classes.search}>
@@ -119,7 +114,7 @@ class SearchBar extends Component {
           onKeyUp={e => this.searchHandler(e)}
         />
 
-        {this.state.submit ? (
+        {/* {this.state.submit ? (
           <Redirect
             to={{
               pathname: `${window.location.href}deals?deal_name=${
@@ -127,7 +122,7 @@ class SearchBar extends Component {
               }`
             }}
           />
-        ) : null}
+        ) : null} */}
       </div>
     );
   }
