@@ -14,7 +14,7 @@ import {
   Chip
 } from '@material-ui/core';
 
-import PhoneIcon from '@material-ui/icons/Phone';
+// import PhoneIcon from '@material-ui/icons/Phone';
 
 import DefaultImage from '../../../assets/images/default_deal.jpg';
 
@@ -72,7 +72,7 @@ const styles = theme => ({
 class DesktopDealDetails extends Component {
   render = () => {
     const { classes, deal, open, onClose } = this.props;
-
+    console.log(deal);
     return (
       <Dialog
         className={classes.root}
@@ -89,29 +89,25 @@ class DesktopDealDetails extends Component {
             <CardContent>
               <div style={{ display: 'block' }}>
                 <Typography variant="h6" className={classes.date}>
-                  {deal.end_date}
+                  Ends: {deal.end_date}
                 </Typography>
                 <Typography variant="h4" className={classes.title}>
                   {deal.title}
                 </Typography>
               </div>
-              <div>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
                 <Typography variant="h6" className={classes.shopName}>
                   {deal.shop !== undefined ? deal.shop.title : ''}
                 </Typography>
                 <hr width="1" size="25" className={classes.hr} />
                 {/* TODO: Add Facebook Icon*/}
                 <div className={classes.icon}>
-                  <PhoneIcon
-                    style={{
-                      marginBottom: '8px'
-                    }}
-                  />
+                  { deal.phone_number }
                 </div>
               </div>
             </CardContent>
             <div className={classes.bottomArea}>
-              <CardContent style={{ flexBasis: '50%' }}>
+              <CardContent style={{  }}>
                 <CardMedia
                   component="img"
                   alt={deal.title}
@@ -123,14 +119,14 @@ class DesktopDealDetails extends Component {
                 />
               </CardContent>
               <CardContent
-                style={{ paddingLeft: 0, paddingRight: 0, flexBasis: '50%' }}>
+                style={{ paddingLeft: 0, paddingRight: 0 }}>
                 <Typography variant="body1">
                   {deal.description !== undefined
                     ? deal.description.replace(/&nbsp;|"|<[^>]+>/g, '')
                     : ''}
                 </Typography>
 
-                <div>
+                <div style={{ marginTop: '20px' }}>
                   {deal.tags.map((tag, index) => (
                     <Chip key={ index } className={classes.chip} label={tag.title} />
                   ))}
