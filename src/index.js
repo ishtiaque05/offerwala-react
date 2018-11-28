@@ -7,6 +7,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import 'typeface-open-sans';
 import 'typeface-raleway';
 import 'typeface-source-sans-pro';
+import 'typeface-poppins';
 
 import Root from './Root';
 import App from './components/App';
@@ -22,7 +23,7 @@ const theme = createMuiTheme({
     background: '#F8F8F8'
   },
   typography: {
-    fontFamily: '"Source Sans Pro"'
+    fontFamily: '"Poppins"'
   },
   breakpoints: {
     values: {
