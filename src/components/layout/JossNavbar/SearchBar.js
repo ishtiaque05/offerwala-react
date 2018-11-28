@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { Redirect } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
-import { fetchSearchedDeals } from '../../../actions';
 import SearchIcon from '../../../assets/images/search.png';
 
 const styles = theme => ({
@@ -18,7 +15,7 @@ const styles = theme => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25)
     },
-    marginRight: theme.spacing.unit * 2
+    marginRight: '45px'
     // marginLeft: 0,
     // width: '100%'
     // [theme.breakpoints.up('xl')]: {
@@ -80,25 +77,17 @@ const styles = theme => ({
 });
 
 class SearchBar extends Component {
-  state = {
-    keyword: '',
-    submit: false
-  };
 
   searchHandler = e => {
-    this.setState({
-      keyword: e.target.value
-    });
-    console.log(e.key);
 
     if (e.key === 'Enter' && e.target.value) {
-      this.props.fetchSearchedDeals(e.target.value);
+      window.location.pathname = 'search/deals/' + e.target.value
+      
     }
   };
 
   render() {
     const { classes } = this.props;
-    // console.log(window.location.href);
 
     return (
       <div className={classes.search}>
@@ -113,16 +102,6 @@ class SearchBar extends Component {
           }}
           onKeyUp={e => this.searchHandler(e)}
         />
-
-        {/* {this.state.submit ? (
-          <Redirect
-            to={{
-              pathname: `${window.location.href}deals?deal_name=${
-                this.state.keyword
-              }`
-            }}
-          />
-        ) : null} */}
       </div>
     );
   }
@@ -131,7 +110,4 @@ SearchBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default connect(
-  null,
-  { fetchSearchedDeals }
-)(withStyles(styles)(SearchBar));
+export default withStyles(styles)(SearchBar);

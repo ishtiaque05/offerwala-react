@@ -15,7 +15,6 @@ const styles = theme => ({
   root: {
     marginTop: theme.spacing.unit * 10,
     flexGrow: 1,
-    padding: theme.spacing.unit * 2,
     paddingTop: theme.spacing.unit * 2
   }
 });
@@ -28,7 +27,7 @@ const DesktopContent = ({ classes, location }) => {
       <Grid
         container
         direction="row"
-        justify="space-around"
+        justify="space-between"
         alignItems="flex-start">
         {/*<Grid item alignItems="flex-start">*/}
         <StickyBox offsetTop={86}>

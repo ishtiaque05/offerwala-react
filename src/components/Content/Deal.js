@@ -35,9 +35,13 @@ const styles = theme => ({
       width: '100%'
     }
   },
-  flex: {
-    display: 'flex',
-    justifyContent: 'space-between'
+  flex: { 
+    marginTop: '5px', 
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex',
+      marginTop: 0, 
+      justifyContent: 'space-between'
+    }
   },
   media: {
     height: 'auto'
@@ -51,7 +55,8 @@ const styles = theme => ({
     padding: theme.spacing.unit * 0.5,
     paddingLeft: theme.spacing.unit * 1.5,
     paddingRight: theme.spacing.unit * 1.5,
-    borderRadius: theme.spacing.unit * 0.5
+    borderRadius: theme.spacing.unit * 0.5, 
+    display: 'inline-block'
   },
   dealDetails: {
     margin: 0,
@@ -76,7 +81,6 @@ class Deal extends Component {
 
   render() {
     const { classes, deal } = this.props;
-    console.log(deal)
 
     return (
       <Fragment>

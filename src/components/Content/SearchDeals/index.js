@@ -28,40 +28,55 @@ const masonryOptions = {
 };
 
 class SearchDeals extends Component {
+
   componentDidMount() {
     console.warn(this.props.match.params.tagName);
     this.props.fetchSearchedDeals(this.props.match.params.tagName);
+    
   }
 
   render() {
+    
     const { classes, loading, error, deals } = this.props;
-
-    if (!deals) {
-      return (
-        <div className={classes.root}>
-          <Typography variant="body1">No Deals Found</Typography>
-        </div>
-      );
-    }
-
-    const childElements = deals.map((deal, index) => (
-      <div key={index} className={classes.deal}>
-        <Deal deal={deal} />
-      </div>
-    ));
-
-    if (error) {
-      return (
-        <div className={classes.root}>
-          <Typography variant="body1">Error! {error.message}</Typography>
-        </div>
-      );
-    }
+    console.log(deals);
 
     if (loading) {
       return (
         <div className={classes.root}>
           <Typography variant="body1">Loading...</Typography>
+        </div>
+      );
+    }
+
+    // if (!deals) {
+    //   console.log(deals);
+    //   return (
+        {/* <div className={classes.root}>
+          <Typography variant="body1">No Deals Found</Typography>
+        </div> */}
+    //   );
+    // }
+
+    let childElements = null;
+
+    if(!deals) {
+      childElements = (
+        <div className={classes.root}>
+          <Typography variant="body1">No Deals Found</Typography>
+        </div>
+      )
+    } else {
+      childElements = deals.map((deal, index) => (
+        <div key={index} className={classes.deal}>
+          <Deal deal={deal} />
+        </div>
+      ));
+    }
+
+    if (error) {
+      return (
+        <div className={classes.root}>
+          <Typography variant="body1">Error! {error.message}</Typography>
         </div>
       );
     }

@@ -40,7 +40,8 @@ const styles = theme => ({
       borderRadius: theme.spacing.unit * 6,
       fontWeight: 'bold',
       '& p': {
-        fontWeight: 'bold'
+        fontWeight: 'bold', 
+        // fontSize: '0.75rem'
       }
     }
   },

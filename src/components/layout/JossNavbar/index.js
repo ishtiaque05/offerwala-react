@@ -20,7 +20,7 @@ const styles = theme => ({
   toolBar: {
     [theme.breakpoints.up('sm')]: {
       height: theme.spacing.unit * 10,
-      paddingLeft: theme.spacing.unit * 12
+      // paddingLeft: theme.spacing.unit * 12
     }
   }
 });

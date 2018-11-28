@@ -22,8 +22,9 @@ const styles = theme => ({
       width: '98%',
       margin: '0 auto'
     }, [theme.breakpoints.down('xs')]: {
-      width: theme.spacing.unit * 42.5,
-      margin: '0 auto'
+      width: '96%',
+      margin: '0 auto', 
+      
     }
   },
   masonry: {

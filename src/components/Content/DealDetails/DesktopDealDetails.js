@@ -72,7 +72,7 @@ const styles = theme => ({
 class DesktopDealDetails extends Component {
   render = () => {
     const { classes, deal, open, onClose } = this.props;
-    console.log(deal);
+    
     return (
       <Dialog
         className={classes.root}
