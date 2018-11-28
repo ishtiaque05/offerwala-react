@@ -19,17 +19,17 @@ const styles = theme => ({
       width: theme.spacing.unit * 100
     },
     [theme.breakpoints.down('sm')]: {
+      width: '98%',
+      margin: '0 auto'
+    }, [theme.breakpoints.down('xs')]: {
       width: theme.spacing.unit * 42.5,
       margin: '0 auto'
     }
   },
   masonry: {
-    width: '100%'
-  },
-  deal: {
-    [theme.breakpoints.down('xs')]: {
-      width: '100%'
-    }
+    width: '100%', 
+    display: 'flex', 
+    justifyContent: 'space-between'
   }
 });
 
@@ -59,15 +59,15 @@ class AllDeals extends Component {
     const { classes, error } = this.props;
 
     const childElements = this.props.deals.map((deal, index) => (
-      <div key={index} className={classes.deal}>
+      <React.Fragment key={index}>
         <Deal deal={deal} />
-      </div>
+      </React.Fragment>
     ));
 
     const moreElements = this.state.deals.map((deal, index) => (
-      <div key={index} className={classes.deal}>
+      <React.Fragment key={index}>
         <Deal deal={deal} />
-      </div>
+      </React.Fragment>
     ));
 
     if (error) {
