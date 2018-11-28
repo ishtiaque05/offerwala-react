@@ -132,12 +132,15 @@ class DesktopDealDetails extends Component {
                   ))}
                 </div>
 
-                <Button
-                  variant="contained"
-                  color="primary"
-                  style={{ marginTop: '16px' }}>
-                  Go to Deal
-                </Button>
+                {
+                  deal.presence_types[0] === 'Online' ? 
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ marginTop: '16px' }}>
+                    Go to Deal
+                  </Button> : ''
+                }
               </CardContent>
             </div>
           </Card>

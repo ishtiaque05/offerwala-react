@@ -18,11 +18,17 @@ import MobileDealDetails from './DealDetails/MobileDealDetails';
 
 const styles = theme => ({
   card: {
-    width: theme.spacing.unit * 43.75,
+    // width: theme.spacing.unit * 43.75, 
+    width: '30%', 
     maxHeight: theme.spacing.unit * 100,
     margin: theme.spacing.unit * 1.5,
     background: '#FFF',
-    boxShadow: '0 4px 6px #D4D4D4',
+    boxShadow: '0 4px 6px #D4D4D4', 
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: '2%',
+      marginRight: '2%', 
+      width: '46%'
+    },
     [theme.breakpoints.down('xs')]: {
       marginLeft: 'auto',
       marginRight: 'auto', 
@@ -75,7 +81,7 @@ class Deal extends Component {
     return (
       <Fragment>
 
-        <Hidden smUp>
+        <Hidden mdUp>
           <MobileDealDetails 
             deal={deal}
             onClose={this.handleClose}
