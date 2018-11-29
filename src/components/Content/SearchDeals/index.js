@@ -9,17 +9,26 @@ import Deal from '../Deal';
 const styles = theme => ({
   root: {
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 150,
-      marginLeft: theme.spacing.unit * 42
+      // width: theme.spacing.unit * 150
+      width: '100%'
+    },
+    [theme.breakpoints.down('lg')]: {
+      // width: theme.spacing.unit * 100
+      width: '100%'
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '98%',
+      margin: '0 auto'
+    }, [theme.breakpoints.down('xs')]: {
+      width: '96%',
+      margin: '0 auto', 
+      
     }
   },
   masonry: {
-    width: '100%'
-  },
-  deal: {
-    [theme.breakpoints.down('xs')]: {
-      width: '100%'
-    }
+    width: '100%', 
+    display: 'flex', 
+    justifyContent: 'space-between'
   }
 });
 
@@ -28,6 +37,9 @@ const masonryOptions = {
 };
 
 class SearchDeals extends Component {
+  // state = {
+  //   result = null
+  // }
 
   componentDidMount() {
     console.warn(this.props.match.params.tagName);
@@ -38,7 +50,9 @@ class SearchDeals extends Component {
   render() {
     
     const { classes, loading, error, deals } = this.props;
-    console.log(deals);
+    // console.log(deals);
+
+    let childElements = null;
 
     if (loading) {
       return (
@@ -46,30 +60,23 @@ class SearchDeals extends Component {
           <Typography variant="body1">Loading...</Typography>
         </div>
       );
-    }
-
-    // if (!deals) {
-    //   console.log(deals);
-    //   return (
-        {/* <div className={classes.root}>
-          <Typography variant="body1">No Deals Found</Typography>
-        </div> */}
-    //   );
-    // }
-
-    let childElements = null;
+    } 
 
     if(!deals) {
+      console.log(deals);
       childElements = (
         <div className={classes.root}>
           <Typography variant="body1">No Deals Found</Typography>
         </div>
       )
-    } else {
+    } 
+
+    if(deals) {
+      console.log(deals);
       childElements = deals.map((deal, index) => (
-        <div key={index} className={classes.deal}>
+        <React.Fragment key={index}>
           <Deal deal={deal} />
-        </div>
+        </React.Fragment>
       ));
     }
 
@@ -96,7 +103,7 @@ class SearchDeals extends Component {
 }
 
 const mapStateToProps = state => ({
-  deals: state.searchedDeals.item,
+  deals: state.searchedDeals.items,
   loading: state.searchedDeals.loading,
   error: state.searchedDeals.error
 });

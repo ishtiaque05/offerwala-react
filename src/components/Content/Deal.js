@@ -23,7 +23,17 @@ const styles = theme => ({
     maxHeight: theme.spacing.unit * 100,
     margin: theme.spacing.unit * 1.5,
     background: '#FFF',
-    boxShadow: '0 4px 6px #D4D4D4', 
+    boxShadow: '0 4px 6px #D4D4D4',  
+    ['@media (min-width: 1440px)']: {
+      width: '23%', 
+      marginLeft: '1%', 
+      marginRight: '1%'
+    },
+    ['@media (min-width: 1632px)']: {
+      width: '18%', 
+      marginLeft: '1%', 
+      marginRight: '1%'
+    }, 
     [theme.breakpoints.down('sm')]: {
       marginLeft: '2%',
       marginRight: '2%', 

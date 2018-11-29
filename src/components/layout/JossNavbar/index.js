@@ -20,7 +20,15 @@ const styles = theme => ({
   toolBar: {
     [theme.breakpoints.up('sm')]: {
       height: theme.spacing.unit * 10,
+      padding: 0, 
       // paddingLeft: theme.spacing.unit * 12
+    }
+  }, 
+  logo: {
+    padding: 0, 
+    borderRadius: 0, 
+    '&:hover': {
+      borderRadius: '0'
     }
   }
 });
@@ -34,7 +42,7 @@ const JossNavbar = ({ classes }) => (
           direction="row"
           justify="space-between"
           alignItems="center">
-          <IconButton style={{ padding: 0 }}>
+          <IconButton className={ classes.logo }>
             <Logo />
           </IconButton>
           <SearchBar />

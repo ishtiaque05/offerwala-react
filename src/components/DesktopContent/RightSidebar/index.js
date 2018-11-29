@@ -1,5 +1,5 @@
 import React from 'react';
-import SideBanner from '../../../assets/videos/side_banner.gif';
+import SideBanner from '../../../assets/images/Side_Ad–17.png';
 
 const RightSidebar = () => (
   <img

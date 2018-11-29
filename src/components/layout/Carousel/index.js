@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from '../../../assets/videos/banner.mp4';
 import { withStyles } from '@material-ui/core';
 
+
 import { Player, ControlBar } from 'video-react';
 
 const styles = theme => ({
@@ -20,13 +21,14 @@ const styles = theme => ({
 });
 
 const Carousel = ({ classes }) => {
+
   return (
-    <Player
-      className={classes.image}
-      autoPlay
-      src={Banner}>
-      <ControlBar disableCompletely />
-    </Player>
+      <Player
+        className={classes.image}
+        autoPlay
+        src={Banner}>
+        <ControlBar disableCompletely />
+      </Player>
   );
 };
 

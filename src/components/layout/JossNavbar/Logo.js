@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 import DesktopLogo from '../../../assets/images/jossdeals_logo.png';
 import MobileLogo from '../../../assets/images/jossdeals_logo_small.png';
@@ -11,14 +12,14 @@ const styles = theme => ({
     }
   },
   mobileLogo: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'none'
     }
   }
 });
 
 const Logo = ({ classes }) => (
-  <Fragment>
+  <Link to='/'>
     <img
       className={classes.desktopLogo}
       id="logo"
@@ -33,7 +34,7 @@ const Logo = ({ classes }) => (
       alt="JossDeals Logo"
       style={{ height: '64px' }}
     />
-  </Fragment>
+  </Link>
 );
 
 export default withStyles(styles)(Logo);
