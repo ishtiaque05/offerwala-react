@@ -36,7 +36,6 @@ const masonryOptions = {
 
 class SearchDeals extends Component {
   componentDidMount() {
-    console.warn(this.props.match.params.tagName);
     this.props.fetchSearchedDeals(this.props.match.params.tagName);
   }
 

@@ -1,8 +1,5 @@
 import axios from 'axios';
 import {
-  FETCH_DEAL_WITH_ID_BEGIN,
-  FETCH_DEAL_WITH_ID_FAILURE,
-  FETCH_DEAL_WITH_ID_SUCCESS,
   FETCH_DEALS_BEGIN,
   FETCH_DEALS_FAILURE,
   FETCH_DEALS_SUCCESS,
@@ -85,44 +82,16 @@ export const fetchDealsFailure = error => ({
   payload: { error }
 });
 
-export const fetchDealWithId = id => {
-  return async dispatch => {
-    dispatch(fetchDealWithIdBegin());
-
-    try {
-      const response = await axios.get(
-        `http://www.jossdeals.com/api/v1/guests/deals/${id}`
-      );
-      dispatch(fetchDealWithIdSuccess(response.data.deal));
-      return response.data.deal;
-    } catch (error) {
-      dispatch(fetchDealWithIdFailure(error));
-      throw new Error(error);
-    }
-  };
-};
-
-export const fetchDealWithIdBegin = () => ({
-  type: FETCH_DEAL_WITH_ID_BEGIN
-});
-
-export const fetchDealWithIdSuccess = deal => ({
-  type: FETCH_DEAL_WITH_ID_SUCCESS,
-  payload: { deal }
-});
-
-export const fetchDealWithIdFailure = error => ({
-  type: FETCH_DEAL_WITH_ID_FAILURE,
-  payload: { error }
-});
-
 export const fetchSearchedDeals = tagName => {
   return async dispatch => {
     dispatch(fetchSearchedDealsBegin());
 
     try {
       const response = await axios.get(
-        `http://www.jossdeals.com/api/v1/guests/search/deals?deal_name=${tagName}`
+        'http://www.jossdeals.com/api/v1/guests/search/deals',
+         {
+           params: { deal_name: tagName }
+        }
       );
       dispatch(fetchSearchedDealsSuccess(response.data.deals));
       return response.data.deals;
