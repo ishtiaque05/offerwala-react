@@ -36,8 +36,6 @@ const theme = createMuiTheme({
   }
 });
 
-console.warn(theme);
-
 render(
   <Root>
     <Router>
