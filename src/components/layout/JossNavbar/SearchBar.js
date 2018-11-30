@@ -16,17 +16,6 @@ const styles = theme => ({
       backgroundColor: fade(theme.palette.common.white, 0.25)
     },
     marginRight: '45px'
-    // marginLeft: 0,
-    // width: '100%'
-    // [theme.breakpoints.up('xl')]: {
-    //   marginLeft: theme.spacing.unit * 42,
-    //   marginRight: theme.spacing.unit * 50,
-    //   width: 'auto'
-    // },
-    // [theme.breakpoints.down('xs')]: {
-    //   marginLeft: theme.spacing.unit * 2,
-    //   width: 'auto'
-    // }
   },
   searchIcon: {
     width: theme.spacing.unit * 6,
@@ -81,8 +70,7 @@ class SearchBar extends Component {
   searchHandler = e => {
 
     if (e.key === 'Enter' && e.target.value) {
-      window.location.pathname = 'search/deals/' + e.target.value
-      
+      window.location.pathname = 'search/' + e.target.value
     }
   };
 

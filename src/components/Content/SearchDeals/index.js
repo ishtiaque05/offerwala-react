@@ -9,11 +9,9 @@ import Deal from '../Deal';
 const styles = theme => ({
   root: {
     [theme.breakpoints.up('sm')]: {
-      // width: theme.spacing.unit * 150
       width: '100%'
     },
     [theme.breakpoints.down('lg')]: {
-      // width: theme.spacing.unit * 100
       width: '100%'
     },
     [theme.breakpoints.down('sm')]: {
@@ -37,20 +35,13 @@ const masonryOptions = {
 };
 
 class SearchDeals extends Component {
-  // state = {
-  //   result = null
-  // }
-
   componentDidMount() {
     console.warn(this.props.match.params.tagName);
     this.props.fetchSearchedDeals(this.props.match.params.tagName);
-    
   }
 
   render() {
-    
     const { classes, loading, error, deals } = this.props;
-    // console.log(deals);
 
     let childElements = null;
 
