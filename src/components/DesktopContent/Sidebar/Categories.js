@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -52,6 +53,18 @@ const styles = theme => ({
   }
 });
 
+const links = [
+  '',
+  'category/beauty-fitness',
+  'category/food-dining',
+  'category/shopping',
+  'category/services',
+  'category/mobile-internet',
+  'category/electronics-home',
+  'category/hotels-travels',
+  'category/banks-cards'
+];
+
 const items = [
   'Everything',
   'Beauty & Fitness',
@@ -91,19 +104,21 @@ class Categories extends Component {
     return (
       <List component="nav" className={classes.list}>
         {items.map((item, index) => (
-          <ListItem
-            button
-            className={
-              this.state.selectedIndex === index
-                ? classes.selectedListItem
-                : classes.listItem
-            }
-            key={index}
-            selected={this.state.selectedIndex === index}
-            onClick={event => this.handleListItemClick(event, index)}>
-            <img src={icons[index]} alt={item} className={classes.icons} />
-            <Typography variant="body1">{item}</Typography>
-          </ListItem>
+          <Link to={`/${links[index]}`} key={index} style={{ textDecoration: 'none' }}>
+            <ListItem
+              button
+              className={
+                this.state.selectedIndex === index
+                  ? classes.selectedListItem
+                  : classes.listItem
+              }
+              key={index}
+              selected={this.state.selectedIndex === index}
+              onClick={event => this.handleListItemClick(event, index)}>
+              <img src={icons[index]} alt={item} className={classes.icons} />
+              <Typography variant="body1">{item}</Typography>
+            </ListItem>
+          </Link>
         ))}
       </List>
     );

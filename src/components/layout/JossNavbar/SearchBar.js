@@ -11,11 +11,12 @@ const styles = theme => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
+    flexBasis: '57%', 
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25)
-    },
-    marginRight: '45px'
+    }
+    // marginRight: '45px'
     // marginLeft: 0,
     // width: '100%'
     // [theme.breakpoints.up('xl')]: {
@@ -57,7 +58,7 @@ const styles = theme => ({
       height: theme.spacing.unit * 5.75
     },
     [theme.breakpoints.down('sm')]: {
-      width: theme.spacing.unit * 25
+      width: '100%'
     },
     '& input': {
       color: '#2F2F2F'
@@ -70,9 +71,9 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 8,
     transition: theme.transitions.create('width'),
     width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: 200
-    }
+    // [theme.breakpoints.up('md')]: {
+    //   width: 200
+    // }
   }
 });
 

@@ -66,6 +66,13 @@ const styles = theme => ({
   },
   chip: {
     margin: '5px'
+  }, 
+  link: {
+    color: '#fff', 
+    textDecoration: 'none', 
+    '&:active, &:focus': {
+      color: '#fff'
+    }
   }
 });
 
@@ -138,7 +145,7 @@ class DesktopDealDetails extends Component {
                     variant="contained"
                     color="primary"
                     style={{ marginTop: '16px' }}>
-                    Go to Deal
+                    <a className={ classes.link } href={ deal.deal_link } target="_blank">Go to Deal</a>
                   </Button> : ''
                 }
               </CardContent>

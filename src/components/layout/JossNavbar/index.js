@@ -27,6 +27,9 @@ const styles = theme => ({
   logo: {
     padding: 0, 
     borderRadius: 0, 
+    [theme.breakpoints.up('md')]: {
+      marginLeft: '25px'
+    }, 
     '&:hover': {
       borderRadius: '0'
     }

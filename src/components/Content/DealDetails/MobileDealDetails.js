@@ -66,6 +66,13 @@ const styles = theme => ({
   },
   chip: {
     margin: '5px'
+  }, 
+  link: {
+    color: '#fff', 
+    textDecoration: 'none', 
+    '&:active, &:focus': {
+      color: '#fff'
+    }
   }
 });
 
@@ -142,12 +149,13 @@ class MobileDealDetails extends Component {
 
                 {
                   deal.presence_types[0] === 'Online' ? 
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    style={{ marginTop: '16px' }}>
-                    Go to Deal
-                  </Button> : ''
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      style={{ marginTop: '16px' }}>
+                      <a className={ classes.link } href={ deal.deal_link } target="_blank">Go to Deal</a>
+                    </Button> 
+                  : ''
                 }
 
                 

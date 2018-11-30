@@ -6,6 +6,7 @@ import OnlineDeals from './components/Content/OnlineDeals';
 import StoreDeals from './components/Content/StoreDeals';
 // import DealDetails from './components/Content/DealDetails';
 import SearchDeals from './components/Content/SearchDeals';
+import CategoryDeals from './components/Content/CategoryDeals';
 
 const Routes = () => (
   <Switch>
@@ -15,6 +16,7 @@ const Routes = () => (
     {/* <Route exact path="/deals/:id" component={DealDetails} /> */}
     {/*// TODO: Implement Search Functionality*/}
     <Route exact path="/search/deals/:tagName" component={SearchDeals} />
+    <Route exact path="/category/:categoryName" component={CategoryDeals} />
   </Switch>
 );
 

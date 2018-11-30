@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 // import List from '@material-ui/core/List';
@@ -44,8 +45,8 @@ const styles = theme => ({
       backgroundColor: theme.palette.secondary.light,
       color: theme.palette.text.primary,
       borderRadius: theme.spacing.unit * 6,
-      padding: '5px', 
-      flexBasis: '45%', 
+    //   padding: '5px', 
+    //   flexBasis: '45%', 
       '& p': {
         fontWeight: 'bold', 
         fontSize: '13px'
@@ -54,9 +55,9 @@ const styles = theme => ({
     listItem: {
       opacity: '.8',
       transition: 'fontWeight .6s ease',
-      padding: '5px', 
-      margin: '1px 0',
-      flexBasis: '45%', 
+    //   padding: '5px', 
+    //   margin: '1px 0',
+    //   flexBasis: '45%', 
       '&:hover': {
         borderRadius: theme.spacing.unit * 6,
         fontWeight: 'bold',
@@ -75,7 +76,12 @@ const styles = theme => ({
       },
       flex: {
         flex: 1,
-    },
+    }, 
+    anchor: {
+      flexBasis: '45%',
+      padding: '5px',
+      margin: '1px 0',
+    }
 });
 
 class CategoryDialog extends Component {
@@ -94,7 +100,7 @@ class CategoryDialog extends Component {
     // onClose={this.handleClose}
 
     render() {
-        const { classes, open, close, categories, icons } = this.props;
+        const { classes, open, close, categories, icons, links } = this.props;
 
         return (
             <Dialog
@@ -114,19 +120,20 @@ class CategoryDialog extends Component {
                 <div className={ classes.wrapper }>
                     <List component="nav" className={classes.list}>
                         {categories.map((item, index) => (
-                            <ListItem
-                                button
-                                className={
-                                this.state.selectedIndex === index
-                                    ? classes.selectedListItem
-                                    : classes.listItem
-                                }
-                                key={index}
-                                selected={this.state.selectedIndex === index}
-                                onClick={event => this.handleListItemClick(event, index)}>
-                                <img src={icons[index]} alt={ item } className={classes.icons} />
-                                <Typography variant="body1">{item}</Typography>
-                            </ListItem>
+                            <Link to={`/${links[index]}`} key={index} className={ classes.anchor } style={{ textDecoration: 'none' }}>
+                                <ListItem
+                                    button
+                                    className={
+                                    this.state.selectedIndex === index
+                                        ? classes.selectedListItem
+                                        : classes.listItem
+                                    }
+                                    selected={this.state.selectedIndex === index}
+                                    onClick={event => this.handleListItemClick(event, index)}>
+                                    <img src={icons[index]} alt={ item } className={classes.icons} />
+                                    <Typography variant="body1">{item}</Typography>
+                                </ListItem>
+                            </Link>
                         ))}
                     </List>
                 </div>

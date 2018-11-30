@@ -17,8 +17,7 @@ import DesktopDealDetails from './DealDetails/DesktopDealDetails';
 import MobileDealDetails from './DealDetails/MobileDealDetails';
 
 const styles = theme => ({
-  card: {
-    // width: theme.spacing.unit * 43.75, 
+  card: { 
     width: '30%', 
     maxHeight: theme.spacing.unit * 100,
     margin: theme.spacing.unit * 1.5,

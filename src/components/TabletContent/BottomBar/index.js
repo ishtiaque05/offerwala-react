@@ -19,6 +19,18 @@ import HotelsAndTravelsIcon from '../../../assets/images/travels.png';
 import BanksAndCards from '../../../assets/images/cards_and_banks.png';
  
 
+const links = [
+  '',
+  'category/beauty-fitness',
+  'category/food-dining',
+  'category/shopping',
+  'category/services',
+  'category/mobile-internet',
+  'category/electronics-home',
+  'category/hotels-travels',
+  'category/banks-cards'
+];
+
 
 const items = [
   'Everything',
@@ -109,6 +121,7 @@ class BottomBar extends Component {
           <CategoryDialog
             categories={ items }
             icons={ icons }
+            links={ links }
             open={ open } 
             click={ this.listClickHandler }
             close={ this.dialogeCloseHandler } />

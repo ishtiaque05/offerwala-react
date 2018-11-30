@@ -8,7 +8,10 @@ import {
   FETCH_DEALS_SUCCESS,
   FETCH_SEARCHED_DEALS_BEGIN,
   FETCH_SEARCHED_DEALS_FAILURE,
-  FETCH_SEARCHED_DEALS_SUCCESS
+  FETCH_SEARCHED_DEALS_SUCCESS, 
+  FETCH_DEALS_BY_CATEGORY_BEGIN, 
+  FETCH_DEALS_BY_CATEGORY_SUCCESS, 
+  FETCH_DEALS_BY_CATEGORY_FAILURE
 } from './types';
 
 export const fetchAllDeals = (page = 1) => {
@@ -148,3 +151,35 @@ export const fetchSearchedDealsFailure = error => ({
   type: FETCH_SEARCHED_DEALS_FAILURE,
   payload: { error }
 });
+
+
+export const fetchDealsByCategoryBegin = () => ({
+  type: FETCH_DEALS_BY_CATEGORY_BEGIN
+});
+
+export const fetchDealsByCategorySuccess = deals => ({
+  type: FETCH_DEALS_BY_CATEGORY_SUCCESS,
+  payload: { deals }
+});
+
+export const fetchDealsByCategoryFailure = error => ({
+  type: FETCH_DEALS_BY_CATEGORY_FAILURE,
+  payload: { error }
+});
+
+export const fetchDealsByCategory = id => {
+  return async dispatch => {
+    dispatch(fetchDealsByCategoryBegin());
+
+    try {
+      const response = await axios.get(
+        `http://www.jossdeals.com/api/v1/guests/search/${id}/category_search`
+      );
+      dispatch(fetchDealsByCategorySuccess(response.data.deals));
+      return response.data.deals;
+    } catch (error) {
+      dispatch(fetchDealsByCategoryFailure(error));
+      throw new Error(error);
+    }
+  };
+};
