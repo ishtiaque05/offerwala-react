@@ -2,31 +2,56 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
+import { 
+  withStyles, 
+  Card, 
+  CardActionArea, 
+  CardContent, 
+  CardMedia, 
+  Typography, 
+  Hidden
+} from '@material-ui/core';
 
 import DefaultImage from '../../assets/images/default_deal.jpg';
 import DesktopDealDetails from './DealDetails/DesktopDealDetails';
+import MobileDealDetails from './DealDetails/MobileDealDetails';
 
 const styles = theme => ({
   card: {
-    width: theme.spacing.unit * 43.75,
+    // width: theme.spacing.unit * 43.75, 
+    width: '30%', 
     maxHeight: theme.spacing.unit * 100,
     margin: theme.spacing.unit * 1.5,
     background: '#FFF',
-    boxShadow: '0 4px 6px #D4D4D4',
+    boxShadow: '0 4px 6px #D4D4D4',  
+    ['@media (min-width: 1440px)']: {
+      width: '23%', 
+      marginLeft: '1%', 
+      marginRight: '1%'
+    },
+    ['@media (min-width: 1632px)']: {
+      width: '18%', 
+      marginLeft: '1%', 
+      marginRight: '1%'
+    }, 
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: '2%',
+      marginRight: '2%', 
+      width: '46%'
+    },
     [theme.breakpoints.down('xs')]: {
       marginLeft: 'auto',
-      marginRight: 'auto'
+      marginRight: 'auto', 
+      width: '100%'
     }
   },
-  flex: {
-    display: 'flex',
-    justifyContent: 'space-between'
+  flex: { 
+    marginTop: '5px', 
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex',
+      marginTop: 0, 
+      justifyContent: 'space-between'
+    }
   },
   media: {
     height: 'auto'
@@ -40,7 +65,8 @@ const styles = theme => ({
     padding: theme.spacing.unit * 0.5,
     paddingLeft: theme.spacing.unit * 1.5,
     paddingRight: theme.spacing.unit * 1.5,
-    borderRadius: theme.spacing.unit * 0.5
+    borderRadius: theme.spacing.unit * 0.5, 
+    display: 'inline-block'
   },
   dealDetails: {
     margin: 0,
@@ -68,11 +94,23 @@ class Deal extends Component {
 
     return (
       <Fragment>
-        <DesktopDealDetails
-          deal={deal}
-          onClose={this.handleClose}
-          open={this.state.open}
-        />
+
+        <Hidden mdUp>
+          <MobileDealDetails 
+            deal={deal}
+            onClose={this.handleClose}
+            open={this.state.open}
+          /> 
+        </Hidden>
+        <Hidden smDown>
+          <DesktopDealDetails
+            deal={deal}
+            onClose={this.handleClose}
+            open={this.state.open}
+          />
+        </Hidden>
+
+        
         <Card onClick={this.clickHandler} className={classes.card}>
           <CardActionArea>
             <CardMedia
@@ -93,7 +131,7 @@ class Deal extends Component {
                 <Typography className={classes.shopName}>
                   {deal.shop !== undefined ? deal.shop.title : ''}
                 </Typography>
-                <Typography>{deal.end_date}</Typography>
+                <Typography>Ends: {deal.end_date}</Typography>
               </div>
             </CardContent>
           </CardActionArea>
