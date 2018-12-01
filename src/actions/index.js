@@ -16,12 +16,9 @@ export const fetchAllDeals = (page = 1) => {
     dispatch(fetchDealsBegin());
 
     try {
-      const response = await axios.get(
-        'http://www.jossdeals.com/api/v1/guests/deals/all_deals',
-        {
-          params: { page }
-        }
-      );
+      const response = await axios.get('/api/v1/guests/deals/all_deals', {
+        params: { page }
+      });
       dispatch(fetchDealsSuccess(response.data.deals));
       return response.data.deals;
     } catch (error) {
@@ -36,12 +33,9 @@ export const fetchOnlineDeals = (page = 1) => {
     dispatch(fetchDealsBegin());
 
     try {
-      const response = await axios.get(
-        'http://www.jossdeals.com/api/v1/guests/deals/online_deals',
-        {
-          params: { page }
-        }
-      );
+      const response = await axios.get('/api/v1/guests/deals/online_deals', {
+        params: { page }
+      });
       dispatch(fetchDealsSuccess(response.data.deals));
       return response.data.deals;
     } catch (error) {
@@ -56,12 +50,9 @@ export const fetchStoreDeals = (page = 1) => {
     dispatch(fetchDealsBegin());
 
     try {
-      const response = await axios.get(
-        'http://www.jossdeals.com/api/v1/guests/deals/store_deals',
-        {
-          params: { page }
-        }
-      );
+      const response = await axios.get('/api/v1/guests/deals/store_deals', {
+        params: { page }
+      });
       dispatch(fetchDealsSuccess(response.data.deals));
       return response.data.deals;
     } catch (error) {
@@ -90,12 +81,9 @@ export const fetchSearchedDeals = tagName => {
     dispatch(fetchSearchedDealsBegin());
 
     try {
-      const response = await axios.get(
-        'http://www.jossdeals.com/api/v1/guests/search/deals',
-        {
-          params: { deal_name: tagName }
-        }
-      );
+      const response = await axios.get('/api/v1/guests/search/deals', {
+        params: { deal_name: tagName }
+      });
       dispatch(fetchSearchedDealsSuccess(response.data.deals));
       return response.data.deals;
     } catch (error) {
@@ -139,7 +127,7 @@ export const fetchDealsByCategory = id => {
 
     try {
       const response = await axios.get(
-        `http://www.jossdeals.com/api/v1/guests/search/${id}/category_search`
+        `/api/v1/guests/search/${id}/category_search`
       );
       dispatch(fetchDealsByCategorySuccess(response.data.deals));
       return response.data.deals;
