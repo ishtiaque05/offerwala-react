@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -40,7 +40,7 @@ const styles = theme => ({
       borderRadius: theme.spacing.unit * 6,
       fontWeight: 'bold',
       '& p': {
-        fontWeight: 'bold', 
+        fontWeight: 'bold'
         // fontSize: '0.75rem'
       }
     }
@@ -89,23 +89,25 @@ class Categories extends Component {
     const { classes } = this.props;
 
     return (
-      <List component="nav" className={classes.list}>
-        {items.map((item, index) => (
-          <ListItem
-            button
-            className={
-              this.state.selectedIndex === index
-                ? classes.selectedListItem
-                : classes.listItem
-            }
-            key={index}
-            selected={this.state.selectedIndex === index}
-            onClick={event => this.handleListItemClick(event, index)}>
-            <img src={icons[index]} alt={item} className={classes.icons} />
-            <Typography variant="body1">{item}</Typography>
-          </ListItem>
-        ))}
-      </List>
+      <Fragment>
+        <List component="nav" className={classes.list}>
+          {items.map((item, index) => (
+            <ListItem
+              button
+              className={
+                this.state.selectedIndex === index
+                  ? classes.selectedListItem
+                  : classes.listItem
+              }
+              key={index}
+              selected={this.state.selectedIndex === index}
+              onClick={event => this.handleListItemClick(event, index)}>
+              <img src={icons[index]} alt={item} className={classes.icons} />
+              <Typography variant="body1">{item}</Typography>
+            </ListItem>
+          ))}
+        </List>
+      </Fragment>
     );
   }
 }
