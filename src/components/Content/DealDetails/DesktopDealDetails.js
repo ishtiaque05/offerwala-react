@@ -45,8 +45,9 @@ const styles = theme => ({
     float: 'left'
   },
   title: {
-    marginBottom: theme.spacing.unit,
-    color: '#461818'
+    // marginBottom: theme.spacing.unit,
+    // color: '#461818', 
+    paddingTop: 0, 
   },
   date: {
     float: 'right',
@@ -93,7 +94,7 @@ class DesktopDealDetails extends Component {
         scroll="paper">
         <DialogContent>
           <Card className={classes.card}>
-            <CardContent>
+            <CardContent className={ classes.title }>
               <div style={{ display: 'block' }}>
                 <Typography variant="h6" className={classes.date}>
                   Ends: {deal.end_date}

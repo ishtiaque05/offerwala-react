@@ -23,7 +23,7 @@ const styles = theme => ({
     maxWidth: theme.spacing.unit * 40,
     backgroundColor: 'transparent',
     padding: '0 15px',
-    borderRight: '1px solid #DDD'
+    // borderRight: '1px solid #DDD'
   },
   selectedListItem: {
     backgroundColor: theme.palette.secondary.light,

@@ -5,7 +5,7 @@ import { withStyles, Grid } from '@material-ui/core';
 import Sidebar from './Sidebar';
 import SubNav from './SubNav';
 import FilterBar from './FilterBar';
-import Carousel from '../layout/Carousel';
+import CarouselComp from '../layout/Carousel';
 import Routes from '../../Routes';
 
 import RightSidebar from './RightSidebar';
@@ -22,7 +22,7 @@ const styles = theme => ({
   }, 
   mainContent: {
     flex: 1, 
-    padding: '0 50px', 
+    padding: '0 35px', 
     // marginLeft: '290px', 
     // marginRight: '300px'
   }, 
@@ -60,7 +60,7 @@ const DesktopContent = ({ classes, location }) => {
             <Grid item>
               {(curLocation === '/' ||
                 curLocation === '/deals/online-deals' ||
-                curLocation === '/deals/store-deals') && <Carousel />}
+                curLocation === '/deals/store-deals') && <CarouselComp />}
               <StickyBox offsetTop={80} style={{ zIndex: '1' }}>
                 <div style={{ paddingBottom: '4px', background: '#f8f8f8' }}>
                   <SubNav />

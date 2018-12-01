@@ -77,7 +77,7 @@ class DesktopSubNav extends Component {
                 this.state.selectedIndex === 2 ? classes.active : classes.link
               }
               to="/deals/store-deals">
-              <Typography variant="headline">Shop deals</Typography>
+              <Typography variant="headline">Store deals</Typography>
             </Link>
           </li>
           {/* <li className={classes.li}>

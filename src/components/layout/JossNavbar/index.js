@@ -28,10 +28,11 @@ const styles = theme => ({
     padding: 0, 
     borderRadius: 0, 
     [theme.breakpoints.up('md')]: {
-      marginLeft: '25px'
+      marginLeft: '45px'
     }, 
     '&:hover': {
-      borderRadius: '0'
+      borderRadius: '0', 
+      backgroundColor: 'transparent'
     }
   }
 });
