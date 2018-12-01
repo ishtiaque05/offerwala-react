@@ -21,10 +21,10 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       width: '98%',
       margin: '0 auto'
-    }, [theme.breakpoints.down('xs')]: {
+    },
+    [theme.breakpoints.down('xs')]: {
       width: '96%',
-      margin: '0 auto', 
-      
+      margin: '0 auto'
     }
   },
   masonry: {

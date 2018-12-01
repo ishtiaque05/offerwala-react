@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -21,8 +22,8 @@ const styles = theme => ({
     width: '100%',
     maxWidth: theme.spacing.unit * 40,
     backgroundColor: 'transparent',
-    padding: '0 15px',
-    borderRight: '1px solid #DDD'
+    padding: '0 15px'
+    // borderRight: '1px solid #DDD'
   },
   selectedListItem: {
     backgroundColor: theme.palette.secondary.light,
@@ -51,6 +52,18 @@ const styles = theme => ({
     marginRight: theme.spacing.unit * 1.5
   }
 });
+
+const links = [
+  '',
+  'category/beauty-fitness',
+  'category/food-dining',
+  'category/shopping',
+  'category/services',
+  'category/mobile-internet',
+  'category/electronics-home',
+  'category/hotels-travels',
+  'category/banks-cards'
+];
 
 const items = [
   'Everything',
@@ -89,9 +102,12 @@ class Categories extends Component {
     const { classes } = this.props;
 
     return (
-      <Fragment>
-        <List component="nav" className={classes.list}>
-          {items.map((item, index) => (
+      <List component="nav" className={classes.list}>
+        {items.map((item, index) => (
+          <Link
+            to={`/${links[index]}`}
+            key={index}
+            style={{ textDecoration: 'none' }}>
             <ListItem
               button
               className={
@@ -105,9 +121,9 @@ class Categories extends Component {
               <img src={icons[index]} alt={item} className={classes.icons} />
               <Typography variant="body1">{item}</Typography>
             </ListItem>
-          ))}
-        </List>
-      </Fragment>
+          </Link>
+        ))}
+      </List>
     );
   }
 }

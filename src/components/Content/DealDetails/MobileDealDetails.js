@@ -4,23 +4,22 @@ import PropTypes from 'prop-types';
 import {
   withStyles,
   Dialog,
-  DialogContent, 
+  DialogContent,
   Card,
   CardMedia,
   Typography,
   CardContent,
   Button,
-  Chip, 
-  IconButton, 
-  Slide, 
-  Toolbar, 
+  Chip,
+  IconButton,
+  Slide,
+  Toolbar,
   AppBar
 } from '@material-ui/core';
 // import CloseIcon from '@material-ui/icons/Close';
 import NavigateBefore from '@material-ui/icons/NavigateBefore';
 
 import DefaultImage from '../../../assets/images/default_deal.jpg';
-
 
 function Transition(props) {
   return <Slide direction="left" {...props} />;
@@ -29,11 +28,11 @@ function Transition(props) {
 const styles = theme => ({
   root: {
     padding: '0'
-  }, 
+  },
   card: {
     background: '#F8F8F8',
-    padding: '0', 
-    maxHeight: '100%', 
+    padding: '0',
+    maxHeight: '100%',
     boxShadow: 'none'
   },
   media: {
@@ -47,11 +46,11 @@ const styles = theme => ({
     padding: theme.spacing.unit * 0.5,
     paddingRight: theme.spacing.unit * 1.5,
     paddingLeft: theme.spacing.unit * 1.5,
-    borderRadius: theme.spacing.unit * 0.5, 
+    borderRadius: theme.spacing.unit * 0.5,
     margin: '10px 0'
   },
   title: {
-    color: '#461818', 
+    color: '#461818',
     fontSize: '25px'
   },
   date: {
@@ -61,11 +60,16 @@ const styles = theme => ({
   icon: {
     display: 'block'
   },
-  bottomArea: {
-    
-  },
+  bottomArea: {},
   chip: {
     margin: '5px'
+  },
+  link: {
+    color: '#fff',
+    textDecoration: 'none',
+    '&:active, &:focus': {
+      color: '#fff'
+    }
   }
 });
 
@@ -83,13 +87,19 @@ class MobileDealDetails extends Component {
         TransitionComponent={Transition}
         aria-labelledby="simple-dialog-title"
         PaperProps={{
-          style: { backgroundColor: '#F8F8F8', boxShadow: 'none', margin: 0, paddingTop: '56px', paddingBottom: '60px' }
+          style: {
+            backgroundColor: '#F8F8F8',
+            boxShadow: 'none',
+            margin: 0,
+            paddingTop: '56px',
+            paddingBottom: '60px'
+          }
         }}
         scroll="paper">
         <DialogContent>
           <AppBar>
             <Toolbar>
-              <IconButton color="inherit" onClick={ onClose } aria-label="Close">
+              <IconButton color="inherit" onClick={onClose} aria-label="Close">
                 <NavigateBefore />
               </IconButton>
             </Toolbar>
@@ -109,13 +119,11 @@ class MobileDealDetails extends Component {
                   {deal.shop !== undefined ? deal.shop.title : ''}
                 </Typography>
                 {/* TODO: Add Facebook Icon*/}
-                <div className={classes.icon}>
-                  { deal.phone_number }
-                </div>
+                <div className={classes.icon}>{deal.phone_number}</div>
               </div>
             </CardContent>
             <div className={classes.bottomArea}>
-              <CardContent style={{  }}>
+              <CardContent style={{}}>
                 <CardMedia
                   component="img"
                   alt={deal.title}
@@ -126,8 +134,7 @@ class MobileDealDetails extends Component {
                   title={deal.title}
                 />
               </CardContent>
-              <CardContent
-                style={{ paddingLeft: 0, paddingRight: 0 }}>
+              <CardContent style={{ paddingLeft: 0, paddingRight: 0 }}>
                 <Typography variant="body1">
                   {deal.description !== undefined
                     ? deal.description.replace(/&nbsp;|"|<[^>]+>/g, '')
@@ -136,21 +143,29 @@ class MobileDealDetails extends Component {
 
                 <div style={{ marginTop: '20px' }}>
                   {deal.tags.map((tag, index) => (
-                    <Chip key={ index } className={classes.chip} label={tag.title} />
+                    <Chip
+                      key={index}
+                      className={classes.chip}
+                      label={tag.title}
+                    />
                   ))}
                 </div>
 
-                {
-                  deal.presence_types[0] === 'Online' ? 
+                {deal.presence_types[0] === 'Online' ? (
                   <Button
                     variant="contained"
                     color="primary"
                     style={{ marginTop: '16px' }}>
-                    Go to Deal
-                  </Button> : ''
-                }
-
-                
+                    <a
+                      className={classes.link}
+                      href={deal.deal_link}
+                      target="_blank">
+                      Go to Deal
+                    </a>
+                  </Button>
+                ) : (
+                  ''
+                )}
               </CardContent>
             </div>
           </Card>

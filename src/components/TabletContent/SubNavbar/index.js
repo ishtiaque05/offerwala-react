@@ -11,11 +11,11 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    marginTop: theme.spacing.unit * 8 + theme.spacing.unit * 7,
+    marginTop: '125px',
     backgroundColor: theme.palette.background.paper
   },
   slider: {
-    marginTop: theme.spacing.unit * 8
+    marginTop: '75px'
   }
 });
 

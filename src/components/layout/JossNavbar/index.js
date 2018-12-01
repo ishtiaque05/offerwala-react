@@ -20,15 +20,19 @@ const styles = theme => ({
   toolBar: {
     [theme.breakpoints.up('sm')]: {
       height: theme.spacing.unit * 10,
-      padding: 0, 
+      padding: 0
       // paddingLeft: theme.spacing.unit * 12
     }
-  }, 
+  },
   logo: {
-    padding: 0, 
-    borderRadius: 0, 
+    padding: 0,
+    borderRadius: 0,
+    [theme.breakpoints.up('md')]: {
+      marginLeft: '45px'
+    },
     '&:hover': {
-      borderRadius: '0'
+      borderRadius: '0',
+      backgroundColor: 'transparent'
     }
   }
 });
@@ -42,7 +46,7 @@ const JossNavbar = ({ classes }) => (
           direction="row"
           justify="space-between"
           alignItems="center">
-          <IconButton className={ classes.logo }>
+          <IconButton className={classes.logo}>
             <Logo />
           </IconButton>
           <SearchBar />
