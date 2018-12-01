@@ -149,7 +149,8 @@ class DesktopDealDetails extends Component {
                     <a
                       className={classes.link}
                       href={deal.deal_link}
-                      target="_blank">
+                      target="_blank"
+                      rel="noopener noreferrer">
                       Go to Deal
                     </a>
                   </Button>

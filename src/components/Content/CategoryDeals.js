@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
-import { fetchDealsByCategory } from '../actions';
-import Deal from '../components/Deal';
+import { fetchDealsByCategory } from '../../actions';
+import Deal from './Deal';
 import Masonry from 'react-masonry-component';
 
 const categoryId = {
