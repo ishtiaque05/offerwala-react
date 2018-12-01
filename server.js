@@ -11,7 +11,7 @@ const PORT = normalizePort(process.env.PORT || 5000);
 const app = express();
 const dev = app.get('env') !== 'production';
 
-app.use('/api', proxy('http://www.jossdeals.com'));
+app.use('/', proxy('http://www.jossdeals.com'));
 
 if (!dev) {
   app.disable('x-powered-by');
