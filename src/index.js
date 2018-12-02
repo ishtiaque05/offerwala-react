@@ -4,9 +4,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
-import 'typeface-open-sans';
-import 'typeface-raleway';
-import 'typeface-source-sans-pro';
 import 'typeface-poppins';
 
 import Root from './Root';
