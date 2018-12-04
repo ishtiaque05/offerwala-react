@@ -8,8 +8,8 @@ import Masonry from 'react-masonry-component';
 const categoryId = {
   'beauty-fitness': 16,
   'food-dining': 8,
-  'shopping': 9,
-  'services': 13,
+  shopping: 9,
+  services: 13,
   'mobile-internet': 2,
   'electronics-home': 11,
   'hotel-travels': 14,
@@ -27,10 +27,10 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       width: '98%',
       margin: '0 auto'
-    }, [theme.breakpoints.down('xs')]: {
+    },
+    [theme.breakpoints.down('xs')]: {
       width: '96%',
-      margin: '0 auto', 
-      
+      margin: '0 auto'
     }
   },
   masonry: {
@@ -45,7 +45,6 @@ const masonryOptions = {
 };
 
 class CategoryDealsPage extends Component {
-
   // this.props.fetchDealsByCategory(categoryId[this.props.match.params.categoryName]);
   // componentDidMount() {
   //   console.log(this.props.match.params.categoryName);
@@ -64,15 +63,14 @@ class CategoryDealsPage extends Component {
 
   render() {
     const { classes } = this.props;
-    
+
     return (
       <div className={classes.root}>
         <Masonry
           className={classes.masonry}
           elementType={'div'}
           options={masonryOptions}
-          updateOnEachImageLoad={false}
-        >
+          updateOnEachImageLoad={false}>
           {this.renderDeals()}
         </Masonry>
       </div>
@@ -96,6 +94,6 @@ const mapStateToProps = state => ({
 // };
 
 export default connect(
-    mapStateToProps,
-    { fetchDealsByCategory }
-  )(withStyles(styles)(CategoryDealsPage));
+  mapStateToProps,
+  { fetchDealsByCategory }
+)(withStyles(styles)(CategoryDealsPage));

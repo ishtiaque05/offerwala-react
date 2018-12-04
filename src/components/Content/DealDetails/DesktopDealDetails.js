@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import {
   withStyles,
   Dialog,
-  DialogContent, 
+  DialogContent,
   Card,
   CardMedia,
   Typography,
@@ -21,12 +21,12 @@ import DefaultImage from '../../../assets/images/default_deal.jpg';
 const styles = theme => ({
   root: {
     padding: '30px'
-  }, 
+  },
   card: {
     background: '#F8F8F8',
     maxWidth: theme.spacing.unit * 150,
-    padding: '30px', 
-    maxHeight: 'calc(100% - 96px)', 
+    padding: '30px',
+    maxHeight: 'calc(100% - 96px)',
     boxShadow: 'none'
   },
   media: {
@@ -46,8 +46,8 @@ const styles = theme => ({
   },
   title: {
     // marginBottom: theme.spacing.unit,
-    // color: '#461818', 
-    paddingTop: 0, 
+    // color: '#461818',
+    paddingTop: 0
   },
   date: {
     float: 'right',
@@ -67,10 +67,10 @@ const styles = theme => ({
   },
   chip: {
     margin: '5px'
-  }, 
+  },
   link: {
-    color: '#fff', 
-    textDecoration: 'none', 
+    color: '#fff',
+    textDecoration: 'none',
     '&:active, &:focus': {
       color: '#fff'
     }
@@ -80,7 +80,7 @@ const styles = theme => ({
 class DesktopDealDetails extends Component {
   render = () => {
     const { classes, deal, open, onClose } = this.props;
-    
+
     return (
       <Dialog
         className={classes.root}
@@ -94,7 +94,7 @@ class DesktopDealDetails extends Component {
         scroll="paper">
         <DialogContent>
           <Card className={classes.card}>
-            <CardContent className={ classes.title }>
+            <CardContent className={classes.title}>
               <div style={{ display: 'block' }}>
                 <Typography variant="h6" className={classes.date}>
                   Ends: {deal.end_date}
@@ -109,13 +109,11 @@ class DesktopDealDetails extends Component {
                 </Typography>
                 <hr width="1" size="25" className={classes.hr} />
                 {/* TODO: Add Facebook Icon*/}
-                <div className={classes.icon}>
-                  { deal.phone_number }
-                </div>
+                <div className={classes.icon}>{deal.phone_number}</div>
               </div>
             </CardContent>
             <div className={classes.bottomArea}>
-              <CardContent style={{  }}>
+              <CardContent style={{}}>
                 <CardMedia
                   component="img"
                   alt={deal.title}
@@ -126,8 +124,7 @@ class DesktopDealDetails extends Component {
                   title={deal.title}
                 />
               </CardContent>
-              <CardContent
-                style={{ paddingLeft: 0, paddingRight: 0 }}>
+              <CardContent style={{ paddingLeft: 0, paddingRight: 0 }}>
                 <Typography variant="body1">
                   {deal.description !== undefined
                     ? deal.description.replace(/&nbsp;|"|<[^>]+>/g, '')
@@ -136,19 +133,29 @@ class DesktopDealDetails extends Component {
 
                 <div style={{ marginTop: '20px' }}>
                   {deal.tags.map((tag, index) => (
-                    <Chip key={ index } className={classes.chip} label={tag.title} />
+                    <Chip
+                      key={index}
+                      className={classes.chip}
+                      label={tag.title}
+                    />
                   ))}
                 </div>
 
-                {
-                  deal.presence_types[0] === 'Online' ? 
+                {deal.presence_types[0] === 'Online' ? (
                   <Button
                     variant="contained"
                     color="primary"
                     style={{ marginTop: '16px' }}>
-                    <a className={ classes.link } href={ deal.deal_link } target="_blank">Go to Deal</a>
-                  </Button> : ''
-                }
+                    <a
+                      className={classes.link}
+                      href={deal.deal_link}
+                      target="_blank">
+                      Go to Deal
+                    </a>
+                  </Button>
+                ) : (
+                  ''
+                )}
               </CardContent>
             </div>
           </Card>

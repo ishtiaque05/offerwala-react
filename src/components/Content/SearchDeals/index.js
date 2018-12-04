@@ -19,15 +19,15 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       width: '98%',
       margin: '0 auto'
-    }, [theme.breakpoints.down('xs')]: {
+    },
+    [theme.breakpoints.down('xs')]: {
       width: '96%',
-      margin: '0 auto', 
-      
+      margin: '0 auto'
     }
   },
   masonry: {
-    width: '100%', 
-    display: 'flex', 
+    width: '100%',
+    display: 'flex',
     justifyContent: 'space-between'
   }
 });
@@ -44,11 +44,9 @@ class SearchDeals extends Component {
   componentDidMount() {
     console.warn(this.props.match.params.tagName);
     this.props.fetchSearchedDeals(this.props.match.params.tagName);
-    
   }
 
   render() {
-    
     const { classes, loading, error, deals } = this.props;
     // console.log(deals);
 
@@ -60,18 +58,18 @@ class SearchDeals extends Component {
           <Typography variant="body1">Loading...</Typography>
         </div>
       );
-    } 
+    }
 
-    if(!deals) {
+    if (!deals) {
       console.log(deals);
       childElements = (
         <div className={classes.root}>
           <Typography variant="body1">No Deals Found</Typography>
         </div>
-      )
-    } 
+      );
+    }
 
-    if(deals) {
+    if (deals) {
       console.log(deals);
       childElements = deals.map((deal, index) => (
         <React.Fragment key={index}>

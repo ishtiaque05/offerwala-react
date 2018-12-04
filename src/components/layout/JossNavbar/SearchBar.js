@@ -11,7 +11,7 @@ const styles = theme => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    flexBasis: '57%', 
+    flexBasis: '57%',
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25)
@@ -70,7 +70,7 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit,
     paddingLeft: theme.spacing.unit * 8,
     transition: theme.transitions.create('width'),
-    width: '100%',
+    width: '100%'
     // [theme.breakpoints.up('md')]: {
     //   width: 200
     // }
@@ -78,12 +78,9 @@ const styles = theme => ({
 });
 
 class SearchBar extends Component {
-
   searchHandler = e => {
-
     if (e.key === 'Enter' && e.target.value) {
-      window.location.pathname = 'search/deals/' + e.target.value
-      
+      window.location.pathname = 'search/deals/' + e.target.value;
     }
   };
 

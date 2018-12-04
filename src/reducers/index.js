@@ -8,6 +8,6 @@ import categoryDealsReducer from './category';
 export default combineReducers({
   deals: dealsReducer,
   deal: dealReducer,
-  searchedDeals: searchedDealsReducer, 
+  searchedDeals: searchedDealsReducer,
   category: categoryDealsReducer
 });

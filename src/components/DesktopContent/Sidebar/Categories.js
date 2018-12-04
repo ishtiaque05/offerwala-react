@@ -22,7 +22,7 @@ const styles = theme => ({
     width: '100%',
     maxWidth: theme.spacing.unit * 40,
     backgroundColor: 'transparent',
-    padding: '0 15px',
+    padding: '0 15px'
     // borderRight: '1px solid #DDD'
   },
   selectedListItem: {
@@ -41,7 +41,7 @@ const styles = theme => ({
       borderRadius: theme.spacing.unit * 6,
       fontWeight: 'bold',
       '& p': {
-        fontWeight: 'bold', 
+        fontWeight: 'bold'
         // fontSize: '0.75rem'
       }
     }
@@ -104,7 +104,10 @@ class Categories extends Component {
     return (
       <List component="nav" className={classes.list}>
         {items.map((item, index) => (
-          <Link to={`/${links[index]}`} key={index} style={{ textDecoration: 'none' }}>
+          <Link
+            to={`/${links[index]}`}
+            key={index}
+            style={{ textDecoration: 'none' }}>
             <ListItem
               button
               className={
