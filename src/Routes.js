@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import AllDeals from './components/Content/AllDeals';
-import OnlineDeals from './components/Content/OnlineDeals';
-import StoreDeals from './components/Content/StoreDeals';
-import SearchDeals from './components/Content/SearchDeals';
-import CategoryDeals from './components/Content/CategoryDeals';
+import AllDeals from './components/AllDeals';
+import OnlineDeals from './components/OnlineDeals';
+import StoreDeals from './components/StoreDeals';
+import SearchDeals from './components/SearchDeals';
+import CategoryDeals from './components/CategoryDeals';
 
 const Routes = () => (
   <Switch>
