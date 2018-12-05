@@ -8,7 +8,6 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2.5,
     width: '100%',
     paddingLeft: 0
-    // marginLeft: theme.spacing.unit * 40
   },
   ul: {
     margin: 0,
@@ -24,7 +23,6 @@ const styles = theme => ({
     textDecoration: 'none',
     opacity: '.4',
     display: 'inline-block'
-    // transition: 'all .3s'
   },
   active: {
     borderBottom: '2px solid #000',
@@ -61,7 +59,7 @@ class DesktopSubNav extends Component {
           </li>
           <li className={classes.li}>
             <NavLink
-              to="/deals/online-deals"
+              to="/online-deals"
               exact
               activeClassName={classes.active}
               className={classes.link}>
@@ -70,7 +68,7 @@ class DesktopSubNav extends Component {
           </li>
           <li className={classes.li}>
             <NavLink
-              to="/deals/store-deals"
+              to="/store-deals"
               exact
               activeClassName={classes.active}
               className={classes.link}>
