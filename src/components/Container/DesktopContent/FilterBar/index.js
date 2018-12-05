@@ -26,9 +26,9 @@ class FilterBar extends Component {
     this.state = {
       selectedIndex: -1,
       chipData: [
-        { key: 0, label: 'Top Deals' },
-        { key: 1, label: 'Ending Today' },
-        { key: 2, label: 'Ending in 10 days' }
+        // { key: 0, label: 'Top Deals' },
+        { key: 0, label: 'Ending Today' },
+        { key: 1, label: 'Ending in 10 days' }
       ]
     };
   }
