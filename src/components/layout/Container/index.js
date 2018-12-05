@@ -10,7 +10,7 @@ const Container = () => (
     <Hidden smUp>
       <MobileContent />
     </Hidden>
-    <Hidden  mdUp xsDown>
+    <Hidden mdUp xsDown>
       <TabletContent />
     </Hidden>
     <Hidden smDown>

@@ -19,7 +19,7 @@ const styles = theme => ({
 });
 
 const Logo = ({ classes }) => (
-  <Link to='/'>
+  <Link to="/">
     <img
       className={classes.desktopLogo}
       id="logo"

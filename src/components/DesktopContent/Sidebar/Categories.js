@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -104,8 +104,8 @@ class Categories extends Component {
     return (
       <List component="nav" className={classes.list}>
         {items.map((item, index) => (
-          <Link
-            to={`/${links[index]}`}
+          <a
+            href={`/${links[index]}`}
             key={index}
             style={{ textDecoration: 'none' }}>
             <ListItem
@@ -121,7 +121,7 @@ class Categories extends Component {
               <img src={icons[index]} alt={item} className={classes.icons} />
               <Typography variant="body1">{item}</Typography>
             </ListItem>
-          </Link>
+          </a>
         ))}
       </List>
     );
@@ -132,4 +132,4 @@ Categories.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Categories);
+export default withStyles(styles)(withRouter(Categories));

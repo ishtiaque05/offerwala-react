@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { Typography, withStyles } from '@material-ui/core';
 
@@ -51,44 +51,41 @@ class DesktopSubNav extends Component {
       <nav className={classes.nav}>
         <ul className={classes.ul}>
           <li className={classes.li}>
-            <Link
-              onClick={event => this.handleListItemClick(event, 0)}
-              className={
-                this.state.selectedIndex === 0 ? classes.active : classes.link
-              }
-              to="/">
+            <NavLink
+              to="/"
+              exact
+              activeClassName={classes.active}
+              className={classes.link}>
               <Typography variant="headline">All Deals</Typography>
-            </Link>
+            </NavLink>
           </li>
           <li className={classes.li}>
-            <Link
-              onClick={event => this.handleListItemClick(event, 1)}
-              className={
-                this.state.selectedIndex === 1 ? classes.active : classes.link
-              }
-              to="/deals/online-deals">
+            <NavLink
+              to="/deals/online-deals"
+              exact
+              activeClassName={classes.active}
+              className={classes.link}>
               <Typography variant="headline">Online deals</Typography>
-            </Link>
+            </NavLink>
           </li>
           <li className={classes.li}>
-            <Link
-              onClick={event => this.handleListItemClick(event, 2)}
-              className={
-                this.state.selectedIndex === 2 ? classes.active : classes.link
-              }
-              to="/deals/store-deals">
+            <NavLink
+              to="/deals/store-deals"
+              exact
+              activeClassName={classes.active}
+              className={classes.link}>
               <Typography variant="headline">Store deals</Typography>
-            </Link>
+            </NavLink>
           </li>
           {/* <li className={classes.li}>
-        <Link
+        <NavLink
         onClick={event => this.handleListItemClick(event, 3)}
         className={
         this.state.selectedIndex === 3 ? classes.active : classes.link
         }
         to="/coupon">
         <Typography variant="headline">Coupons</Typography>
-        </Link>
+        </NavLink>
         </li> */}
         </ul>
       </nav>

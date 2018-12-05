@@ -12,7 +12,7 @@ const categoryId = {
   services: 13,
   'mobile-internet': 2,
   'electronics-home': 11,
-  'hotel-travels': 14,
+  'hotels-travels': 14,
   'banks-cards': 12
 };
 
