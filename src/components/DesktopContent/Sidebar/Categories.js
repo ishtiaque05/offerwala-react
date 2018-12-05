@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -23,9 +23,8 @@ const styles = theme => ({
     maxWidth: theme.spacing.unit * 40,
     backgroundColor: 'transparent',
     padding: '0 15px'
-    // borderRight: '1px solid #DDD'
   },
-  selectedListItem: {
+  activeLink: {
     backgroundColor: theme.palette.secondary.light,
     color: theme.palette.text.primary,
     borderRadius: theme.spacing.unit * 6,
@@ -33,16 +32,17 @@ const styles = theme => ({
       fontWeight: 'bold'
     }
   },
-  listItem: {
+  link: {
     opacity: '.8',
     transition: 'fontWeight .6s ease',
     margin: '1px 0',
+    textDecoration: 'none'
+  },
+  listItem: {
+    borderRadius: theme.spacing.unit * 6,
     '&:hover': {
-      borderRadius: theme.spacing.unit * 6,
-      fontWeight: 'bold',
       '& p': {
         fontWeight: 'bold'
-        // fontSize: '0.75rem'
       }
     }
   },
@@ -104,24 +104,17 @@ class Categories extends Component {
     return (
       <List component="nav" className={classes.list}>
         {items.map((item, index) => (
-          <a
-            href={`/${links[index]}`}
+          <NavLink
+            to={`/${links[index]}`}
+            exact
             key={index}
-            style={{ textDecoration: 'none' }}>
-            <ListItem
-              button
-              className={
-                this.state.selectedIndex === index
-                  ? classes.selectedListItem
-                  : classes.listItem
-              }
-              key={index}
-              selected={this.state.selectedIndex === index}
-              onClick={event => this.handleListItemClick(event, index)}>
+            className={classes.link}
+            activeClassName={classes.activeLink}>
+            <ListItem button className={classes.listItem}>
               <img src={icons[index]} alt={item} className={classes.icons} />
               <Typography variant="body1">{item}</Typography>
             </ListItem>
-          </a>
+          </NavLink>
         ))}
       </List>
     );
@@ -132,4 +125,4 @@ Categories.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(withRouter(Categories));
+export default withStyles(styles)(Categories);

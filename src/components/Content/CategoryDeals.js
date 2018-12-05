@@ -51,6 +51,17 @@ class CategoryDeals extends Component {
     );
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.match.params.categoryName !==
+      prevProps.match.params.categoryName
+    ) {
+      this.props.fetchDealsByCategory(
+        categoryId[this.props.match.params.categoryName]
+      );
+    }
+  }
+
   renderDeals() {
     return this.props.deals.map((deal, index) => (
       <React.Fragment key={index}>
