@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -31,11 +31,11 @@ class FilterBar extends Component {
       selectedIndex: -1,
       chipData: [
         // { key: 0, label: 'Top Deals' },
-        { key: 0, label: 'Ending Today', link: 'ending-today' },
+        { key: 0, label: 'Ending Today', link: '/deals/ending-today' },
         {
           key: 1,
           label: 'Ending in 10 days',
-          link: 'ending-in-ten-days'
+          link: '/deals/ending-in-ten-days'
         }
       ]
     };
@@ -45,13 +45,13 @@ class FilterBar extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, location } = this.props;
     return (
       <Paper className={classes.root}>
         {this.state.chipData.map(data => {
           return (
             <NavLink
-              to={`/deals/${data.link}`}
+              to={`${data.link}`}
               key={data.key}
               className={classes.link}>
               <Chip
@@ -61,7 +61,7 @@ class FilterBar extends Component {
                 className={classes.chip}
                 color="secondary"
                 variant={
-                  this.state.selectedIndex === data.key ? 'default' : 'outlined'
+                  location.pathname === data.link ? 'default' : 'outlined'
                 }
               />
             </NavLink>
@@ -72,4 +72,4 @@ class FilterBar extends Component {
   }
 }
 
-export default withStyles(styles)(FilterBar);
+export default withStyles(styles)(withRouter(FilterBar));
