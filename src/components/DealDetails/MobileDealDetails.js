@@ -16,8 +16,8 @@ import {
   Toolbar,
   AppBar
 } from '@material-ui/core';
-// import CloseIcon from '@material-ui/icons/Close';
-import NavigateBefore from '@material-ui/icons/NavigateBefore';
+
+import { NavigateBefore } from '@material-ui/icons';
 
 import DefaultImage from '../../assets/images/default_deal.jpg';
 

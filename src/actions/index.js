@@ -8,8 +8,25 @@ import {
   FETCH_DEALS_BY_CATEGORY_SUCCESS,
   FETCH_SEARCHED_DEALS_BEGIN,
   FETCH_SEARCHED_DEALS_FAILURE,
-  FETCH_SEARCHED_DEALS_SUCCESS
+  FETCH_SEARCHED_DEALS_SUCCESS,
+  FETCH_DEALS_ENDING_BEGIN,
+  FETCH_DEALS_ENDING_SUCCESS,
+  FETCH_DEALS_ENDING_FAILURE
 } from './types';
+
+export const fetchDealsBegin = () => ({
+  type: FETCH_DEALS_BEGIN
+});
+
+export const fetchDealsSuccess = deals => ({
+  type: FETCH_DEALS_SUCCESS,
+  payload: { deals }
+});
+
+export const fetchDealsFailure = error => ({
+  type: FETCH_DEALS_FAILURE,
+  payload: { error }
+});
 
 export const fetchAllDeals = (page = 1) => {
   return async dispatch => {
@@ -62,17 +79,17 @@ export const fetchStoreDeals = (page = 1) => {
   };
 };
 
-export const fetchDealsBegin = () => ({
-  type: FETCH_DEALS_BEGIN
+export const fetchSearchedDealsBegin = () => ({
+  type: FETCH_SEARCHED_DEALS_BEGIN
 });
 
-export const fetchDealsSuccess = deals => ({
-  type: FETCH_DEALS_SUCCESS,
+export const fetchSearchedDealsSuccess = deals => ({
+  type: FETCH_SEARCHED_DEALS_SUCCESS,
   payload: { deals }
 });
 
-export const fetchDealsFailure = error => ({
-  type: FETCH_DEALS_FAILURE,
+export const fetchSearchedDealsFailure = error => ({
+  type: FETCH_SEARCHED_DEALS_FAILURE,
   payload: { error }
 });
 
@@ -92,20 +109,6 @@ export const fetchSearchedDeals = tagName => {
     }
   };
 };
-
-export const fetchSearchedDealsBegin = () => ({
-  type: FETCH_SEARCHED_DEALS_BEGIN
-});
-
-export const fetchSearchedDealsSuccess = deals => ({
-  type: FETCH_SEARCHED_DEALS_SUCCESS,
-  payload: { deals }
-});
-
-export const fetchSearchedDealsFailure = error => ({
-  type: FETCH_SEARCHED_DEALS_FAILURE,
-  payload: { error }
-});
 
 export const fetchDealsByCategoryBegin = () => ({
   type: FETCH_DEALS_BY_CATEGORY_BEGIN
@@ -133,6 +136,35 @@ export const fetchDealsByCategory = id => {
       return response.data.deals;
     } catch (error) {
       dispatch(fetchDealsByCategoryFailure(error));
+      throw new Error(error);
+    }
+  };
+};
+
+export const fetchDealsEndingBegin = () => ({
+  type: FETCH_DEALS_ENDING_BEGIN
+});
+
+export const fetchDealsEndingSuccess = deals => ({
+  type: FETCH_DEALS_ENDING_SUCCESS,
+  payload: { deals }
+});
+
+export const fetchDealsEndingFailure = error => ({
+  type: FETCH_DEALS_ENDING_FAILURE,
+  payload: { error }
+});
+
+export const fetchDealsEnding = endingTerm => {
+  return async dispatch => {
+    dispatch(fetchDealsEndingBegin());
+
+    try {
+      const response = await axios.get(`/api/v1/guests/search/${endingTerm}`);
+      dispatch(fetchDealsEndingSuccess(response.data.deals));
+      return response.data.deals;
+    } catch (error) {
+      dispatch(fetchDealsEndingFailure(error));
       throw new Error(error);
     }
   };
