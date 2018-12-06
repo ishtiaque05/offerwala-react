@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 
 import {
   withStyles,
@@ -66,7 +66,8 @@ const styles = theme => ({
     display: 'flex'
   },
   chip: {
-    margin: '5px'
+    margin: '5px',
+    cursor: 'pointer'
   },
   link: {
     color: '#fff',
@@ -133,11 +134,15 @@ class DesktopDealDetails extends Component {
 
                 <div style={{ marginTop: '20px' }}>
                   {deal.tags.map((tag, index) => (
-                    <Chip
-                      key={index}
-                      className={classes.chip}
-                      label={tag.title}
-                    />
+                    <NavLink
+                      to={`/search/${tag.title}`}
+                      style={{ textDecoration: 'none' }}>
+                      <Chip
+                        key={index}
+                        className={classes.chip}
+                        label={tag.title}
+                      />
+                    </NavLink>
                   ))}
                 </div>
 

@@ -39,6 +39,12 @@ class SearchDeals extends Component {
     this.props.fetchSearchedDeals(this.props.match.params.tagName);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.tagName !== prevProps.match.params.tagName) {
+      this.props.fetchSearchedDeals(this.props.match.params.tagName);
+    }
+  }
+
   render() {
     const { classes, loading, error, deals } = this.props;
 
