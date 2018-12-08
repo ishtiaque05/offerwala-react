@@ -43,12 +43,8 @@ class SubNavbar extends Component {
             textColor="primary"
             scrollable>
             <Tab label="All Deals" component={Link} to="/" />
-            <Tab
-              label="Online Deals"
-              component={Link}
-              to="/deals/online-deals"
-            />
-            <Tab label="Store Deals" component={Link} to="/deals/store-deals" />
+            <Tab label="Online Deals" component={Link} to="/online-deals" />
+            <Tab label="Store Deals" component={Link} to="/store-deals" />
             {/* <Tab label="Coupons" /> */}
           </Tabs>
         </AppBar>

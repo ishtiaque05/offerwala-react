@@ -100,12 +100,13 @@ class CategoryDeals extends Component {
           dataLength={moreElements.length}
           next={this.fetchMoreData}
           hasMore={true}
-          loader={<h4>Loading...</h4>}
-          endMessage={
-            <p style={{ textAlign: 'center' }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }>
+          // loader={<h4>Loading...</h4>}
+          // endMessage={
+          //   <p style={{ textAlign: 'center' }}>
+          //     <b>Yay! You have seen it all</b>
+          //   </p>
+          // }
+        >
           <Masonry
             className={classes.masonry}
             elementType={'div'}
