@@ -116,7 +116,7 @@ class Deal extends Component {
         <Card onClick={this.clickHandler} className={classes.card}>
           <CardActionArea>
             <CardMedia
-              style={{ padding: '16px', paddingBottom: '0px' }}
+              style={{ padding: '0px' }}
               component="img"
               alt="Contemplative Reptile"
               className={classes.media}
@@ -126,7 +126,7 @@ class Deal extends Component {
               title={deal.title}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography gutterBottom variant="h6">
                 {deal.title}
               </Typography>
               <div className={classes.flex}>
