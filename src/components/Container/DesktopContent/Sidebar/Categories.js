@@ -25,11 +25,13 @@ const styles = theme => ({
     padding: '0 15px'
   },
   activeLink: {
-    backgroundColor: theme.palette.secondary.light,
     color: theme.palette.text.primary,
     borderRadius: theme.spacing.unit * 6,
     '& p': {
       fontWeight: 'bold'
+    },
+    '& div': {
+      backgroundColor: '#E5E5E5'
     }
   },
   link: {
@@ -40,6 +42,7 @@ const styles = theme => ({
   },
   listItem: {
     borderRadius: theme.spacing.unit * 6,
+    '&:active': { backgroundColor: '#E5E5E5' },
     '&:hover': {
       '& p': {
         fontWeight: 'bold'

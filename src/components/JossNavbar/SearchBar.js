@@ -18,6 +18,11 @@ const styles = theme => ({
     },
     marginRight: '45px'
   },
+  wrapper: {
+    display: 'table',
+    justifyContent: 'center',
+    margin: '0 auto'
+  },
   searchIcon: {
     width: theme.spacing.unit * 6,
     position: 'absolute',
@@ -60,9 +65,6 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 8,
     transition: theme.transitions.create('width'),
     width: '100%'
-    // [theme.breakpoints.up('md')]: {
-    //   width: 200
-    // }
   }
 });
 
@@ -78,17 +80,19 @@ class SearchBar extends Component {
 
     return (
       <div className={classes.search}>
-        <div className={classes.searchIcon}>
-          <img src={SearchIcon} alt="Search Icon" />
+        <div className={classes.wrapper}>
+          <div className={classes.searchIcon}>
+            <img src={SearchIcon} alt="Search Icon" />
+          </div>
+          <InputBase
+            placeholder="Search…"
+            classes={{
+              root: classes.inputRoot,
+              input: classes.searchInput
+            }}
+            onKeyUp={e => this.searchHandler(e)}
+          />
         </div>
-        <InputBase
-          placeholder="Search…"
-          classes={{
-            root: classes.inputRoot,
-            input: classes.searchInput
-          }}
-          onKeyUp={e => this.searchHandler(e)}
-        />
       </div>
     );
   }

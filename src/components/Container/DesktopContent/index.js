@@ -60,7 +60,11 @@ const DesktopContent = ({ classes, location }) => {
             <Grid item>
               {(curLocation === '/' ||
                 curLocation === '/online-deals' ||
-                curLocation === '/store-deals') && <CarouselComp />}
+                curLocation === '/store-deals' ||
+                curLocation === '/deals/ending-today' ||
+                curLocation === '/deals/ending-in-ten-days') && (
+                <CarouselComp />
+              )}
               <StickyBox offsetTop={80} style={{ zIndex: '1' }}>
                 <div style={{ paddingBottom: '4px', background: '#f8f8f8' }}>
                   <SubNav />

@@ -21,7 +21,6 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       height: theme.spacing.unit * 10,
       padding: 0
-      // paddingLeft: theme.spacing.unit * 12
     }
   },
   logo: {

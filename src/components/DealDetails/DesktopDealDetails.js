@@ -14,8 +14,6 @@ import {
   Chip
 } from '@material-ui/core';
 
-// import PhoneIcon from '@material-ui/icons/Phone';
-
 import DefaultImage from '../../assets/images/default_deal.jpg';
 
 const styles = theme => ({
@@ -174,8 +172,6 @@ class DesktopDealDetails extends Component {
 DesktopDealDetails.propTypes = {
   classes: PropTypes.object.isRequired,
   deal: PropTypes.object.isRequired
-  // loading: PropTypes.bool.isRequired,
-  // error: PropTypes.object
 };
 
 export default withRouter(withStyles(styles)(DesktopDealDetails));
