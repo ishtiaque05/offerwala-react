@@ -23,5 +23,5 @@ yarn-debug.log*
 
 #snapshots
 src/components/__tests__/__snapshots__/
-src/components/layout/JossNavbar/__tests__/__snapshots__/
-src/components/DesktopContent/Sidebar/__tests__/__snapshots__/
+src/components/JossNavbar/__tests__/__snapshots__/
+src/components/Container/DesktopContent/Sidebar/__tests__/__snapshots__/

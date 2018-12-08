@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
-import dealsReducer from './deals';
-import searchedDealsReducer from './search';
-import categoryDealsReducer from './category';
+import dealsReducer from './dealsReducer';
+import searchedDealsReducer from './searchReducer';
+import categoryDealsReducer from './categoryReducer';
+import dealsEndingReducer from './dealsEndingReducer';
 
 export default combineReducers({
   deals: dealsReducer,
   searchedDeals: searchedDealsReducer,
-  category: categoryDealsReducer
+  category: categoryDealsReducer,
+  dealsEnding: dealsEndingReducer
 });
