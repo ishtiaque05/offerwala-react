@@ -124,13 +124,16 @@ export const fetchDealsByCategoryFailure = error => ({
   payload: { error }
 });
 
-export const fetchDealsByCategory = id => {
+export const fetchDealsByCategory = (id, page = 1) => {
   return async dispatch => {
     dispatch(fetchDealsByCategoryBegin());
 
     try {
       const response = await axios.get(
-        `/api/v1/guests/search/${id}/category_search`
+        `/api/v1/guests/search/${id}/category_search`,
+        {
+          params: { page }
+        }
       );
       dispatch(fetchDealsByCategorySuccess(response.data.deals));
       return response.data.deals;
