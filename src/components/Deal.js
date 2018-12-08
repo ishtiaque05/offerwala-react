@@ -126,7 +126,7 @@ class Deal extends Component {
               title={deal.title}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography gutterBottom variant="h6">
                 {deal.title}
               </Typography>
               <div className={classes.flex}>
