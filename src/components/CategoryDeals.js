@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core';
 import { fetchDealsByCategory } from '../actions';
 import Deal from './Deal';
 import Masonry from 'react-masonry-component';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const categoryId = {
   'beauty-fitness': 16,
@@ -19,10 +20,10 @@ const categoryId = {
 const styles = theme => ({
   root: {
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 150
+      width: '100%'
     },
     [theme.breakpoints.down('lg')]: {
-      width: theme.spacing.unit * 100
+      width: '100%'
     },
     [theme.breakpoints.down('sm')]: {
       width: '98%',
@@ -45,6 +46,11 @@ const masonryOptions = {
 };
 
 class CategoryDeals extends Component {
+  state = {
+    page: 0,
+    deals: []
+  };
+
   componentDidMount() {
     this.props.fetchDealsByCategory(
       categoryId[this.props.match.params.categoryName]
@@ -59,28 +65,56 @@ class CategoryDeals extends Component {
       this.props.fetchDealsByCategory(
         categoryId[this.props.match.params.categoryName]
       );
+      // TODO: Fix windows reload to component reload
+      window.location.reload();
     }
   }
 
-  renderDeals() {
-    return this.props.deals.map((deal, index) => (
+  fetchMoreData = () => {
+    this.setState({ page: this.state.page + 1 });
+    this.props.fetchDealsByCategory(
+      categoryId[this.props.match.params.categoryName],
+      this.state.page
+    );
+    this.setState({ deals: [...this.state.deals, ...this.props.deals] });
+  };
+
+  render() {
+    const { classes } = this.props;
+
+    const childElements = this.props.deals.map((deal, index) => (
       <React.Fragment key={index}>
         <Deal deal={deal} />
       </React.Fragment>
     ));
-  }
 
-  render() {
-    const { classes } = this.props;
+    const moreElements = this.state.deals.map((deal, index) => (
+      <React.Fragment key={index}>
+        <Deal deal={deal} />
+      </React.Fragment>
+    ));
+
     return (
       <div className={classes.root}>
-        <Masonry
-          className={classes.masonry}
-          elementType={'div'}
-          options={masonryOptions}
-          updateOnEachImageLoad={false}>
-          {this.renderDeals()}
-        </Masonry>
+        <InfiniteScroll
+          dataLength={moreElements.length}
+          next={this.fetchMoreData}
+          hasMore={true}
+          loader={<h4>Loading...</h4>}
+          endMessage={
+            <p style={{ textAlign: 'center' }}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }>
+          <Masonry
+            className={classes.masonry}
+            elementType={'div'}
+            options={masonryOptions}
+            updateOnEachImageLoad={false}>
+            {childElements}
+            {moreElements}
+          </Masonry>
+        </InfiniteScroll>
       </div>
     );
   }
