@@ -30,7 +30,7 @@ const styles = theme => ({
     padding: '0'
   },
   card: {
-    background: '#F8F8F8',
+    ground: '#F8F8F8',
     padding: '0',
     maxHeight: '100%',
     boxShadow: 'none'
@@ -100,7 +100,8 @@ class MobileDealDetails extends Component {
           <AppBar>
             <Toolbar>
               <IconButton color="inherit" onClick={onClose} aria-label="Close">
-                <NavigateBefore />
+                <NavigateBefore /> 
+                <Typography style={{ color: '#fff' }} variant="button">Back</Typography>
               </IconButton>
             </Toolbar>
           </AppBar>

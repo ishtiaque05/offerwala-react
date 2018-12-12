@@ -65,7 +65,8 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 1.5,
     paddingRight: theme.spacing.unit * 1.5,
     borderRadius: theme.spacing.unit * 0.5,
-    display: 'inline-block'
+    display: 'inline-block', 
+    marginBottom: '5px'
   },
   dealDetails: {
     margin: 0,
@@ -124,7 +125,7 @@ class Deal extends Component {
               <Typography gutterBottom variant="h5" component="h2">
                 {deal.title}
               </Typography>
-              <div className={classes.flex}>
+              <div>
                 <Typography className={classes.shopName}>
                   {deal.shop !== undefined ? deal.shop.title : ''}
                 </Typography>

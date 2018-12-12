@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import { withStyles, Typography, Button } from '@material-ui/core';
 
-import SubMenu from './SubMenu';
+import LoginIcon from '../../../assets/images/login_1.png';
+import WalletIcon from '../../../assets/images/wallet.png';
 
 const styles = theme => ({
   sectionDesktop: {
@@ -15,53 +13,39 @@ const styles = theme => ({
       display: 'flex'
     }
   },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
+  button: {
+    display: 'block'
+  }, 
+  icon: {
+    width: '30px'
+  }, 
+  text: {
+    fontSize: '10px'
   }
 });
 
 class DesktopSection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      anchorEl: null
-    };
-  }
-
-  handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleMenuClose = () => {
-    this.setState({ anchorEl: null });
-  };
 
   render() {
-    const { anchorEl } = this.state;
     const { classes } = this.props;
-    const isMenuOpen = Boolean(anchorEl);
 
     return (
       <div className={classes.sectionDesktop}>
-        <IconButton
-          aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-          aria-haspopup="true"
-          onClick={this.handleProfileMenuOpen}
+        <Button
+          className={classes.button}
+          disabled
           color="inherit">
-          <AccountCircle />
-        </IconButton>
-        <IconButton
-          className={classes.menuButton}
+          <img className={ classes.icon } src={ WalletIcon } alt="Login icon"/>
+          <Typography className={ classes.text } variant="button">Comming Soon</Typography>
+        </Button>
+        <Button
+          className={classes.button}
           color="inherit"
+          disabled
           aria-label="Open drawer">
-          <MenuIcon />
-        </IconButton>
-        <SubMenu
-          anchorEl={anchorEl}
-          onClose={this.handleMenuClose}
-          open={isMenuOpen}
-        />
+          <img className={ classes.icon } src={ LoginIcon } alt="wallet icon" />
+          <Typography className={ classes.text } variant="button">Comming Soon</Typography>
+        </Button>
       </div>
     );
   }
