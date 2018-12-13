@@ -16,7 +16,7 @@ const styles = {
 }
 
 
-const Privacy = ({ classes }) => 
+const faq = ({ classes }) => 
     <div className={ classes.root }>
         <Header />
         <main className={ classes.main }>
@@ -59,4 +59,4 @@ const Privacy = ({ classes }) =>
         </main>
     </div>
 
-export default withStyles(styles)(Privacy);
+export default withStyles(styles)(faq);

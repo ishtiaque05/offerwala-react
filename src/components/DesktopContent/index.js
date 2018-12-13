@@ -23,15 +23,9 @@ const styles = theme => ({
   mainContent: {
     flex: 1,
     padding: '0 35px'
-    // marginLeft: '290px',
-    // marginRight: '300px'
   },
   rightSidebar: {
-    // position: 'sticky',
-    // top: '90px',
-    // width: '300px',
-    // float: 'right',
-    // flex: '1'
+    
   },
   leftSidebar: {
     width: '260px'
