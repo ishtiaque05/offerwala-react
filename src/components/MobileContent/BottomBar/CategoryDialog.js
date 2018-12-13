@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
-// import List from '@material-ui/core/List';
-// import ListItem from '@material-ui/core/ListItem';
-import { Typography, ListItem, List, Dialog } from '@material-ui/core';
-// import Dialog from '@material-ui/core/Dialog';
+import { 
+  Typography, 
+  ListItem, 
+  List, 
+  Dialog } 
+  from '@material-ui/core';
+
 
 const styles = theme => ({
   root: {
@@ -38,9 +41,9 @@ const styles = theme => ({
   selectedListItem: {
     backgroundColor: theme.palette.secondary.light,
     color: theme.palette.text.primary,
-    borderRadius: theme.spacing.unit * 6,
-    //   padding: '5px',
-    //   flexBasis: '45%',
+    borderRadius: theme.spacing.unit * 6, 
+    paddingLeft: '10px',
+    paddingRight: '10px',  
     '& p': {
       fontWeight: 'bold',
       fontSize: '13px'
@@ -48,10 +51,9 @@ const styles = theme => ({
   },
   listItem: {
     opacity: '.8',
-    transition: 'fontWeight .6s ease',
-    //   padding: '5px',
-    //   margin: '1px 0',
-    //   flexBasis: '45%',
+    transition: 'fontWeight .6s ease', 
+    paddingLeft: '10px',
+    paddingRight: '10px',  
     '&:hover': {
       borderRadius: theme.spacing.unit * 6,
       fontWeight: 'bold',
@@ -61,9 +63,9 @@ const styles = theme => ({
     }
   },
   icons: {
-    width: theme.spacing.unit * 4,
-    height: theme.spacing.unit * 4,
-    marginRight: theme.spacing.unit * 1.5
+    width: '20px',
+    height: 'auto',
+    marginRight: '5px'
   },
   appBar: {
     position: 'relative'
@@ -73,7 +75,7 @@ const styles = theme => ({
   },
   anchor: {
     flexBasis: '45%',
-    padding: '5px',
+    padding: '0',
     margin: '1px 0'
   }
 });
@@ -88,9 +90,7 @@ class CategoryDialog extends Component {
     this.props.click(index);
     this.props.close();
   };
-
-  // open={this.state.open}
-  // onClose={this.handleClose}
+  
 
   render() {
     const { classes, open, close, categories, icons, links } = this.props;

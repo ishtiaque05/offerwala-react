@@ -25,6 +25,19 @@ class SubNavbar extends Component {
     this.state = { value: 0 };
   }
 
+  componentDidMount() {
+    switch(window.location.pathname) {
+      case "/deals/online-deals":
+        this.setState({ value: 1 });
+        break;
+      case "/deals/store-deals":
+        this.setState({ value: 2 });
+        break;
+      default: 
+        this.setState({ value: 0 });
+    }
+  }
+
   handleChange = (event, value) => {
     this.setState({ value });
   };
@@ -32,6 +45,7 @@ class SubNavbar extends Component {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
+    console.log(value);
 
     return (
       <div className={classes.root}>

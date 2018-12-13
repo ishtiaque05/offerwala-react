@@ -34,8 +34,7 @@ const styles = theme => ({
     // flex: '1'
   },
   leftSidebar: {
-    // width: '290px',
-    // float: 'left'
+    width: '260px'
   }
 });
 

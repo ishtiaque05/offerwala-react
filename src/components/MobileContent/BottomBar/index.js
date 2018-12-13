@@ -6,7 +6,10 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import CategoryDialog from './CategoryDialog';
 
-import EverythingIcon from '../../../assets/images/everything.png';
+import UserIcon from '../../../assets/images/login_1.png';
+import WalletIcon from '../../../assets/images/wallet.png';
+
+// import EverythingIcon from '../../../assets/images/everything.png';
 import BeautyAndFitnessIcon from '../../../assets/images/beauty_and_fitness.png';
 import FoodAndDiningIcon from '../../../assets/images/food.png';
 import ShoppingIcon from '../../../assets/images/market.png';
@@ -29,7 +32,6 @@ const links = [
 ];
 
 const items = [
-  'Everything',
   'Beauty & Fitness',
   'Food & Dining',
   'Shopping',
@@ -41,7 +43,6 @@ const items = [
 ];
 
 const icons = [
-  EverythingIcon,
   BeautyAndFitnessIcon,
   FoodAndDiningIcon,
   ShoppingIcon,
@@ -125,8 +126,8 @@ class BottomBar extends Component {
           label={items[selected]}
           icon={<img src={icons[selected]} alt={'category icon'} />}
         />
-        {/* <BottomNavigationAction label="Favorite" icon={<FavoriteIcon />} /> */}
-        {/* <BottomNavigationAction label="User" icon={<UserIcon />} /> */}
+        <BottomNavigationAction label="Favorite" icon={<img src={ WalletIcon } />} />
+        <BottomNavigationAction label="User" icon={<img src={ UserIcon } />} />
       </BottomNavigation>
     );
   };
