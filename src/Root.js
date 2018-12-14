@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -14,5 +14,9 @@ export default ({ children }) => {
     composeWithDevTools(applyMiddleware(...middleware))
   );
 
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <Provider store={store}>
+      <Fragment>{children}</Fragment>
+    </Provider>
+  );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
@@ -33,13 +33,13 @@ const theme = createMuiTheme({
   }
 });
 
-render(
-  <Root>
-    <Router>
+hydrate(
+  <Router>
+    <Root>
       <MuiThemeProvider theme={theme}>
         <App />
       </MuiThemeProvider>
-    </Router>
-  </Root>,
+    </Root>
+  </Router>,
   document.getElementById('root')
 );
