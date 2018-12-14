@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
-import { fetchDealsByCategory } from '../../../actions';
+import { fetchDealsByCategory } from '../../../actions/index';
 import Deal from '../Deal';
 import Masonry from 'react-masonry-component';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const categoryId = {
   'beauty-fitness': 16,
@@ -12,7 +13,7 @@ const categoryId = {
   services: 13,
   'mobile-internet': 2,
   'electronics-home': 11,
-  'hotel-travels': 14,
+  'hotels-travels': 14,
   'banks-cards': 12
 };
 
@@ -44,39 +45,77 @@ const masonryOptions = {
   transitionDuration: 3
 };
 
-class CategoryDealsPage extends Component {
-  constructor(props) {
-    super(props);
-    this.props.fetchDealsByCategory(categoryId[this.props.match.params.categoryName]);
-  }
-  // componentDidMount() {
-  //   console.log(this.props.match.params.categoryName);
-  //   this.props.fetchDealsByCategory(
-  //     categoryId[this.props.match.params.categoryName]
-  //   );
-  // }
+class CategoryDeals extends Component {
+  state = {
+    page: 0,
+    deals: []
+  };
 
-  renderDeals() {
-    console.log(this.props.deals);
-    return this.props.deals.map((deal, index) => (
-      <React.Fragment key={index}>
-        <Deal deal={deal} />
-      </React.Fragment>
-    ));
+  componentDidMount() {
+    this.props.fetchDealsByCategory(
+      categoryId[this.props.match.params.categoryName]
+    );
   }
+
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.match.params.categoryName !==
+      prevProps.match.params.categoryName
+    ) {
+      this.props.fetchDealsByCategory(
+        categoryId[this.props.match.params.categoryName]
+      );
+      // TODO: Fix windows reload to component reload
+      // window.location.reload();
+    }
+  }
+
+  fetchMoreData = () => {
+    this.setState({ page: this.state.page + 1 });
+    this.props.fetchDealsByCategory(
+      categoryId[this.props.match.params.categoryName],
+      this.state.page
+    );
+    this.setState({ deals: [...this.state.deals, ...this.props.deals] });
+  };
 
   render() {
     const { classes } = this.props;
 
+    const childElements = this.props.deals.map((deal, index) => (
+      <React.Fragment key={index}>
+        <Deal deal={deal} />
+      </React.Fragment>
+    ));
+
+    const moreElements = this.state.deals.map((deal, index) => (
+      <React.Fragment key={index}>
+        <Deal deal={deal} />
+      </React.Fragment>
+    ));
+
     return (
       <div className={classes.root}>
-        <Masonry
-          className={classes.masonry}
-          elementType={'div'}
-          options={masonryOptions}
-          updateOnEachImageLoad={false}>
-          {this.renderDeals()}
-        </Masonry>
+        <InfiniteScroll
+          dataLength={moreElements.length}
+          next={this.fetchMoreData}
+          hasMore={true}
+          // loader={<h4>Loading...</h4>}
+          // endMessage={
+          //   <p style={{ textAlign: 'center' }}>
+          //     <b>Yay! You have seen it all</b>
+          //   </p>
+          // }
+        >
+          <Masonry
+            className={classes.masonry}
+            elementType={'div'}
+            options={masonryOptions}
+            updateOnEachImageLoad={false}>
+            {childElements}
+            {moreElements}
+          </Masonry>
+        </InfiniteScroll>
       </div>
     );
   }
@@ -88,16 +127,7 @@ const mapStateToProps = state => ({
   error: state.category.error
 });
 
-// export default {
-//   loadData: (store, match) =>
-//     store.dispatch(fetchDealsByCategory(categoryId[match.params.categoryName])),
-//   component: connect(
-//     mapStateToProps,
-//     { fetchDealsByCategory }
-//   )(withStyles(styles)(CategoryDealsPage))
-// };
-
 export default connect(
   mapStateToProps,
   { fetchDealsByCategory }
-)(withStyles(styles)(CategoryDealsPage));
+)(withStyles(styles)(CategoryDeals));

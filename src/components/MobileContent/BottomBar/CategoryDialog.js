@@ -85,6 +85,11 @@ class CategoryDialog extends Component {
     selectedIndex: 0
   };
 
+  componentDidMount() {
+    const route = this.props.links.filter(link => link === window.location.pathname);
+    this.setState({ selectedIndex: this.props.links.indexOf(...route) });
+  }
+
   handleListItemClick = (event, index) => {
     this.setState({ selectedIndex: index });
     this.props.click(index);
@@ -94,7 +99,7 @@ class CategoryDialog extends Component {
 
   render() {
     const { classes, open, close, categories, icons, links } = this.props;
-
+    
     return (
       <Dialog
         fullScreen
@@ -113,18 +118,17 @@ class CategoryDialog extends Component {
           <List component="nav" className={classes.list}>
             {categories.map((item, index) => (
               <Link
-                to={`/${links[index]}`}
+                to={`${links[index]}`}
                 className={classes.anchor}
                 key={index}
                 style={{ textDecoration: 'none' }}>
                 <ListItem
                   button
                   className={
-                    this.state.selectedIndex === index
-                      ? classes.selectedListItem
-                      : classes.listItem
+                    window.location.pathname === links[index] ? 
+                    classes.selectedListItem : classes.listItem
                   }
-                  selected={this.state.selectedIndex === index}
+                  selected={ window.location.pathname === links[index] ? true : false}
                   onClick={event => this.handleListItemClick(event, index)}>
                   <img
                     src={icons[index]}

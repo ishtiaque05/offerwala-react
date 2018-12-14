@@ -152,6 +152,7 @@ class DesktopDealDetails extends Component {
                     <a
                       className={classes.link}
                       href={deal.deal_link}
+                      rel="noopener noreferrer"
                       target="_blank">
                       <img width="15" style={{ marginRight: '5px' }} src={planeIcon} alt="Redirect icon"/>
                       <span>Go to Deal</span>

@@ -54,14 +54,14 @@ const styles = theme => ({
 });
 
 const links = [
-  'category/beauty-fitness',
-  'category/food-dining',
-  'category/shopping',
-  'category/services',
-  'category/mobile-internet',
-  'category/electronics-home',
-  'category/hotels-travels',
-  'category/banks-cards'
+  '/category/beauty-fitness',
+  '/category/food-dining',
+  '/category/shopping',
+  '/category/services',
+  '/category/mobile-internet',
+  '/category/electronics-home',
+  '/category/hotels-travels',
+  '/category/banks-cards'
 ];
 
 const items = [
@@ -91,6 +91,11 @@ class Categories extends Component {
     selectedIndex: null
   };
 
+  componentDidMount() {
+    const route = links.filter(link => link === window.location.pathname);
+    this.setState({ selectedIndex: links.indexOf(...route) });
+  }
+
   handleListItemClick = (event, index) => {
     this.setState({ selectedIndex: index });
   };
@@ -106,18 +111,17 @@ class Categories extends Component {
         </ListItem>
         {items.map((item, index) => (
           <Link
-            to={`/${links[index]}`}
+            to={`${links[index]}`}
             key={index}
             style={{ textDecoration: 'none' }}>
             <ListItem
               button
               className={
-                this.state.selectedIndex === index
-                  ? classes.selectedListItem
-                  : classes.listItem
+                window.location.pathname === links[index] ? 
+                classes.selectedListItem : classes.listItem
               }
               key={index}
-              selected={this.state.selectedIndex === index}
+              selected={window.location.pathname === links[index] ? true : false}
               onClick={event => this.handleListItemClick(event, index)}>
               <img src={icons[index]} alt={item} className={classes.icons} />
               <Typography variant="body1">{item}</Typography>

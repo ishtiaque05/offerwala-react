@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 
 import { Typography, withStyles } from '@material-ui/core';
 
+
+const navigations = [
+  {route: '/', name: 'All Deals'}, 
+  {route: '/deals/online-deals', name: 'Online Deals'}, 
+  {route: '/deals/store-deals', name: 'Store Deals'}
+]
+
 const styles = theme => ({
   nav: {
     padding: theme.spacing.unit * 2.5,
@@ -37,72 +44,47 @@ const styles = theme => ({
 });
 
 class DesktopSubNav extends Component {
-  state = {
-    selectedIndex: 0
-  };
+  // state = {
+  //   selectedIndex: 0
+  // };
 
-  componentDidMount() {
-    switch(window.location.pathname) {
-      case "/deals/online-deals":
-        this.setState({ selectedIndex: 1 });
-        break;
-      case "/deals/store-deals":
-        this.setState({ selectedIndex: 2 });
-        break;
-      default: 
-        this.setState({ selectedIndex: 0 });
-    }
-  }
+  // componentDidMount() {
+  //   switch(window.location.pathname) {
+  //     case "/deals/online-deals":
+  //       this.setState({ selectedIndex: 1 });
+  //       break;
+  //     case "/deals/store-deals":
+  //       this.setState({ selectedIndex: 2 });
+  //       break;
+  //     default: 
+  //       this.setState({ selectedIndex: 0 });
+  //   }
+  // }
 
-  handleListItemClick = (event, index) => {
-    this.setState({ selectedIndex: index });
-  };
+  // handleListItemClick = (event, index) => {
+  //   this.setState({ selectedIndex: index });
+  // };
 
   render() {
     const { classes } = this.props;
     return (
       <nav className={classes.nav}>
         <ul className={classes.ul}>
-          <li className={classes.li}>
-            <Link
-              onClick={event => this.handleListItemClick(event, 0)}
-              className={
-                this.state.selectedIndex === 0 ? classes.active : classes.link
-              }
-              to="/">
-              <Typography variant="headline">All Deals</Typography>
-            </Link>
-          </li>
-          <li className={classes.li}>
-            <Link
-              onClick={event => this.handleListItemClick(event, 1)}
-              className={
-                this.state.selectedIndex === 1 ? classes.active : classes.link
-              }
-              to="/deals/online-deals">
-              <Typography variant="headline">Online deals</Typography>
-            </Link>
-          </li>
-          <li className={classes.li}>
-            <Link
-              onClick={event => this.handleListItemClick(event, 2)}
-              className={
-                this.state.selectedIndex === 2 ? classes.active : classes.link
-              }
-              to="/deals/store-deals">
-              <Typography variant="headline">Store deals</Typography>
-            </Link>
-          </li>
-          {/* <li className={classes.li}>
-        <Link
-        onClick={event => this.handleListItemClick(event, 3)}
-        className={
-        this.state.selectedIndex === 3 ? classes.active : classes.link
-        }
-        to="/coupon">
-        <Typography variant="headline">Coupons</Typography>
-        </Link>
-        </li> */}
+          {
+            navigations.map((navigation, i) => {
+              return (
+                <li className={classes.li} key={ i }>
+                <Link
+                  className={
+                    window.location.pathname === navigation.route ? classes.active : classes.link
+                  }
+                  to={ navigation.route }>
+                  <Typography variant="headline">{ navigation.name }</Typography>
+                </Link>
+              </li>
+              );
+            })
+          }
         </ul>
       </nav>
     );

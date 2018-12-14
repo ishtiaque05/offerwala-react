@@ -43,27 +43,27 @@ const SocialIcons = ({ classes }) =>
     <div className={ classes.root }>
         <Typography variant="h6" className={ classes.heading }>Follow Us</Typography>
         <div>
-            <a target="_blank" href="void()" className={ classes.anchor }>
+            <a target="_blank" rel="noopener noreferrer" href="void()" className={ classes.anchor }>
                 <Button className={ classes.button }>
                     <img width="35" src={ fabookIcon } alt="social icon"/>
                 </Button>
             </a>
-            <a target="_blank" href="void()" className={ classes.anchor }>
+            <a target="_blank" rel="noopener noreferrer" href="void()" className={ classes.anchor }>
                 <Button className={ classes.button }>
                     <img width="35" src={ instaIcon } alt="social icon"/>
                 </Button>
             </a>
-            <a target="_blank" href="void()" className={ classes.anchor }>
+            <a target="_blank" rel="noopener noreferrer" href="void()" className={ classes.anchor }>
                 <Button className={ classes.button }>
                     <img width="35" src={ twitterIcon } alt="social icon"/>
                 </Button>
             </a>
-            <a target="_blank" href="void()" className={ classes.anchor }>
+            <a target="_blank" rel="noopener noreferrer" href="void()" className={ classes.anchor }>
                 <Button className={ classes.button }>
                     <img width="35" src={ youtubeIcon } alt="social icon"/>
                 </Button>
             </a>
-            <a target="_blank" href="void()" className={ classes.anchor }>
+            <a target="_blank" rel="noopener noreferrer" href="void()" className={ classes.anchor }>
                 <Button className={ classes.button }>
                     <img width="35" src={ linkedinIcon } alt="social icon"/>
                 </Button>

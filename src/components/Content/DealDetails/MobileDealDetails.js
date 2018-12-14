@@ -160,6 +160,7 @@ class MobileDealDetails extends Component {
                     <a
                       className={classes.link}
                       href={deal.deal_link}
+                      rel="noopener noreferrer"
                       target="_blank">
                       Go to Deal
                     </a>
