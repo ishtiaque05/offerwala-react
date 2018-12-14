@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
@@ -11,6 +11,10 @@ import 'typeface-poppins';
 
 import Root from './Root';
 import App from './components/App';
+
+import AboutPage from './components/StaticPages/About';
+import FaqPage from './components/StaticPages/faq';
+import PrivacyPage from './components/StaticPages/Privacy';
 
 const theme = createMuiTheme({
   palette: {
@@ -40,7 +44,12 @@ render(
   <Root>
     <Router>
       <MuiThemeProvider theme={theme}>
-        <App />
+        <Switch>
+          <Route path="/about" component={ AboutPage } />
+          <Route path="/faq" component={ FaqPage } />
+          <Route path="/privacy" component={ PrivacyPage } />
+          <App />
+        </Switch>
       </MuiThemeProvider>
     </Router>
   </Root>,

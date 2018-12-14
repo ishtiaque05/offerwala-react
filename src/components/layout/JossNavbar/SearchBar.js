@@ -16,18 +16,6 @@ const styles = theme => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25)
     }
-    // marginRight: '45px'
-    // marginLeft: 0,
-    // width: '100%'
-    // [theme.breakpoints.up('xl')]: {
-    //   marginLeft: theme.spacing.unit * 42,
-    //   marginRight: theme.spacing.unit * 50,
-    //   width: 'auto'
-    // },
-    // [theme.breakpoints.down('xs')]: {
-    //   marginLeft: theme.spacing.unit * 2,
-    //   width: 'auto'
-    // }
   },
   searchIcon: {
     width: theme.spacing.unit * 6,
@@ -54,8 +42,9 @@ const styles = theme => ({
     borderRadius: theme.spacing.unit * 0.5,
     boxShadow: 'inset -2px 2px 4px #D4D4D4',
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 90,
-      height: theme.spacing.unit * 5.75
+      width: '-webkit-fill-available',
+      height: theme.spacing.unit * 5.75, 
+      maxWidth: '1000px'
     },
     [theme.breakpoints.down('sm')]: {
       width: '100%'

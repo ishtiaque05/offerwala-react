@@ -20,7 +20,7 @@ const Privacy = ({ classes }) =>
     <div className={ classes.root }>
         <Header />
         <main className={ classes.main }>
-            <h2>About Us</h2>
+            <h2>Privacy</h2>
             <div>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. In at iure perferendis. Quas, voluptatibus recusandae vel molestias earum commodi mollitia distinctio veritatis ipsa fugit necessitatibus odio modi! Quisquam, nemo necessitatibus.</p>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. In at iure perferendis. Quas, voluptatibus recusandae vel molestias earum commodi mollitia distinctio veritatis ipsa fugit necessitatibus odio modi! Quisquam, nemo necessitatibus.</p>

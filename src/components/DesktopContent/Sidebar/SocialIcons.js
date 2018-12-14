@@ -1,11 +1,17 @@
 import React from 'react';
-import 
-{
+import {
     Button, 
     Typography, 
-    withStyles
-} 
+    withStyles } 
 from '@material-ui/core';
+
+
+import fabookIcon from '../../../assets/svgs/facebook.svg';
+import twitterIcon from '../../../assets/svgs/twitter.svg';
+import linkedinIcon from '../../../assets/svgs/linkedin.svg';
+import youtubeIcon from '../../../assets/svgs/youtube.svg';
+import instaIcon from '../../../assets/svgs/insta.svg';
+
 
 const styles = theme => ({
     root: {
@@ -25,11 +31,11 @@ const styles = theme => ({
         margin: '0 15px 15px 0'
     }, 
     button: {
-        minWidth: '40px', 
-        height: '40px', 
-        width: '40px', 
+        minWidth: '35px', 
+        height: '35px', 
+        width: '35px', 
         borderRadius: '50%', 
-        border: '2px solid rgba(0, 0, 0, 1)'
+        padding: '0'
     }
 });
 
@@ -38,19 +44,29 @@ const SocialIcons = ({ classes }) =>
         <Typography variant="h6" className={ classes.heading }>Follow Us</Typography>
         <div>
             <a target="_blank" href="void()" className={ classes.anchor }>
-                <Button className={ classes.button }>f</Button>
+                <Button className={ classes.button }>
+                    <img width="35" src={ fabookIcon } alt="social icon"/>
+                </Button>
             </a>
             <a target="_blank" href="void()" className={ classes.anchor }>
-                <Button className={ classes.button }>f</Button>
+                <Button className={ classes.button }>
+                    <img width="35" src={ instaIcon } alt="social icon"/>
+                </Button>
             </a>
             <a target="_blank" href="void()" className={ classes.anchor }>
-                <Button className={ classes.button }>f</Button>
+                <Button className={ classes.button }>
+                    <img width="35" src={ twitterIcon } alt="social icon"/>
+                </Button>
             </a>
             <a target="_blank" href="void()" className={ classes.anchor }>
-                <Button className={ classes.button }>f</Button>
+                <Button className={ classes.button }>
+                    <img width="35" src={ youtubeIcon } alt="social icon"/>
+                </Button>
             </a>
             <a target="_blank" href="void()" className={ classes.anchor }>
-                <Button className={ classes.button }>f</Button>
+                <Button className={ classes.button }>
+                    <img width="35" src={ linkedinIcon } alt="social icon"/>
+                </Button>
             </a>
         </div>
     </div>

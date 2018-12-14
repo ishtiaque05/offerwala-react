@@ -41,6 +41,19 @@ class DesktopSubNav extends Component {
     selectedIndex: 0
   };
 
+  componentDidMount() {
+    switch(window.location.pathname) {
+      case "/deals/online-deals":
+        this.setState({ selectedIndex: 1 });
+        break;
+      case "/deals/store-deals":
+        this.setState({ selectedIndex: 2 });
+        break;
+      default: 
+        this.setState({ selectedIndex: 0 });
+    }
+  }
+
   handleListItemClick = (event, index) => {
     this.setState({ selectedIndex: index });
   };

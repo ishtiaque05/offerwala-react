@@ -45,7 +45,10 @@ const masonryOptions = {
 };
 
 class CategoryDealsPage extends Component {
-  // this.props.fetchDealsByCategory(categoryId[this.props.match.params.categoryName]);
+  constructor(props) {
+    super(props);
+    this.props.fetchDealsByCategory(categoryId[this.props.match.params.categoryName]);
+  }
   // componentDidMount() {
   //   console.log(this.props.match.params.categoryName);
   //   this.props.fetchDealsByCategory(
@@ -54,6 +57,7 @@ class CategoryDealsPage extends Component {
   // }
 
   renderDeals() {
+    console.log(this.props.deals);
     return this.props.deals.map((deal, index) => (
       <React.Fragment key={index}>
         <Deal deal={deal} />

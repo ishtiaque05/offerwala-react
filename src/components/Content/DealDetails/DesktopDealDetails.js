@@ -17,6 +17,7 @@ import {
 // import PhoneIcon from '@material-ui/icons/Phone';
 
 import DefaultImage from '../../../assets/images/default_deal.jpg';
+import planeIcon from '../../../assets/images/plane.png';
 
 const styles = theme => ({
   root: {
@@ -70,6 +71,8 @@ const styles = theme => ({
   },
   link: {
     color: '#fff',
+    display: 'flex', 
+    alignItems: 'center', 
     textDecoration: 'none',
     '&:active, &:focus': {
       color: '#fff'
@@ -113,7 +116,7 @@ class DesktopDealDetails extends Component {
               </div>
             </CardContent>
             <div className={classes.bottomArea}>
-              <CardContent style={{}}>
+              <CardContent>
                 <CardMedia
                   component="img"
                   alt={deal.title}
@@ -150,7 +153,8 @@ class DesktopDealDetails extends Component {
                       className={classes.link}
                       href={deal.deal_link}
                       target="_blank">
-                      Go to Deal
+                      <img width="15" style={{ marginRight: '5px' }} src={planeIcon} alt="Redirect icon"/>
+                      <span>Go to Deal</span>
                     </a>
                   </Button>
                 ) : (

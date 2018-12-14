@@ -54,7 +54,6 @@ const styles = theme => ({
 });
 
 const links = [
-  '',
   'category/beauty-fitness',
   'category/food-dining',
   'category/shopping',
@@ -66,7 +65,6 @@ const links = [
 ];
 
 const items = [
-  'Everything',
   'Beauty & Fitness',
   'Food & Dining',
   'Shopping',
@@ -78,7 +76,6 @@ const items = [
 ];
 
 const icons = [
-  EverythingIcon,
   BeautyAndFitnessIcon,
   FoodAndDiningIcon,
   ShoppingIcon,
@@ -91,7 +88,7 @@ const icons = [
 
 class Categories extends Component {
   state = {
-    selectedIndex: 0
+    selectedIndex: null
   };
 
   handleListItemClick = (event, index) => {
@@ -103,6 +100,10 @@ class Categories extends Component {
 
     return (
       <List component="nav" className={classes.list}>
+        <ListItem className={ classes.listItem }>
+          <img src={ EverythingIcon } alt="icon" className={classes.icons} />
+          <Typography variant="body1">Catetories</Typography>
+        </ListItem>
         {items.map((item, index) => (
           <Link
             to={`/${links[index]}`}

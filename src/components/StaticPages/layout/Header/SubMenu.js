@@ -1,10 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
+import { withStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu/Menu';
 import MenuItem from '@material-ui/core/MenuItem/MenuItem';
 
-const SubMenu = ({ anchorEl, onClose, open }) => (
+
+const styles = theme => ({
+  anchor: {
+    textDecoration: 'none', 
+    color: 'rgba(0, 0, 0, .8)'
+  }
+})
+
+
+
+const SubMenu = ({ anchorEl, onClose, open, classes }) => (
   <Menu
     anchorEl={anchorEl}
     anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -17,13 +29,16 @@ const SubMenu = ({ anchorEl, onClose, open }) => (
       }
     }}>
     <MenuItem onClick={onClose}>
-      <p>About Us</p>
+      <p>Become a Partner</p>
     </MenuItem>
     <MenuItem onClick={onClose}>
-      <p>Privacy & Terms</p>
+      <Link className={ classes.anchor } to="/about">About Us</Link>
     </MenuItem>
     <MenuItem onClick={onClose}>
-      <p>FAQ</p>
+      <Link className={ classes.anchor } to="/privacy">Privacy & Terms</Link>
+    </MenuItem>
+    <MenuItem onClick={onClose}>
+      <Link className={ classes.anchor } to="/faq">FAQ</Link>
     </MenuItem>
   </Menu>
 );
@@ -31,7 +46,8 @@ const SubMenu = ({ anchorEl, onClose, open }) => (
 SubMenu.propTypes = {
   anchorEl: PropTypes.object,
   onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired
+  open: PropTypes.bool.isRequired, 
+  classes: PropTypes.object.isRequired
 };
 
-export default SubMenu;
+export default withStyles(styles)(SubMenu);

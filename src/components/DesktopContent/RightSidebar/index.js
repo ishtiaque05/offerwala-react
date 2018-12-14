@@ -3,11 +3,14 @@ import {
   Button, withStyles, Typography
 } from '@material-ui/core';
 
-import PartnerIcon from "../../../assets/images/login_2.png";
+import PartnerIcon from "../../../assets/svgs/partner.svg";
 import SideBanner from '../../../assets/images/Side_Ad–17.png';
 
 const styles = theme => ({
   adRoot: {
+    marginRight: '15px'
+  }, 
+  image: {
     marginBottom: '20px'
   }, 
   button: {
@@ -16,8 +19,8 @@ const styles = theme => ({
 })
 
 const RightSidebar = ({ classes }) => (
-  <div>
-    <div className={ classes.adRoot }>
+  <div className={ classes.adRoot }>
+    <div className={ classes.image }>
       <img
         src={SideBanner}
         style={{ width: '200px' }}
@@ -28,7 +31,7 @@ const RightSidebar = ({ classes }) => (
     </div>
     <div>
       <Button className={ classes.button }>
-        <img src={ PartnerIcon } alt="Partner icon"/>
+        <img style={{ marginRight: '5px' }} width="30" src={ PartnerIcon } alt="Partner icon"/>
         <Typography variant="button">Become a partner</Typography>
       </Button>
     </div>

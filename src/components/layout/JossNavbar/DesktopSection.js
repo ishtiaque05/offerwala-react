@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { withStyles, Typography, Button } from '@material-ui/core';
 
-import LoginIcon from '../../../assets/images/login_1.png';
-import WalletIcon from '../../../assets/images/wallet.png';
+import LoginIcon from '../../../assets/svgs/user.svg';
+import WalletIcon from '../../../assets/svgs/wallet.svg';
 
 const styles = theme => ({
   sectionDesktop: {
@@ -17,7 +17,7 @@ const styles = theme => ({
     display: 'block'
   }, 
   icon: {
-    width: '30px'
+    width: '20px'
   }, 
   text: {
     fontSize: '10px'

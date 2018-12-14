@@ -6,6 +6,9 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import CategoryDialog from './CategoryDialog';
 
+import UserIcon from '../../../assets/svgs/user.svg';
+import WalletIcon from '../../../assets/svgs/wallet.svg';
+
 import EverythingIcon from '../../../assets/images/everything.png';
 import BeautyAndFitnessIcon from '../../../assets/images/beauty_and_fitness.png';
 import FoodAndDiningIcon from '../../../assets/images/food.png';
@@ -15,6 +18,8 @@ import MobileAndInternetIcon from '../../../assets/images/mobile_and_internet.pn
 import ElectronicsAndHomeIcon from '../../../assets/images/home_electronics.png';
 import HotelsAndTravelsIcon from '../../../assets/images/travels.png';
 import BanksAndCards from '../../../assets/images/cards_and_banks.png';
+
+
 
 const links = [
   '',
@@ -125,8 +130,8 @@ class BottomBar extends Component {
           label={items[selected]}
           icon={<img src={icons[selected]} alt={'category icon'} />}
         />
-        {/* <BottomNavigationAction label="Favorite" icon={<FavoriteIcon />} /> */}
-        {/* <BottomNavigationAction label="User" icon={<UserIcon />} /> */}
+        <BottomNavigationAction label="Favorite" icon={<img src={ WalletIcon } />} />
+        <BottomNavigationAction label="User" icon={<img src={ UserIcon } />} />
       </BottomNavigation>
     );
   };
