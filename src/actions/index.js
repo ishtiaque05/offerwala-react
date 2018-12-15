@@ -33,9 +33,12 @@ export const fetchAllDeals = (page = 1) => {
     dispatch(fetchDealsBegin());
 
     try {
-      const response = await axios.get('/api/v1/guests/deals/all_deals', {
-        params: { page }
-      });
+      const response = await axios.get(
+        'http://www.jossdeals.com/api/v1/guests/deals/all_deals',
+        {
+          params: { page }
+        }
+      );
       dispatch(fetchDealsSuccess(response.data.deals));
       return response.data.deals;
     } catch (error) {

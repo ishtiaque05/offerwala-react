@@ -1,13 +1,11 @@
 import React from 'react';
 import { hydrate } from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-
 import 'typeface-poppins';
-
-import Root from './Root';
 import App from './components/App';
+import configureStore from './store';
 
 const theme = createMuiTheme({
   palette: {
@@ -33,13 +31,18 @@ const theme = createMuiTheme({
   }
 });
 
+const preloadedState = window.__PRELOADED_STATE__;
+delete window.__PRELOADED_STATE__;
+
+const store = configureStore(preloadedState);
+
 hydrate(
-  <Router>
-    <Root>
+  <Provider store={store}>
+    <BrowserRouter>
       <MuiThemeProvider theme={theme}>
         <App />
       </MuiThemeProvider>
-    </Root>
-  </Router>,
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
