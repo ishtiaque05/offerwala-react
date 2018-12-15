@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Button, withStyles, Typography
 } from '@material-ui/core';
@@ -21,13 +22,15 @@ const styles = theme => ({
 const RightSidebar = ({ classes }) => (
   <div className={ classes.adRoot }>
     <div className={ classes.image }>
-      <img
-        src={SideBanner}
-        style={{ width: '200px' }}
-        data-lazy-type="image"
-        data-lazy-src="//via.placeholder.com/350x150"
-        alt="Placeholder"
-      />
+      <Link to='/category/hotels-travels'>
+        <img
+          src={SideBanner}
+          style={{ width: '200px' }}
+          data-lazy-type="image"
+          data-lazy-src="//via.placeholder.com/350x150"
+          alt="Placeholder"
+        />
+      </Link>
     </div>
     <div>
       <Button className={ classes.button }>
