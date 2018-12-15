@@ -43,31 +43,31 @@ const SocialIcons = ({ classes }) =>
     <div className={ classes.root }>
         <Typography variant="h6" className={ classes.heading }>Follow Us</Typography>
         <div>
-            <a target="_blank" rel="noopener noreferrer" href="void()" className={ classes.anchor }>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/JossDeals" className={ classes.anchor }>
                 <Button className={ classes.button }>
                     <img width="35" src={ fabookIcon } alt="social icon"/>
                 </Button>
             </a>
-            <a target="_blank" rel="noopener noreferrer" href="void()" className={ classes.anchor }>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/jossdeals" className={ classes.anchor }>
                 <Button className={ classes.button }>
                     <img width="35" src={ instaIcon } alt="social icon"/>
                 </Button>
             </a>
-            <a target="_blank" rel="noopener noreferrer" href="void()" className={ classes.anchor }>
+            <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/jossdealsbd" className={ classes.anchor }>
                 <Button className={ classes.button }>
                     <img width="35" src={ twitterIcon } alt="social icon"/>
                 </Button>
             </a>
-            <a target="_blank" rel="noopener noreferrer" href="void()" className={ classes.anchor }>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UCDm59it6UlSqWtZ3-2sj3Tw" className={ classes.anchor }>
                 <Button className={ classes.button }>
                     <img width="35" src={ youtubeIcon } alt="social icon"/>
                 </Button>
             </a>
-            <a target="_blank" rel="noopener noreferrer" href="void()" className={ classes.anchor }>
+            {/* <a target="_blank" rel="noopener noreferrer" href="void()" className={ classes.anchor }>
                 <Button className={ classes.button }>
                     <img width="35" src={ linkedinIcon } alt="social icon"/>
                 </Button>
-            </a>
+            </a> */}
         </div>
     </div>
 
