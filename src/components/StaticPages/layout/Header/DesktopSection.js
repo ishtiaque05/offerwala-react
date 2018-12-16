@@ -37,6 +37,9 @@ class DesktopSection extends Component {
       <div className={classes.sectionDesktop}>
         <ul className={ classes.ul }>
           <li  className={ classes.li }>
+              <NavLink activeStyle={{ color: '#C32323' }} className={ classes.a } to="/partner">Become a Partner</NavLink>
+          </li>
+          <li  className={ classes.li }>
               <NavLink activeStyle={{ color: '#C32323' }} className={ classes.a } to="/about">About Us</NavLink>
           </li>
           <li  className={ classes.li }>

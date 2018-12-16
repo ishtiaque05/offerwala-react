@@ -1,78 +1,18 @@
 import axios from 'axios';
 import {
-  FETCH_DEAL_WITH_ID_BEGIN,
-  FETCH_DEAL_WITH_ID_FAILURE,
-  FETCH_DEAL_WITH_ID_SUCCESS,
   FETCH_DEALS_BEGIN,
   FETCH_DEALS_FAILURE,
   FETCH_DEALS_SUCCESS,
+  FETCH_DEALS_BY_CATEGORY_BEGIN,
+  FETCH_DEALS_BY_CATEGORY_FAILURE,
+  FETCH_DEALS_BY_CATEGORY_SUCCESS,
   FETCH_SEARCHED_DEALS_BEGIN,
   FETCH_SEARCHED_DEALS_FAILURE,
   FETCH_SEARCHED_DEALS_SUCCESS,
-  FETCH_DEALS_BY_CATEGORY_BEGIN,
-  FETCH_DEALS_BY_CATEGORY_SUCCESS,
-  FETCH_DEALS_BY_CATEGORY_FAILURE
+  FETCH_DEALS_ENDING_BEGIN,
+  FETCH_DEALS_ENDING_SUCCESS,
+  FETCH_DEALS_ENDING_FAILURE
 } from './types';
-
-export const fetchAllDeals = (page = 1) => {
-  return async dispatch => {
-    dispatch(fetchDealsBegin());
-
-    try {
-      const response = await axios.get(
-        'http://www.jossdeals.com/api/v1/guests/deals/all_deals',
-        {
-          params: { page }
-        }
-      );
-      dispatch(fetchDealsSuccess(response.data.deals));
-      return response.data.deals;
-    } catch (error) {
-      dispatch(fetchDealsFailure(error));
-      throw new Error(error);
-    }
-  };
-};
-
-export const fetchOnlineDeals = (page = 1) => {
-  return async dispatch => {
-    dispatch(fetchDealsBegin());
-
-    try {
-      const response = await axios.get(
-        'http://www.jossdeals.com/api/v1/guests/deals/online_deals',
-        {
-          params: { page }
-        }
-      );
-      dispatch(fetchDealsSuccess(response.data.deals));
-      return response.data.deals;
-    } catch (error) {
-      dispatch(fetchDealsFailure(error));
-      throw new Error(error);
-    }
-  };
-};
-
-export const fetchStoreDeals = (page = 1) => {
-  return async dispatch => {
-    dispatch(fetchDealsBegin());
-
-    try {
-      const response = await axios.get(
-        'http://www.jossdeals.com/api/v1/guests/deals/store_deals',
-        {
-          params: { page }
-        }
-      );
-      dispatch(fetchDealsSuccess(response.data.deals));
-      return response.data.deals;
-    } catch (error) {
-      dispatch(fetchDealsFailure(error));
-      throw new Error(error);
-    }
-  };
-};
 
 export const fetchDealsBegin = () => ({
   type: FETCH_DEALS_BEGIN
@@ -88,51 +28,52 @@ export const fetchDealsFailure = error => ({
   payload: { error }
 });
 
-export const fetchDealWithId = id => {
+export const fetchAllDeals = (page = 1) => {
   return async dispatch => {
-    dispatch(fetchDealWithIdBegin());
+    dispatch(fetchDealsBegin());
 
     try {
-      const response = await axios.get(
-        `http://www.jossdeals.com/api/v1/guests/deals/${id}`
-      );
-      dispatch(fetchDealWithIdSuccess(response.data.deal));
-      return response.data.deal;
+      const response = await axios.get('/api/v1/guests/deals/all_deals', {
+        params: { page }
+      });
+      dispatch(fetchDealsSuccess(response.data.deals));
+      return response.data.deals;
     } catch (error) {
-      dispatch(fetchDealWithIdFailure(error));
+      dispatch(fetchDealsFailure(error));
       throw new Error(error);
     }
   };
 };
 
-export const fetchDealWithIdBegin = () => ({
-  type: FETCH_DEAL_WITH_ID_BEGIN
-});
-
-export const fetchDealWithIdSuccess = deal => ({
-  type: FETCH_DEAL_WITH_ID_SUCCESS,
-  payload: { deal }
-});
-
-export const fetchDealWithIdFailure = error => ({
-  type: FETCH_DEAL_WITH_ID_FAILURE,
-  payload: { error }
-});
-
-export const fetchSearchedDeals = tagName => {
+export const fetchOnlineDeals = (page = 1) => {
   return async dispatch => {
-    dispatch(fetchSearchedDealsBegin());
+    dispatch(fetchDealsBegin());
 
     try {
-      const response = await axios.get(
-        `http://www.jossdeals.com/api/v1/guests/search/deals?deal_name=${tagName}`
-      );
-      dispatch(fetchSearchedDealsSuccess(response.data.deals));
-      // console.log(response.data.deals);
+      const response = await axios.get('/api/v1/guests/deals/online_deals', {
+        params: { page }
+      });
+      dispatch(fetchDealsSuccess(response.data.deals));
       return response.data.deals;
     } catch (error) {
-      dispatch(fetchSearchedDealsFailure(error));
-      // console.log(error);
+      dispatch(fetchDealsFailure(error));
+      throw new Error(error);
+    }
+  };
+};
+
+export const fetchStoreDeals = (page = 1) => {
+  return async dispatch => {
+    dispatch(fetchDealsBegin());
+
+    try {
+      const response = await axios.get('/api/v1/guests/deals/store_deals', {
+        params: { page }
+      });
+      dispatch(fetchDealsSuccess(response.data.deals));
+      return response.data.deals;
+    } catch (error) {
+      dispatch(fetchDealsFailure(error));
       throw new Error(error);
     }
   };
@@ -152,6 +93,23 @@ export const fetchSearchedDealsFailure = error => ({
   payload: { error }
 });
 
+export const fetchSearchedDeals = tagName => {
+  return async dispatch => {
+    dispatch(fetchSearchedDealsBegin());
+
+    try {
+      const response = await axios.get('/api/v1/guests/search/deals', {
+        params: { deal_name: tagName }
+      });
+      dispatch(fetchSearchedDealsSuccess(response.data.deals));
+      return response.data.deals;
+    } catch (error) {
+      dispatch(fetchSearchedDealsFailure(error));
+      throw new Error(error);
+    }
+  };
+};
+
 export const fetchDealsByCategoryBegin = () => ({
   type: FETCH_DEALS_BY_CATEGORY_BEGIN
 });
@@ -166,18 +124,50 @@ export const fetchDealsByCategoryFailure = error => ({
   payload: { error }
 });
 
-export const fetchDealsByCategory = id => {
+export const fetchDealsByCategory = (id, page = 1) => {
   return async dispatch => {
     dispatch(fetchDealsByCategoryBegin());
 
     try {
       const response = await axios.get(
-        `http://www.jossdeals.com/api/v1/guests/search/${id}/category_search`
+        `/api/v1/guests/search/${id}/category_search`,
+        {
+          params: { page }
+        }
       );
       dispatch(fetchDealsByCategorySuccess(response.data.deals));
       return response.data.deals;
     } catch (error) {
       dispatch(fetchDealsByCategoryFailure(error));
+      throw new Error(error);
+    }
+  };
+};
+
+export const fetchDealsEndingBegin = () => ({
+  type: FETCH_DEALS_ENDING_BEGIN
+});
+
+export const fetchDealsEndingSuccess = deals => ({
+  type: FETCH_DEALS_ENDING_SUCCESS,
+  payload: { deals }
+});
+
+export const fetchDealsEndingFailure = error => ({
+  type: FETCH_DEALS_ENDING_FAILURE,
+  payload: { error }
+});
+
+export const fetchDealsEnding = endingTerm => {
+  return async dispatch => {
+    dispatch(fetchDealsEndingBegin());
+
+    try {
+      const response = await axios.get(`/api/v1/guests/search/${endingTerm}`);
+      dispatch(fetchDealsEndingSuccess(response.data.deals));
+      return response.data.deals;
+    } catch (error) {
+      dispatch(fetchDealsEndingFailure(error));
       throw new Error(error);
     }
   };

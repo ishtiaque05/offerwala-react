@@ -1,20 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 
-import 'typeface-open-sans';
-import 'typeface-raleway';
-import 'typeface-source-sans-pro';
+import AboutPage from './components/StaticPages/About';
+import PrivacyPage from './components/StaticPages/Privacy';
+import FaqPage from './components/StaticPages/faq';
+import PartnerPage from './components/StaticPages/Partner';
+import ErrorPage from './components/StaticPages/Error';
+
 import 'typeface-poppins';
 
 import Root from './Root';
 import App from './components/App';
-
-import AboutPage from './components/StaticPages/About';
-import FaqPage from './components/StaticPages/faq';
-import PrivacyPage from './components/StaticPages/Privacy';
 
 const theme = createMuiTheme({
   palette: {
@@ -48,7 +47,9 @@ render(
           <Route path="/about" component={ AboutPage } />
           <Route path="/faq" component={ FaqPage } />
           <Route path="/privacy" component={ PrivacyPage } />
+          <Route path="/partner" component={ PartnerPage } />
           <App />
+          <Route component={ ErrorPage } />
         </Switch>
       </MuiThemeProvider>
     </Router>
