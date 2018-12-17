@@ -45,8 +45,10 @@ class AllDeals extends Component {
       page: 0,
       deals: []
     };
+    console.log('Constructor');
   }
   componentDidMount() {
+    console.log('ComponentDidMount');
     this.props.fetchAllDeals();
   }
 
@@ -57,9 +59,11 @@ class AllDeals extends Component {
   };
 
   render = () => {
-    const { classes, error } = this.props;
+    const { classes, error, deals } = this.props;
+    console.log('state', this.state)
+    console.log('props', this.props)
 
-    const childElements = this.props.deals.map((deal, index) => (
+    const childElements = deals.map((deal, index) => (
       <React.Fragment key={index}>
         <Deal deal={deal} />
       </React.Fragment>

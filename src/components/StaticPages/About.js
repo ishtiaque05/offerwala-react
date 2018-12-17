@@ -4,23 +4,47 @@ import Header from './layout/Header/index';
 import { withStyles } from '@material-ui/core';
 
 
-const styles = {
+const styles = theme => ({
     root: {
         
     }, 
     main: {
         width: '70%', 
         margin: '0 auto 0', 
-        paddingTop: '120px'
+        paddingTop: '120px',
+        [theme.breakpoints.down('xs')]: {
+            width: '90%', 
+            paddingTop: '90px'
+        }
+    }, 
+    headingPrimary: {
+        fontSize: '50px', 
+        fontWeight: '500',
+        [theme.breakpoints.down('sm')]: {
+          fontSize: '25px'
+        },
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '20px'
+        }
+    }, 
+    headingSecondary: {
+        fontSize: '30px', 
+        fontWeight: '500',
+        [theme.breakpoints.down('sm')]: {
+          fontSize: '180px'
+        },
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '16px'
+        }
     }
-}
+});
 
 
 const About = ({ classes }) => 
     <div className={ classes.root }>
         <Header />
         <main className={ classes.main }>
-            <h2>About Us</h2>
+            <h2 className={ classes.headingPrimary }>About Us</h2>
             <div>
                 <p>Welcome to Jossdeals, the first user-bespoke, savings-inspired deal-listing platform.</p>
                 <p>Shoppers  today  are  faced  with  an  overwhelming  amount  of  information  and  choices.  Finding amazing products under specific budget is often too expensive, time-consuming and frustrating.</p>
@@ -32,7 +56,7 @@ const About = ({ classes }) =>
                 <p>Jossdeals.com  is  where  online  &store  deals,  offers,  coupons  are  enlisted  for  people  to  find  the best deals they deserve. We believe jossdeals.com is your perfect tech marketing partner who not only places your promotional activities online but also arrange a complete custom deals that will make your brand stand out from the rest.</p>
                 <p>We’ve  bolstered  our  digital  marketing  capabilities  while  expanding  our  team  with  seasoned professionals, influencers & creators to support our clients’ digital needs.</p>
             </div>
-            <h3>What we do</h3>
+            <h3 className={ classes.headingSecondary }>What we do</h3>
             <div>
                 <p>The most effective marketing happens over time when quality meets consistency. The following list describes each primary area of ongoing focus:</p>
                 <ul>
@@ -42,16 +66,16 @@ const About = ({ classes }) =>
                     <li>Create new channels for advertising</li>
                 </ul>
             </div>
-            <h3>How it works</h3>
+            <h3 className={ classes.headingSecondary }>How it works</h3>
             <div>
                 <p>We facilitate promotional campaigns of various products & services offered by sellers. We only ensure quality of deals that are exclusive to <a href="jossdeals.com">jossdeals.com</a></p>
             </div>
-            <h3>Contact Us</h3>
+            <h3 className={ classes.headingSecondary } style={{ color: '#C32323' }}>Contact Us</h3>
             <div>
-                <p>Customer care: <b>GetDeals@jossdeals.com</b></p>
-                <p>Marketing support: <b>Campaigns@jossdeals.com</b></p>
-                <p>Become an influencer/ work with us: <b>Careers@jossdeals.com</b></p>
-                <p>Call anytime: <b>+8801707597327</b></p>
+                <p><b>Customer care:</b>GetDeals@jossdeals.com</p>
+                <p><b>Marketing support:</b>Campaigns@jossdeals.com</p>
+                <p><b>Become an influencer/ work with us:</b>Careers@jossdeals.com</p>
+                <p><b>Call anytime:</b>+8801707597327</p>
             </div>
         </main>
     </div>
