@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import { withStyles } from '@material-ui/core/styles';
+import { IconButton } from '@material-ui/core';
+import { Menu } from '@material-ui/icons';
+
+import SubMenu from './SubMenu';
 
 const styles = theme => ({
   sectionMobile: {
@@ -30,22 +33,22 @@ class MobileSection extends Component {
 
   render() {
     const { classes } = this.props;
-    // const { mobileMoreAnchorEl } = this.state;
-    // const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    const { mobileMoreAnchorEl } = this.state;
+    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     return (
       <div className={classes.sectionMobile}>
-        {/*<IconButton*/}
-        {/*aria-haspopup="true"*/}
-        {/*onClick={this.handleMobileMenuOpen}*/}
-        {/*color="inherit">*/}
-        {/*<MenuIcon />*/}
-        {/*</IconButton>*/}
-        {/*<SubMenu*/}
-        {/*anchorEl={mobileMoreAnchorEl}*/}
-        {/*onClose={this.handleMobileMenuClose}*/}
-        {/*open={isMobileMenuOpen}*/}
-        {/*/>*/}
+        <IconButton
+          aria-haspopup="true"
+          onClick={this.handleMobileMenuOpen}
+          color="inherit">
+          <Menu />
+        </IconButton>
+        <SubMenu
+          anchorEl={mobileMoreAnchorEl}
+          onClose={this.handleMobileMenuClose}
+          open={isMobileMenuOpen}
+        />
       </div>
     );
   }
