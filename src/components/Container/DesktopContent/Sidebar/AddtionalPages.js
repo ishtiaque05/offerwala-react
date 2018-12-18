@@ -5,16 +5,18 @@ import { withStyles } from '@material-ui/core';
 
 const styles = {
   ul: {
-    listStyle: 'none'
+    listStyle: 'none',
+    paddingLeft: '35px'
   },
   li: {
-    display: 'inline-block'
+    display: 'inline-block',
+    paddingRight: '8px'
   },
   anchor: {
     fontSize: '16px',
     color: 'rgba(0, 0, 0, .4)',
     display: 'block',
-    padding: '3px 5px'
+    padding: '3px 0'
   }
 };
 
@@ -33,7 +35,7 @@ const AdditionalPages = ({ classes }) => (
       </li>
       <li className={classes.li}>
         <Link className={classes.anchor} to="/faq">
-          faq
+          FAQ
         </Link>
       </li>
     </ul>
