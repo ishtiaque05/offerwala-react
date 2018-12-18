@@ -71,7 +71,9 @@ const styles = {
   icon: {
     width: '20px !important',
     height: '20px',
-    margin: '3px 0'
+    margin: 0,
+    marginTop: '2.5px',
+    marginBottom: '2.5px'
   }
 };
 
