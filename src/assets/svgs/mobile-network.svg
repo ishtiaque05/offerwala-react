@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="51.587" height="51.587" viewBox="0 0 51.587 51.587">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f8f8f8;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+
+      .cls-3 {
+        fill: #000;
+      }
+    </style>
+  </defs>
+  <g id="Group_167" data-name="Group 167" transform="translate(0)">
+    <rect id="Rectangle_503" data-name="Rectangle 503" class="cls-1" width="51.587" height="51.587" transform="translate(0 0)"/>
+    <g id="Group_135" data-name="Group 135" transform="translate(12.233 10.681)">
+      <g id="mobile-phone-2" transform="translate(12.487 0)">
+        <path id="Path_270" data-name="Path 270" class="cls-2" d="M20.021,19.5H5.5" transform="translate(-5.5 0.376)"/>
+        <rect id="Rectangle_493" data-name="Rectangle 493" class="cls-2" width="14.521" height="25.691" rx="2" transform="translate(0 0)"/>
+      </g>
+      <g id="ic_wifi_48px" transform="translate(0 16.672)">
+        <path id="Path_268" data-name="Path 268" class="cls-3" d="M2,12.634l1.645,1.645a10.467,10.467,0,0,1,14.8,0l1.645-1.645A12.792,12.792,0,0,0,2,12.634Zm6.578,6.578,2.467,2.467,2.467-2.467A3.491,3.491,0,0,0,8.578,19.212ZM5.289,15.923l1.645,1.645a5.816,5.816,0,0,1,8.223,0L16.8,15.923A8.142,8.142,0,0,0,5.289,15.923Z" transform="translate(-2 -8.888)"/>
+      </g>
+    </g>
+  </g>
+</svg>

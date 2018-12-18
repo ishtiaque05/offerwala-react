@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="51.587" height="51.587" viewBox="0 0 51.587 51.587">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #f8f8f8;
+      }
+
+      .cls-2 {
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+
+      .cls-3 {
+        fill: #000;
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+
+      .cls-5 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_173" data-name="Group 173" transform="translate(0)">
+    <path id="Path_283" data-name="Path 283" class="cls-1" d="M0,0H51.587V51.587H0Z" transform="translate(0)"/>
+    <g id="Group_172" data-name="Group 172" transform="matrix(0.966, -0.259, 0.259, 0.966, 7.373, 19.707)">
+      <g id="Rectangle_519" data-name="Rectangle 519" class="cls-2">
+        <rect class="cls-4" width="31.933" height="21.156" rx="3"/>
+        <rect class="cls-5" x="1" y="1" width="29.933" height="19.156" rx="2"/>
+      </g>
+      <rect id="Rectangle_521" data-name="Rectangle 521" class="cls-3" width="29.975" height="3.568" transform="translate(1.025 5.312)"/>
+      <rect id="Rectangle_523" data-name="Rectangle 523" class="cls-3" width="7.43" height="1.556" rx="0.778" transform="translate(3.541 11.68)"/>
+      <rect id="Rectangle_525" data-name="Rectangle 525" class="cls-3" width="10.367" height="1.556" rx="0.778" transform="translate(3.541 15.596)"/>
+      <rect id="Rectangle_524" data-name="Rectangle 524" class="cls-3" width="7.43" height="1.556" rx="0.778" transform="translate(12.352 11.68)"/>
+      <rect id="Rectangle_526" data-name="Rectangle 526" class="cls-3" width="6.451" height="1.556" rx="0.778" transform="translate(21.164 11.68)"/>
+    </g>
+  </g>
+</svg>

@@ -9,15 +9,25 @@ import CategoryDialog from './CategoryDialog';
 import UserIcon from '../../../../assets/svgs/user.svg';
 import WalletIcon from '../../../../assets/svgs/wallet.svg';
 
-import EverythingIcon from '../../../../assets/images/everything.png';
-import BeautyAndFitnessIcon from '../../../../assets/images/beauty_and_fitness.png';
-import FoodAndDiningIcon from '../../../../assets/images/food.png';
-import ShoppingIcon from '../../../../assets/images/market.png';
-import ServicesIcon from '../../../../assets/images/services.png';
-import MobileAndInternetIcon from '../../../../assets/images/mobile_and_internet.png';
-import ElectronicsAndHomeIcon from '../../../../assets/images/home_electronics.png';
-import HotelsAndTravelsIcon from '../../../../assets/images/travels.png';
-import BanksAndCards from '../../../../assets/images/cards_and_banks.png';
+// import EverythingIcon from '../../../../assets/images/everything.png';
+// import BeautyAndFitnessIcon from '../../../../assets/images/beauty_and_fitness.png';
+// import FoodAndDiningIcon from '../../../../assets/images/food.png';
+// import ShoppingIcon from '../../../../assets/images/market.png';
+// import ServicesIcon from '../../../../assets/images/services.png';
+// import MobileAndInternetIcon from '../../../../assets/images/mobile_and_internet.png';
+// import ElectronicsAndHomeIcon from '../../../../assets/images/home_electronics.png';
+// import HotelsAndTravelsIcon from '../../../../assets/images/travels.png';
+// import BanksAndCards from '../../../../assets/images/cards_and_banks.png';
+
+import EverythingIcon from '../../../../assets/svgs/everything.svg';
+import BeautyAndFitnessIcon from '../../../../assets/svgs/beauty-fitness.svg';
+import FoodAndDiningIcon from '../../../../assets/svgs/food-dining.svg';
+import ShoppingIcon from '../../../../assets/svgs/shopping.svg';
+import ServicesIcon from '../../../../assets/svgs/services.svg';
+import MobileAndInternetIcon from '../../../../assets/svgs/mobile-network.svg';
+import ElectronicsAndHomeIcon from '../../../../assets/svgs/electronics.svg';
+import HotelsAndTravelsIcon from '../../../../assets/svgs/hotels-travels.svg';
+import BanksAndCards from '../../../../assets/svgs/banks-cards.svg';
 
 const links = [
   '/category/beauty-fitness',
@@ -73,7 +83,8 @@ const styles = {
     height: '20px',
     margin: 0,
     marginTop: '2.5px',
-    marginBottom: '2.5px'
+    marginBottom: '2.5px',
+    filter: 'invert(0.8)'
   }
 };
 

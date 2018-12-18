@@ -16,10 +16,12 @@ const styles = theme => ({
   },
   icon: {
     width: '20px',
-    height: '20px'
+    height: '20px',
+    filter: 'invert(.8)'
   },
   text: {
-    fontSize: '10px'
+    fontSize: '10px',
+    filter: 'invert(.6)'
   }
 });
 
