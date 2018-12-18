@@ -153,14 +153,10 @@ class BottomBar extends Component {
           }
         />
         <BottomNavigationAction
-          disableRipple={false}
-          disableTouchRipple={false}
           label="Coming Soon"
           icon={<img src={WalletIcon} alt="icon" className={classes.icon} />}
         />
         <BottomNavigationAction
-          disableRipple={false}
-          disableTouchRipple={false}
           label="Coming Soon"
           icon={<img src={UserIcon} alt="icon" className={classes.icon} />}
         />

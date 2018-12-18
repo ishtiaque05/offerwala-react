@@ -26,7 +26,9 @@ const SubMenu = ({ anchorEl, onClose, open, classes }) => (
       }
     }}>
     <MenuItem onClick={onClose}>
-      <p>Become a Partner</p>
+      <Link className={classes.anchor} to="/partner">
+        Become a Partner
+      </Link>
     </MenuItem>
     <MenuItem onClick={onClose}>
       <Link className={classes.anchor} to="/about">
