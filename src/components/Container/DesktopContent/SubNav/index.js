@@ -5,8 +5,8 @@ import { Typography, withStyles } from '@material-ui/core';
 
 const navigations = [
   { route: '/', name: 'All Deals' },
-  { route: '/deals/online-deals', name: 'Online Deals' },
-  { route: '/deals/store-deals', name: 'Store Deals' }
+  { route: '/online-deals', name: 'Online Deals' },
+  { route: '/store-deals', name: 'Store Deals' }
 ];
 
 const styles = theme => ({
