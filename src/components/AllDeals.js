@@ -56,6 +56,16 @@ class AllDeals extends Component {
     this.setState({ deals: [...this.state.deals, ...this.props.deals] });
   };
 
+  componentWillUpdate () {
+    console.log(this.state)
+  }  
+
+  componentDidUpdate() {
+    console.log(this.state)
+  }
+
+  
+
   render = () => {
     const { classes, error } = this.props;
 

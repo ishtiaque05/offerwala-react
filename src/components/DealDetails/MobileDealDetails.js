@@ -11,7 +11,6 @@ import {
   CardContent,
   Button,
   Chip,
-  IconButton,
   Slide,
   Toolbar,
   AppBar
@@ -99,9 +98,10 @@ class MobileDealDetails extends Component {
         <DialogContent>
           <AppBar>
             <Toolbar>
-              <IconButton color="inherit" onClick={onClose} aria-label="Close">
+              <Button color="inherit" onClick={onClose} aria-label="Close">
                 <NavigateBefore />
-              </IconButton>
+                Back
+              </Button>
             </Toolbar>
           </AppBar>
           <Card className={classes.card}>

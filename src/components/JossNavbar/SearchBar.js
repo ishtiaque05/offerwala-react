@@ -64,7 +64,7 @@ const styles = theme => ({
 class SearchBar extends Component {
   searchHandler = e => {
     if (e.key === 'Enter' && e.target.value) {
-      window.location.pathname = 'search/deals/' + e.target.value;
+      window.location.pathname = 'search/' + e.target.value;
     }
   };
 

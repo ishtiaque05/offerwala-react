@@ -85,7 +85,7 @@ const faq = ({ classes }) => (
           <p>
             We facilitate promotional campaigns of various products & services
             offered by sellers. We only ensure quality of deals that are
-            exclusive to <a href="https://www.jossdeals.com">jossdeals.com</a>.
+            exclusive to <a href="https://www.jossdeals.com/">jossdeals.com</a>.
           </p>
         </div>
       </section>

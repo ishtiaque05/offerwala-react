@@ -7,7 +7,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { Typography } from '@material-ui/core';
 
-import EverythingIcon from '../../../../assets/images/everything.png';
+// import EverythingIcon from '../../../../assets/images/everything.png';
 import BeautyAndFitnessIcon from '../../../../assets/images/beauty_and_fitness.png';
 import FoodAndDiningIcon from '../../../../assets/images/food.png';
 import ShoppingIcon from '../../../../assets/images/market.png';
@@ -55,6 +55,9 @@ const styles = theme => ({
     width: theme.spacing.unit * 4,
     height: theme.spacing.unit * 4,
     marginRight: theme.spacing.unit * 1.5
+  }, 
+  selectedListItem: {
+    borderRadius: '50px'
   }
 });
 
@@ -110,10 +113,7 @@ class Categories extends Component {
 
     return (
       <List component="nav" className={classes.list}>
-        <ListItem className={classes.listItem}>
-          <img src={EverythingIcon} alt="icon" className={classes.icons} />
-          <Typography variant="body1">Catetories</Typography>
-        </ListItem>
+        <h5 style={{ margin: "10px 30px", display: 'inline-block', textTransform: 'uppercase', color: 'rgba(0, 0, 0, .5)', borderBottom: '1px solid rgba(0, 0, 0, .3)' }}>Categories</h5>
         {items.map((item, index) => (
           <Link
             to={`${links[index]}`}

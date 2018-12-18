@@ -1,17 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 
-const navigations = [
-  { route: '/', name: 'All Deals' },
-  { route: '/online-deals', name: 'Online Deals' },
-  { route: '/store-deals', name: 'Store Deals' }
-];
+import { AppBar, withStyles } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -21,35 +13,57 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper
   },
   slider: {
-    marginTop: '75px'
+    marginTop: '70px'
+  }, 
+  tabActive: {
+    borderBottom: '2px solid #f00', 
+    color: '#f00'
+  }, 
+  ul: {
+    listStyle: 'none', 
+    margin: '0', 
+    padding: '0'
+  }, 
+  li: {
+    display: 'inline-block'
+  }, 
+  anchor: {
+    fontSize: '14px', 
+    padding: '13px 15px', 
+    display: 'block', 
+    textDecoration: 'none', 
+    textTransform: 'uppercase', 
+    color: 'rgba(0, 0, 0, 0.54)', 
+    fontWeight: '500'
   }
 });
 
-class SubNavbar extends Component {
-  render() {
-    const { classes } = this.props;
-    return (
-      <div className={classes.root}>
-        <AppBar className={classes.slider} position="fixed" color="default">
-          <Tabs
-            value={window.location.pathname}
-            indicatorColor="primary"
-            textColor="primary"
-            scrollable>
-            {navigations.map((navigation, i) => (
-              <Tab
-                key={i}
-                value={navigation.route}
-                label={navigation.name}
-                component={Link}
-                to={navigation.route}
-              />
-            ))}
-          </Tabs>
-        </AppBar>
-      </div>
-    );
-  }
+const SubNavbar = props => {
+  const { classes } = props;
+
+  return (
+    <div className={classes.root}>
+      <AppBar className={classes.slider} position="fixed" color="default">
+        <ul className={ classes.ul }>
+          <li className={ classes.li }>
+            <NavLink className={ classes.anchor } exact activeClassName={ classes.tabActive } to="/">
+              All Deals
+            </NavLink>
+          </li>
+          <li className={ classes.li }>
+            <NavLink className={ classes.anchor } activeClassName={ classes.tabActive } to="/online-deals">
+              Online Deals
+            </NavLink>
+          </li>
+          <li className={ classes.li }>
+            <NavLink className={ classes.anchor } activeClassName={ classes.tabActive } to="/store-deals">
+              Store Deals
+            </NavLink>
+          </li>
+        </ul>
+      </AppBar>
+    </div>
+  )
 }
 
 SubNavbar.propTypes = {
