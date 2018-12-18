@@ -22,6 +22,7 @@ const styles = theme => ({
     margin: theme.spacing.unit * 1.5,
     background: '#FFF',
     boxShadow: '0 4px 6px #D4D4D4',
+    // TODO: Fix media queries with functions
     ['@media (min-width: 1200px)']: {
       width: '30%',
       marginLeft: '1%',
