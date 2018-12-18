@@ -9,7 +9,7 @@ import image1 from './../../../../assets/images/Slider_1.png';
 import image2 from './../../../../assets/images/Slider_2.png';
 import image3 from './../../../../assets/images/Slider_3.png';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     width: '100%'
   },

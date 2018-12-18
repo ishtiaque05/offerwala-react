@@ -6,6 +6,9 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import CategoryDialog from './CategoryDialog';
 
+import UserIcon from '../../../../assets/svgs/user.svg';
+import WalletIcon from '../../../../assets/svgs/wallet.svg';
+
 import EverythingIcon from '../../../../assets/images/everything.png';
 import BeautyAndFitnessIcon from '../../../../assets/images/beauty_and_fitness.png';
 import FoodAndDiningIcon from '../../../../assets/images/food.png';
@@ -17,19 +20,17 @@ import HotelsAndTravelsIcon from '../../../../assets/images/travels.png';
 import BanksAndCards from '../../../../assets/images/cards_and_banks.png';
 
 const links = [
-  '',
-  'category/beauty-fitness',
-  'category/food-dining',
-  'category/shopping',
-  'category/services',
-  'category/mobile-internet',
-  'category/electronics-home',
-  'category/hotels-travels',
-  'category/banks-cards'
+  '/category/beauty-fitness',
+  '/category/food-dining',
+  '/category/shopping',
+  '/category/services',
+  '/category/mobile-internet',
+  '/category/electronics-home',
+  '/category/hotels-travels',
+  '/category/banks-cards'
 ];
 
 const items = [
-  'Everything',
   'Beauty & Fitness',
   'Food & Dining',
   'Shopping',
@@ -41,7 +42,6 @@ const items = [
 ];
 
 const icons = [
-  EverythingIcon,
   BeautyAndFitnessIcon,
   FoodAndDiningIcon,
   ShoppingIcon,
@@ -65,7 +65,7 @@ const styles = {
       fontSize: '14px'
     },
     '& img': {
-      width: '30px'
+      width: '20px'
     }
   }
 };
@@ -78,6 +78,11 @@ class BottomBar extends Component {
       open: false,
       selected: 0
     };
+  }
+
+  componentDidMount() {
+    const route = links.filter(link => link === window.location.pathname);
+    this.setState({ selected: links.indexOf(...route) });
   }
 
   dialogeClickHandler = () => {
@@ -122,11 +127,34 @@ class BottomBar extends Component {
         />
         <BottomNavigationAction
           onClick={this.dialogeClickHandler}
-          label={items[selected]}
-          icon={<img src={icons[selected]} alt={'category icon'} />}
+          label={
+            window.location.pathname === '/'
+              ? 'Categories'
+              : items[selected]
+              ? items[selected]
+              : 'Categories'
+          }
+          icon={
+            <img
+              src={
+                window.location.pathname === '/'
+                  ? EverythingIcon
+                  : icons[selected]
+                  ? icons[selected]
+                  : EverythingIcon
+              }
+              alt={'category icon'}
+            />
+          }
         />
-        {/* <BottomNavigationAction label="Favorite" icon={<FavoriteIcon />} /> */}
-        {/* <BottomNavigationAction label="User" icon={<UserIcon />} /> */}
+        <BottomNavigationAction
+          label="Favorite"
+          icon={<img src={WalletIcon} alt="icon" />}
+        />
+        <BottomNavigationAction
+          label="User"
+          icon={<img src={UserIcon} alt="icon" />}
+        />
       </BottomNavigation>
     );
   };

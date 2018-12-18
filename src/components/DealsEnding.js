@@ -8,10 +8,10 @@ import { withStyles } from '@material-ui/core';
 const styles = theme => ({
   root: {
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 150
+      width: '100%'
     },
     [theme.breakpoints.down('lg')]: {
-      width: theme.spacing.unit * 100
+      width: '100%'
     },
     [theme.breakpoints.down('sm')]: {
       width: '98%',

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, Typography, Button } from '@material-ui/core';
+import LoginIcon from '../../assets/svgs/user.svg';
+import WalletIcon from '../../assets/svgs/wallet.svg';
 
 const styles = theme => ({
   sectionDesktop: {
@@ -10,53 +11,38 @@ const styles = theme => ({
       display: 'flex'
     }
   },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
+  button: {
+    display: 'block'
+  },
+  icon: {
+    width: '20px'
+  },
+  text: {
+    fontSize: '10px'
   }
 });
 
 class DesktopSection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      anchorEl: null
-    };
-  }
-
-  handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleMenuClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
   render() {
-    // const { anchorEl } = this.state;
     const { classes } = this.props;
-    // const isMenuOpen = Boolean(anchorEl);
-
     return (
       <div className={classes.sectionDesktop}>
-        {/*<IconButton*/}
-        {/*aria-owns={isMenuOpen ? 'material-appbar' : undefined}*/}
-        {/*aria-haspopup="true"*/}
-        {/*onClick={this.handleProfileMenuOpen}*/}
-        {/*color="inherit">*/}
-        {/*<AccountCircle />*/}
-        {/*</IconButton>*/}
-        {/*<IconButton*/}
-        {/*className={classes.menuButton}*/}
-        {/*color="inherit"*/}
-        {/*aria-label="Open drawer">*/}
-        {/*<MenuIcon />*/}
-        {/*</IconButton>*/}
-        {/*<SubMenu*/}
-        {/*anchorEl={anchorEl}*/}
-        {/*onClose={this.handleMenuClose}*/}
-        {/*open={isMenuOpen}*/}
-        {/*/>*/}
+        <Button className={classes.button} disabled color="inherit">
+          <img className={classes.icon} src={WalletIcon} alt="Login icon" />
+          <Typography className={classes.text} variant="button">
+            Comming Soon
+          </Typography>
+        </Button>
+        <Button
+          className={classes.button}
+          color="inherit"
+          disabled
+          aria-label="Open drawer">
+          <img className={classes.icon} src={LoginIcon} alt="wallet icon" />
+          <Typography className={classes.text} variant="button">
+            Comming Soon
+          </Typography>
+        </Button>
       </div>
     );
   }

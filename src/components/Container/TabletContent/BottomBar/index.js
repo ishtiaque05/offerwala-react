@@ -6,6 +6,9 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import CategoryDialog from './CategoryDialog';
 
+import UserIcon from '../../../../assets/svgs/user.svg';
+import WalletIcon from '../../../../assets/svgs/wallet.svg';
+
 import EverythingIcon from '../../../../assets/images/everything.png';
 import BeautyAndFitnessIcon from '../../../../assets/images/beauty_and_fitness.png';
 import FoodAndDiningIcon from '../../../../assets/images/food.png';
@@ -17,19 +20,17 @@ import HotelsAndTravelsIcon from '../../../../assets/images/travels.png';
 import BanksAndCards from '../../../../assets/images/cards_and_banks.png';
 
 const links = [
-  '',
-  'category/beauty-fitness',
-  'category/food-dining',
-  'category/shopping',
-  'category/services',
-  'category/mobile-internet',
-  'category/electronics-home',
-  'category/hotels-travels',
-  'category/banks-cards'
+  '/category/beauty-fitness',
+  '/category/food-dining',
+  '/category/shopping',
+  '/category/services',
+  '/category/mobile-internet',
+  '/category/electronics-home',
+  '/category/hotels-travels',
+  '/category/banks-cards'
 ];
 
 const items = [
-  'Everything',
   'Beauty & Fitness',
   'Food & Dining',
   'Shopping',
@@ -41,7 +42,6 @@ const items = [
 ];
 
 const icons = [
-  EverythingIcon,
   BeautyAndFitnessIcon,
   FoodAndDiningIcon,
   ShoppingIcon,
@@ -80,7 +80,12 @@ class BottomBar extends Component {
     };
   }
 
-  dialogeClickHandler = () => {
+  componentDidMount() {
+    const route = links.filter(link => link === window.location.pathname);
+    this.setState({ selected: links.indexOf(...route) });
+  }
+
+  dialogClickHandler = () => {
     this.setState(prevState => ({
       open: !prevState.open
     }));
@@ -92,7 +97,7 @@ class BottomBar extends Component {
     });
   };
 
-  dialogeCloseHandler = () => {
+  dialogCloseHandler = () => {
     this.setState({
       open: false
     });
@@ -118,15 +123,38 @@ class BottomBar extends Component {
           links={links}
           open={open}
           click={this.listClickHandler}
-          close={this.dialogeCloseHandler}
+          close={this.dialogCloseHandler}
         />
         <BottomNavigationAction
-          onClick={this.dialogeClickHandler}
-          label={items[selected]}
-          icon={<img src={icons[selected]} alt={'category icon'} />}
+          onClick={this.dialogClickHandler}
+          label={
+            window.location.pathname === '/'
+              ? 'Categories'
+              : items[selected]
+              ? items[selected]
+              : 'Categories'
+          }
+          icon={
+            <img
+              src={
+                window.location.pathname === '/'
+                  ? EverythingIcon
+                  : icons[selected]
+                  ? icons[selected]
+                  : EverythingIcon
+              }
+              alt={'category icon'}
+            />
+          }
         />
-        {/* <BottomNavigationAction label="Favorite" icon={<FavoriteIcon />} /> */}
-        {/* <BottomNavigationAction label="User" icon={<UserIcon />} /> */}
+        <BottomNavigationAction
+          label="Favorite"
+          icon={<img src={WalletIcon} alt="icon" />}
+        />
+        <BottomNavigationAction
+          label="User"
+          icon={<img src={UserIcon} alt="icon" />}
+        />
       </BottomNavigation>
     );
   };

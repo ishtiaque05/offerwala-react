@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, NavLink } from 'react-router-dom';
-
 import {
   withStyles,
   Dialog,
@@ -15,6 +14,7 @@ import {
 } from '@material-ui/core';
 
 import DefaultImage from '../../assets/images/default_deal.jpg';
+import PlaneIcon from '../../assets/images/plane.png';
 
 const styles = theme => ({
   root: {
@@ -43,8 +43,6 @@ const styles = theme => ({
     float: 'left'
   },
   title: {
-    // marginBottom: theme.spacing.unit,
-    // color: '#461818',
     paddingTop: 0
   },
   date: {
@@ -69,6 +67,8 @@ const styles = theme => ({
   },
   link: {
     color: '#fff',
+    display: 'flex',
+    alignItems: 'center',
     textDecoration: 'none',
     '&:active, &:focus': {
       color: '#fff'
@@ -112,7 +112,7 @@ class DesktopDealDetails extends Component {
               </div>
             </CardContent>
             <div className={classes.bottomArea}>
-              <CardContent style={{}}>
+              <CardContent>
                 <CardMedia
                   component="img"
                   alt={deal.title}
@@ -134,16 +134,12 @@ class DesktopDealDetails extends Component {
                   {deal.tags.map((tag, index) => (
                     <NavLink
                       to={`/search/${tag.title}`}
-                      style={{ textDecoration: 'none' }}>
-                      <Chip
-                        key={index}
-                        className={classes.chip}
-                        label={tag.title}
-                      />
+                      style={{ textDecoration: 'none' }}
+                      key={index}>
+                      <Chip className={classes.chip} label={tag.title} />
                     </NavLink>
                   ))}
                 </div>
-
                 {deal.presence_types[0] === 'Online' ? (
                   <Button
                     variant="contained"
@@ -152,9 +148,15 @@ class DesktopDealDetails extends Component {
                     <a
                       className={classes.link}
                       href={deal.deal_link}
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      Go to Deal
+                      rel="noopener noreferrer"
+                      target="_blank">
+                      <img
+                        width="15"
+                        style={{ marginRight: '5px' }}
+                        src={PlaneIcon}
+                        alt="Redirect icon"
+                      />
+                      <span>Go to Deal</span>
                     </a>
                   </Button>
                 ) : (

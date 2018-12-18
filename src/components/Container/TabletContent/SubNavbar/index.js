@@ -7,6 +7,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
+const navigations = [
+  { route: '/', name: 'All Deals' },
+  { route: '/deals/online-deals', name: 'Online Deals' },
+  { route: '/deals/store-deals', name: 'Store Deals' }
+];
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -20,36 +26,25 @@ const styles = theme => ({
 });
 
 class SubNavbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: 0 };
-  }
-
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
-
   render() {
     const { classes } = this.props;
-    const { value } = this.state;
-
     return (
       <div className={classes.root}>
         <AppBar className={classes.slider} position="fixed" color="default">
           <Tabs
-            value={value}
-            onChange={this.handleChange}
+            value={window.location.pathname}
             indicatorColor="primary"
             textColor="primary"
             scrollable>
-            <Tab label="All Deals" component={Link} to="/" />
-            <Tab
-              label="Online Deals"
-              component={Link}
-              to="/deals/online-deals"
-            />
-            <Tab label="Store Deals" component={Link} to="/deals/store-deals" />
-            {/* <Tab label="Coupons" /> */}
+            {navigations.map((navigation, i) => (
+              <Tab
+                key={i}
+                value={navigation.route}
+                label={navigation.name}
+                component={Link}
+                to={navigation.route}
+              />
+            ))}
           </Tabs>
         </AppBar>
       </div>

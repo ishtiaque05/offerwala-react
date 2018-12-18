@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import AllDeals from './components/AllDeals';
 import OnlineDeals from './components/OnlineDeals';
 import StoreDeals from './components/StoreDeals';
@@ -14,7 +13,6 @@ const Routes = () => (
     <Route exact path="/online-deals" component={OnlineDeals} />
     <Route exact path="/store-deals" component={StoreDeals} />
     <Route exact path="/deals/:dealsEnding" component={DealsEnding} />
-    />
     <Route exact path="/about" />
     <Route exact path="/faq" />
     <Route exact path="/privacy" />

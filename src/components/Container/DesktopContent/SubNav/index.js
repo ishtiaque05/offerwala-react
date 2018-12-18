@@ -3,6 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 import { Typography, withStyles } from '@material-ui/core';
 
+const navigations = [
+  { route: '/', name: 'All Deals' },
+  { route: '/deals/online-deals', name: 'Online Deals' },
+  { route: '/deals/store-deals', name: 'Store Deals' }
+];
+
 const styles = theme => ({
   nav: {
     padding: theme.spacing.unit * 2.5,
@@ -35,56 +41,37 @@ const styles = theme => ({
 });
 
 class DesktopSubNav extends Component {
-  state = {
-    selectedIndex: 0
-  };
-
-  handleListItemClick = (event, index) => {
-    this.setState({ selectedIndex: index });
-  };
-
   render() {
     const { classes } = this.props;
     return (
       <nav className={classes.nav}>
         <ul className={classes.ul}>
-          <li className={classes.li}>
-            <NavLink
-              to="/"
-              exact
-              activeClassName={classes.active}
-              className={classes.link}>
-              <Typography variant="headline">All Deals</Typography>
-            </NavLink>
-          </li>
-          <li className={classes.li}>
-            <NavLink
-              to="/online-deals"
-              exact
-              activeClassName={classes.active}
-              className={classes.link}>
-              <Typography variant="headline">Online deals</Typography>
-            </NavLink>
-          </li>
-          <li className={classes.li}>
-            <NavLink
-              to="/store-deals"
-              exact
-              activeClassName={classes.active}
-              className={classes.link}>
-              <Typography variant="headline">Store deals</Typography>
-            </NavLink>
-          </li>
-          {/* <li className={classes.li}>
-        <NavLink
-        onClick={event => this.handleListItemClick(event, 3)}
-        className={
-        this.state.selectedIndex === 3 ? classes.active : classes.link
-        }
-        to="/coupon">
-        <Typography variant="headline">Coupons</Typography>
-        </NavLink>
-        </li> */}
+          {navigations.map((nav, index) => (
+            <li className={classes.li} key={index}>
+              <NavLink
+                to={nav.route}
+                exact
+                activeClassName={classes.active}
+                className={classes.link}>
+                <Typography variant="h5">{nav.name}</Typography>
+              </NavLink>
+            </li>
+          ))}
+          {/*{*/}
+          {/*navigations.map((navigation, i) => {*/}
+          {/*return (*/}
+          {/*<li className={classes.li} key={ i }>*/}
+          {/*<Link*/}
+          {/*className={*/}
+          {/*window.location.pathname === navigation.route ? classes.active : classes.link*/}
+          {/*}*/}
+          {/*to={ navigation.route }>*/}
+          {/*<Typography variant="headline">{ navigation.name }</Typography>*/}
+          {/*</Link>*/}
+          {/*</li>*/}
+          {/*);*/}
+          {/*})*/}
+          {/*}*/}
         </ul>
       </nav>
     );

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
-
 import SearchIcon from '../../assets/images/search.png';
 
 const styles = theme => ({
@@ -15,13 +13,7 @@ const styles = theme => ({
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25)
-    },
-    marginRight: '45px'
-  },
-  wrapper: {
-    display: 'table',
-    justifyContent: 'center',
-    margin: '0 auto'
+    }
   },
   searchIcon: {
     width: theme.spacing.unit * 6,
@@ -48,8 +40,9 @@ const styles = theme => ({
     borderRadius: theme.spacing.unit * 0.5,
     boxShadow: 'inset -2px 2px 4px #D4D4D4',
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 90,
-      height: theme.spacing.unit * 5.75
+      width: '-webkit-fill-available',
+      height: theme.spacing.unit * 5.75,
+      maxWidth: '1000px'
     },
     [theme.breakpoints.down('sm')]: {
       width: '100%'
@@ -71,7 +64,7 @@ const styles = theme => ({
 class SearchBar extends Component {
   searchHandler = e => {
     if (e.key === 'Enter' && e.target.value) {
-      window.location.pathname = 'search/' + e.target.value;
+      window.location.pathname = 'search/deals/' + e.target.value;
     }
   };
 

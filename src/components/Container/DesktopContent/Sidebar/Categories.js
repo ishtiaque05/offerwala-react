@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -42,7 +42,9 @@ const styles = theme => ({
   },
   listItem: {
     borderRadius: theme.spacing.unit * 6,
-    '&:active': { backgroundColor: '#E5E5E5' },
+    '&:active': {
+      backgroundColor: '#E5E5E5'
+    },
     '&:hover': {
       '& p': {
         fontWeight: 'bold'
@@ -57,19 +59,17 @@ const styles = theme => ({
 });
 
 const links = [
-  '',
-  'category/beauty-fitness',
-  'category/food-dining',
-  'category/shopping',
-  'category/services',
-  'category/mobile-internet',
-  'category/electronics-home',
-  'category/hotels-travels',
-  'category/banks-cards'
+  '/category/beauty-fitness',
+  '/category/food-dining',
+  '/category/shopping',
+  '/category/services',
+  '/category/mobile-internet',
+  '/category/electronics-home',
+  '/category/hotels-travels',
+  '/category/banks-cards'
 ];
 
 const items = [
-  'Everything',
   'Beauty & Fitness',
   'Food & Dining',
   'Shopping',
@@ -81,7 +81,6 @@ const items = [
 ];
 
 const icons = [
-  EverythingIcon,
   BeautyAndFitnessIcon,
   FoodAndDiningIcon,
   ShoppingIcon,
@@ -94,8 +93,13 @@ const icons = [
 
 class Categories extends Component {
   state = {
-    selectedIndex: 0
+    selectedIndex: null
   };
+
+  componentDidMount() {
+    const route = links.filter(link => link === window.location.pathname);
+    this.setState({ selectedIndex: links.indexOf(...route) });
+  }
 
   handleListItemClick = (event, index) => {
     this.setState({ selectedIndex: index });
@@ -106,18 +110,29 @@ class Categories extends Component {
 
     return (
       <List component="nav" className={classes.list}>
+        <ListItem className={classes.listItem}>
+          <img src={EverythingIcon} alt="icon" className={classes.icons} />
+          <Typography variant="body1">Catetories</Typography>
+        </ListItem>
         {items.map((item, index) => (
-          <NavLink
-            to={`/${links[index]}`}
-            exact
+          <Link
+            to={`${links[index]}`}
             key={index}
-            className={classes.link}
-            activeClassName={classes.activeLink}>
-            <ListItem button className={classes.listItem}>
+            style={{ textDecoration: 'none' }}>
+            <ListItem
+              button
+              className={
+                window.location.pathname === links[index]
+                  ? classes.selectedListItem
+                  : classes.listItem
+              }
+              key={index}
+              selected={window.location.pathname === links[index]}
+              onClick={event => this.handleListItemClick(event, index)}>
               <img src={icons[index]} alt={item} className={classes.icons} />
               <Typography variant="body1">{item}</Typography>
             </ListItem>
-          </NavLink>
+          </Link>
         ))}
       </List>
     );

@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
 import { withStyles } from '@material-ui/core/styles';
-// import List from '@material-ui/core/List';
-// import ListItem from '@material-ui/core/ListItem';
 import { Typography, ListItem, List, Dialog } from '@material-ui/core';
-// import Dialog from '@material-ui/core/Dialog';
 
 const styles = theme => ({
   root: {
@@ -38,9 +34,10 @@ const styles = theme => ({
   selectedListItem: {
     backgroundColor: theme.palette.secondary.light,
     color: theme.palette.text.primary,
+
     borderRadius: theme.spacing.unit * 6,
-    //   padding: '5px',
-    //   flexBasis: '45%',
+    paddingLeft: '10px',
+    paddingRight: '10px',
     '& p': {
       fontWeight: 'bold',
       fontSize: '13px'
@@ -48,10 +45,11 @@ const styles = theme => ({
   },
   listItem: {
     opacity: '.8',
+
     transition: 'fontWeight .6s ease',
-    //   padding: '5px',
-    //   margin: '1px 0',
-    //   flexBasis: '45%',
+    paddingLeft: '10px',
+    paddingRight: '10px',
+
     '&:hover': {
       borderRadius: theme.spacing.unit * 6,
       fontWeight: 'bold',
@@ -61,9 +59,9 @@ const styles = theme => ({
     }
   },
   icons: {
-    width: theme.spacing.unit * 4,
-    height: theme.spacing.unit * 4,
-    marginRight: theme.spacing.unit * 1.5
+    width: '20px',
+    height: 'auto',
+    marginRight: '5px'
   },
   appBar: {
     position: 'relative'
@@ -73,7 +71,9 @@ const styles = theme => ({
   },
   anchor: {
     flexBasis: '45%',
-    padding: '5px',
+
+    padding: '0',
+
     margin: '1px 0'
   }
 });
@@ -83,18 +83,21 @@ class CategoryDialog extends Component {
     selectedIndex: 0
   };
 
+  componentDidMount() {
+    const route = this.props.links.filter(
+      link => link === window.location.pathname
+    );
+    this.setState({ selectedIndex: this.props.links.indexOf(...route) });
+  }
+
   handleListItemClick = (event, index) => {
     this.setState({ selectedIndex: index });
     this.props.click(index);
     this.props.close();
   };
 
-  // open={this.state.open}
-  // onClose={this.handleClose}
-
   render() {
     const { classes, open, close, categories, icons, links } = this.props;
-
     return (
       <Dialog
         fullScreen
@@ -113,18 +116,18 @@ class CategoryDialog extends Component {
           <List component="nav" className={classes.list}>
             {categories.map((item, index) => (
               <Link
-                to={`/${links[index]}`}
-                key={index}
+                to={`${links[index]}`}
                 className={classes.anchor}
+                key={index}
                 style={{ textDecoration: 'none' }}>
                 <ListItem
                   button
                   className={
-                    this.state.selectedIndex === index
+                    window.location.pathname === links[index]
                       ? classes.selectedListItem
                       : classes.listItem
                   }
-                  selected={this.state.selectedIndex === index}
+                  selected={window.location.pathname === links[index]}
                   onClick={event => this.handleListItemClick(event, index)}>
                   <img
                     src={icons[index]}
