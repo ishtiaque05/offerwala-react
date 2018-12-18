@@ -7,7 +7,6 @@ import icon1 from '../../assets/images/XMLID_15_.png';
 import icon2 from '../../assets/images/XMLID_31_.png';
 import icon3 from '../../assets/images/XMLID_47_.png';
 import icon4 from '../../assets/images/XMLID_63_.png';
-import groupImage from '../../assets/images/Group_842.png';
 
 const styles = theme => ({
   root: {},
@@ -97,7 +96,7 @@ const PartnerPage = ({ classes }) => (
                 margin: '40px auto 0'
               }}>
               <img src={icon2} alt="icon" />
-              <p>Uniquly designed for custommer acquisition/loyality group</p>
+              <p>Uniquely designed for customer acquisition/loyalty group</p>
             </div>
           </Grid>
         </Grid>
