@@ -27,7 +27,7 @@ const styles = theme => ({
       marginLeft: '1%',
       marginRight: '1%'
     },
-    ['@media (min-width: 1440px)']: {
+    ['@media (min-width: 1520px)']: {
       width: '23%',
       marginLeft: '1%',
       marginRight: '1%'
