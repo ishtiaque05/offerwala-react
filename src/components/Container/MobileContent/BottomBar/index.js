@@ -83,8 +83,13 @@ const styles = {
     height: '20px',
     margin: 0,
     marginTop: '2.5px',
-    marginBottom: '2.5px',
-    filter: 'invert(0.8)'
+    marginBottom: '2.5px'
+  },
+  action: {
+    '& span': {
+      filter: 'invert(0.9)',
+      color: '#f8f8f8'
+    }
   }
 };
 
@@ -166,10 +171,12 @@ class BottomBar extends Component {
           }
         />
         <BottomNavigationAction
+          className={classes.action}
           label="Coming Soon"
           icon={<img src={WalletIcon} alt="icon" className={classes.icon} />}
         />
         <BottomNavigationAction
+          className={classes.action}
           label="Coming Soon"
           icon={<img src={UserIcon} alt="icon" className={classes.icon} />}
         />
