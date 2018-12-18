@@ -31,15 +31,17 @@ const RightSidebar = ({ classes }) => (
       </Link>
     </div>
     <div>
-      <Button className={classes.button}>
-        <img
-          style={{ marginRight: '5px' }}
-          width="30"
-          src={PartnerIcon}
-          alt="Partner icon"
-        />
-        <Typography variant="button">Become a partner</Typography>
-      </Button>
+      <Link to="/partner" style={{ textDecoration: 'none' }}>
+        <Button className={classes.button}>
+          <img
+            style={{ marginRight: '5px' }}
+            width="30"
+            src={PartnerIcon}
+            alt="Partner icon"
+          />
+          <Typography variant="button">Become a partner</Typography>
+        </Button>
+      </Link>
     </div>
   </div>
 );

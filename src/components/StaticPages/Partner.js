@@ -59,6 +59,12 @@ const styles = theme => ({
     fontSize: '20px',
     fontWeight: '500',
     color: '#C32323'
+  },
+  // TODO: change name later
+  whyitworks: {
+    '& p': {
+      padding: '0 15px'
+    }
   }
 });
 
@@ -144,10 +150,7 @@ const PartnerPage = ({ classes }) => (
           Why it <span style={{ color: '#C32323' }}>Works</span>
         </h2>
         <div>
-          <div style={{ textAlign: 'center' }}>
-            <img style={{ maxWidth: '70%' }} src={groupImage} alt="Group" />
-          </div>
-          <Grid container justify="center">
+          <Grid container justify="center" className={classes.whyitworks}>
             <Grid style={{ textAlign: 'center' }} item md={4}>
               <h4 className={classes.headingTertiary}>70%</h4>
               <p>
