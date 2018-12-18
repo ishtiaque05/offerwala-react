@@ -65,8 +65,13 @@ const styles = {
       fontSize: '14px'
     },
     '& img': {
-      width: '20px'
+      width: '25px'
     }
+  },
+  icon: {
+    width: '20px !important',
+    height: '20px',
+    margin: '3px 0'
   }
 };
 
@@ -148,12 +153,16 @@ class BottomBar extends Component {
           }
         />
         <BottomNavigationAction
-          label="Favorite"
-          icon={<img src={WalletIcon} alt="icon" />}
+          disableRipple={false}
+          disableTouchRipple={false}
+          label="Coming Soon"
+          icon={<img src={WalletIcon} alt="icon" className={classes.icon} />}
         />
         <BottomNavigationAction
-          label="User"
-          icon={<img src={UserIcon} alt="icon" />}
+          disableRipple={false}
+          disableTouchRipple={false}
+          label="Coming Soon"
+          icon={<img src={UserIcon} alt="icon" className={classes.icon} />}
         />
       </BottomNavigation>
     );
