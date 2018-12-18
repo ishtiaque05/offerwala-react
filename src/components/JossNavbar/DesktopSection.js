@@ -15,7 +15,8 @@ const styles = theme => ({
     display: 'block'
   },
   icon: {
-    width: '20px'
+    width: '20px',
+    height: '20px'
   },
   text: {
     fontSize: '10px'
@@ -30,7 +31,7 @@ class DesktopSection extends Component {
         <Button className={classes.button} disabled color="inherit">
           <img className={classes.icon} src={WalletIcon} alt="Login icon" />
           <Typography className={classes.text} variant="button">
-            Comming Soon
+            Coming Soon
           </Typography>
         </Button>
         <Button
@@ -40,7 +41,7 @@ class DesktopSection extends Component {
           aria-label="Open drawer">
           <img className={classes.icon} src={LoginIcon} alt="wallet icon" />
           <Typography className={classes.text} variant="button">
-            Comming Soon
+            Coming Soon
           </Typography>
         </Button>
       </div>
