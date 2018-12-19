@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core';
 import { fetchDealsByCategory } from '../actions';
 import Deal from './Deal';
 import Masonry from 'react-masonry-component';
+import {Cube} from 'react-preloaders';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 const categoryId = {
@@ -48,10 +49,15 @@ const masonryOptions = {
 class CategoryDeals extends Component {
   state = {
     page: 0,
-    deals: []
+    deals: [], 
+    isLoading: true
   };
 
   componentDidMount() {
+    const self = this;
+    setTimeout(function() {
+      self.setState({ isLoading: false });
+    }, 2000);
     this.props.fetchDealsByCategory(
       categoryId[this.props.match.params.categoryName]
     );
@@ -93,6 +99,10 @@ class CategoryDeals extends Component {
         <Deal deal={deal} />
       </React.Fragment>
     ));
+    
+    if(this.state.isLoading) {
+      return <Cube />
+    }
 
     return (
       <div className={classes.root}>

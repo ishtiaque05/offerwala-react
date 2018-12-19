@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-component';
 import InfiniteScroll from 'react-infinite-scroll-component';
-
+import {Cube} from 'react-preloaders';
 import { Typography, withStyles } from '@material-ui/core';
 
 import { fetchAllDeals } from '../actions';
@@ -43,11 +44,26 @@ class AllDeals extends Component {
     super(props);
     this.state = {
       page: 0,
-      deals: []
+      deals: [], 
+      isLoading: true
     };
   }
   componentDidMount() {
+    const self = this;
+    setTimeout(function() {
+      self.setState({ isLoading: false });
+    }, 2000);
     this.props.fetchAllDeals();
+  }
+
+  componentWillUpdate(params) {
+    // console.log(this.props.match.path === params.match.path);
+    // if(this.props.match.path === params.match.path) {
+    //   this.setState({ isLoading: true });
+    // }
+    // setTimeout(() => {
+    //   this.setState({ isLoading: false });
+    // }, 2000);
   }
 
   fetchMoreData = () => {
@@ -58,6 +74,8 @@ class AllDeals extends Component {
 
   render = () => {
     const { classes, error } = this.props;
+
+    // console.log(history)
 
     const childElements = this.props.deals.map((deal, index) => (
       <React.Fragment key={index}>
@@ -77,6 +95,10 @@ class AllDeals extends Component {
           <Typography variant="body1">Error! {error.message}</Typography>
         </div>
       );
+    }
+    
+    if(this.state.isLoading) {
+      return <Cube />
     }
 
     return (
@@ -116,4 +138,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { fetchAllDeals }
-)(withStyles(styles)(AllDeals));
+)(withStyles(styles)(withRouter(AllDeals)));
