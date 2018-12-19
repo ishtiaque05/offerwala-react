@@ -9,15 +9,15 @@ import CategoryDialog from './CategoryDialog';
 import UserIcon from '../../../../assets/svgs/user.svg';
 import WalletIcon from '../../../../assets/svgs/wallet.svg';
 
-import EverythingIcon from '../../../../assets/images/everything.png';
-import BeautyAndFitnessIcon from '../../../../assets/images/beauty_and_fitness.png';
-import FoodAndDiningIcon from '../../../../assets/images/food.png';
-import ShoppingIcon from '../../../../assets/images/market.png';
-import ServicesIcon from '../../../../assets/images/services.png';
-import MobileAndInternetIcon from '../../../../assets/images/mobile_and_internet.png';
-import ElectronicsAndHomeIcon from '../../../../assets/images/home_electronics.png';
-import HotelsAndTravelsIcon from '../../../../assets/images/travels.png';
-import BanksAndCards from '../../../../assets/images/cards_and_banks.png';
+import EverythingIcon from '../../../../assets/svgs/everything.svg';
+import BeautyAndFitnessIcon from '../../../../assets/svgs/beauty-fitness.svg';
+import FoodAndDiningIcon from '../../../../assets/svgs/food-dining.svg';
+import ShoppingIcon from '../../../../assets/svgs/shopping.svg';
+import ServicesIcon from '../../../../assets/svgs/services.svg';
+import MobileAndInternetIcon from '../../../../assets/svgs/mobile-network.svg';
+import ElectronicsAndHomeIcon from '../../../../assets/svgs/electronics.svg';
+import HotelsAndTravelsIcon from '../../../../assets/svgs/hotels-travels.svg';
+import BanksAndCards from '../../../../assets/svgs/banks-cards.svg';
 
 const links = [
   '/category/beauty-fitness',
@@ -65,7 +65,26 @@ const styles = {
       fontSize: '14px'
     },
     '& img': {
-      width: '30px'
+      width: '25px'
+    }
+  },
+  icon: {
+    width: '20px !important',
+    height: '20px',
+    margin: 0,
+    marginTop: '2.5px',
+    marginBottom: '2.5px'
+  },
+  action: {
+    '& span': {
+      filter: 'invert(0.9)',
+      color: '#f8f8f8', 
+      fontSize: '10px'
+    }
+  }, 
+  nav: {
+    '& span': {
+      fontSize: '10px'
     }
   }
 };
@@ -85,7 +104,7 @@ class BottomBar extends Component {
     this.setState({ selected: links.indexOf(...route) });
   }
 
-  dialogClickHandler = () => {
+  dialogeClickHandler = () => {
     this.setState(prevState => ({
       open: !prevState.open
     }));
@@ -97,7 +116,7 @@ class BottomBar extends Component {
     });
   };
 
-  dialogCloseHandler = () => {
+  dialogeCloseHandler = () => {
     this.setState({
       open: false
     });
@@ -123,37 +142,23 @@ class BottomBar extends Component {
           links={links}
           open={open}
           click={this.listClickHandler}
-          close={this.dialogCloseHandler}
+          close={this.dialogeCloseHandler}
         />
         <BottomNavigationAction
-          onClick={this.dialogClickHandler}
-          label={
-            window.location.pathname === '/'
-              ? 'Categories'
-              : items[selected]
-              ? items[selected]
-              : 'Categories'
-          }
-          icon={
-            <img
-              src={
-                window.location.pathname === '/'
-                  ? EverythingIcon
-                  : icons[selected]
-                  ? icons[selected]
-                  : EverythingIcon
-              }
-              alt={'category icon'}
-            />
-          }
+          className={ classes.nav }
+          onClick={this.dialogeClickHandler}
+          label={ window.location.pathname === links[selected] ? items[selected] : 'Categories'}
+          icon={<img src={ window.location.pathname === links[selected] ? icons[selected] : EverythingIcon } alt={'category icon'} />}
         />
         <BottomNavigationAction
-          label="Favorite"
-          icon={<img src={WalletIcon} alt="icon" />}
+          className={classes.action}
+          label="Coming Soon"
+          icon={<img src={WalletIcon} alt="icon" className={classes.icon} />}
         />
         <BottomNavigationAction
-          label="User"
-          icon={<img src={UserIcon} alt="icon" />}
+          className={classes.action}
+          label="Coming Soon"
+          icon={<img src={UserIcon} alt="icon" className={classes.icon} />}
         />
       </BottomNavigation>
     );

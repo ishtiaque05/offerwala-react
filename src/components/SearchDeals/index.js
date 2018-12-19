@@ -59,7 +59,6 @@ class SearchDeals extends Component {
     }
 
     if (!deals) {
-      console.log(deals);
       childElements = (
         <div className={classes.root}>
           <Typography variant="body1">No Deals Found</Typography>
@@ -68,7 +67,6 @@ class SearchDeals extends Component {
     }
 
     if (deals) {
-      console.log(deals);
       childElements = deals.map((deal, index) => (
         <React.Fragment key={index}>
           <Deal deal={deal} />

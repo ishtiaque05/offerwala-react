@@ -54,7 +54,7 @@ const Privacy = ({ classes }) => (
       <div>
         <p>
           By using{' '}
-          <a href="http://www.joosdeals.com">http://www.joosdeals.com</a> (the
+          <a href="https://www.jossdeals.com">http://www.jossdeals.com</a> (the
           "Website" or "jossdeals"), you ("you" or the "User")agree to the terms
           and conditions, without restrictions, that we ("jossdeals") have
           provided youherein for use of this website.

@@ -23,16 +23,19 @@ const styles = theme => ({
     background: '#FFF',
     boxShadow: '0 4px 6px #D4D4D4',
     // TODO: Fix media queries with functions
+    // eslint-disable-next-line
     ['@media (min-width: 1200px)']: {
       width: '30%',
       marginLeft: '1%',
       marginRight: '1%'
     },
+    // eslint-disable-next-line
     ['@media (min-width: 1520px)']: {
       width: '23%',
       marginLeft: '1%',
       marginRight: '1%'
     },
+    // eslint-disable-next-line
     ['@media (min-width: 1921px)']: {
       width: '18%',
       marginLeft: '1%',

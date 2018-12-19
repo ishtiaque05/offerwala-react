@@ -109,7 +109,7 @@ const About = ({ classes }) => (
         <p>
           We facilitate promotional campaigns of various products & services
           offered by sellers. We only ensure quality of deals that are exclusive
-          to <a href="jossdeals.com">jossdeals.com</a>
+          to <a href="https://www.jossdeals.com/">jossdeals.com</a>
         </p>
       </div>
       <h3 className={classes.headingSecondary} style={{ color: '#C32323' }}>
