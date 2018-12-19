@@ -25,7 +25,8 @@ const theme = createMuiTheme({
     background: '#F8F8F8'
   },
   typography: {
-    fontFamily: '"Poppins"'
+    fontFamily: '"Poppins"',
+    useNextVariants: true
   },
   breakpoints: {
     values: {

@@ -139,7 +139,7 @@ class Categories extends Component {
               selected={window.location.pathname === links[index]}
               onClick={event => this.handleListItemClick(event, index)}>
               <img src={icons[index]} alt={item} className={classes.icons} />
-              <Typography variant="body1">{item}</Typography>
+              <Typography variant="body2">{item}</Typography>
             </ListItem>
           </Link>
         ))}

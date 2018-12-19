@@ -31,7 +31,6 @@ const styles = theme => ({
 
 const DesktopContent = ({ classes, location }) => {
   let curLocation = location.pathname;
-  console.warn(curLocation);
   return (
     <div className={classes.root}>
       <Grid
