@@ -55,7 +55,7 @@ const styles = theme => ({
     width: theme.spacing.unit * 4,
     height: theme.spacing.unit * 4,
     marginRight: theme.spacing.unit * 1.5
-  }, 
+  },
   selectedListItem: {
     borderRadius: '50px'
   }
@@ -113,7 +113,16 @@ class Categories extends Component {
 
     return (
       <List component="nav" className={classes.list}>
-        <h5 style={{ margin: "10px 30px", display: 'inline-block', textTransform: 'uppercase', color: 'rgba(0, 0, 0, .5)', borderBottom: '1px solid rgba(0, 0, 0, .3)' }}>Categories</h5>
+        <h5
+          style={{
+            margin: '10px 30px',
+            display: 'inline-block',
+            textTransform: 'uppercase',
+            color: 'rgba(0, 0, 0, .5)',
+            borderBottom: '1px solid rgba(0, 0, 0, .3)'
+          }}>
+          Categories
+        </h5>
         {items.map((item, index) => (
           <Link
             to={`${links[index]}`}

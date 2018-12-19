@@ -78,10 +78,10 @@ const styles = {
   action: {
     '& span': {
       filter: 'invert(0.9)',
-      color: '#f8f8f8', 
+      color: '#f8f8f8',
       fontSize: '10px'
     }
-  }, 
+  },
   nav: {
     '& span': {
       fontSize: '10px'
@@ -145,10 +145,23 @@ class BottomBar extends Component {
           close={this.dialogeCloseHandler}
         />
         <BottomNavigationAction
-          className={ classes.nav }
+          className={classes.nav}
           onClick={this.dialogeClickHandler}
-          label={ window.location.pathname === links[selected] ? items[selected] : 'Categories'}
-          icon={<img src={ window.location.pathname === links[selected] ? icons[selected] : EverythingIcon } alt={'category icon'} />}
+          label={
+            window.location.pathname === links[selected]
+              ? items[selected]
+              : 'Categories'
+          }
+          icon={
+            <img
+              src={
+                window.location.pathname === links[selected]
+                  ? icons[selected]
+                  : EverythingIcon
+              }
+              alt={'category icon'}
+            />
+          }
         />
         <BottomNavigationAction
           className={classes.action}
