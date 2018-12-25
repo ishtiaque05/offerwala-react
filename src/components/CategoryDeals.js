@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core';
 import { fetchDealsByCategory } from '../actions';
 import Deal from './Deal';
 import Masonry from 'react-masonry-component';
-import {Circle} from 'react-preloaders';
+import { Circle } from 'react-preloaders';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 const categoryId = {
@@ -49,7 +49,7 @@ const masonryOptions = {
 class CategoryDeals extends Component {
   state = {
     page: 0,
-    deals: [], 
+    deals: [],
     isLoading: true
   };
 
@@ -99,9 +99,9 @@ class CategoryDeals extends Component {
         <Deal deal={deal} />
       </React.Fragment>
     ));
-    
-    if(this.state.isLoading) {
-      return <Circle />
+
+    if (this.state.isLoading) {
+      return <Circle />;
     }
 
     return (

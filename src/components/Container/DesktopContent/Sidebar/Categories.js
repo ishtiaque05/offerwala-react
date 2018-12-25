@@ -64,7 +64,7 @@ const styles = theme => ({
     color: 'rgba(0, 0, 0, .2)',
     display: 'inline-block',
     borderBottom: '1px solid rgba(0, 0, 0, .2)',
-    marginBottom: '20px', 
+    marginBottom: '20px',
     marginLeft: '25px'
   }
 });

@@ -6,7 +6,6 @@ import CarouselComp from './Carousel';
 
 import Routes from '../../../Routes';
 
-
 const TabletContent = () => (
   <div>
     <SubNavbar />

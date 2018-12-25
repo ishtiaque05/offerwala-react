@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-component';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {Circle} from 'react-preloaders';
+import { Circle } from 'react-preloaders';
 import { withStyles, Typography } from '@material-ui/core';
 
 import { fetchStoreDeals } from '../actions';
@@ -44,7 +44,7 @@ class StoreDeals extends Component {
     super(props);
     this.state = {
       page: 0,
-      deals: [], 
+      deals: [],
       isLoading: true
     };
   }
@@ -85,9 +85,9 @@ class StoreDeals extends Component {
         </div>
       );
     }
-    
-    if(this.state.isLoading) {
-      return <Circle />
+
+    if (this.state.isLoading) {
+      return <Circle />;
     }
 
     return (

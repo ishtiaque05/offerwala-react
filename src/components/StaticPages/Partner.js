@@ -185,7 +185,9 @@ const PartnerPage = ({ classes }) => (
             <li>Introduce influencers to brands</li>
             <li>Design campaigns that benefits both Influencers & the brand</li>
             <li>Product placement management</li>
-            <li>Platform where brands can directly find Influencers (Coming Soon)</li>
+            <li>
+              Platform where brands can directly find Influencers (Coming Soon)
+            </li>
           </ul>
         </div>
       </div>

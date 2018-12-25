@@ -15,9 +15,20 @@ import DefaultImage from '../assets/images/default_deal.jpg';
 import DesktopDealDetails from './DealDetails/DesktopDealDetails';
 import MobileDealDetails from './DealDetails/MobileDealDetails';
 
-
-
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+];
 
 const styles = theme => ({
   card: {
@@ -103,7 +114,11 @@ class Deal extends Component {
 
   render() {
     const { classes, deal } = this.props;
-    const YEAR = deal.end_date.split('-')[0].split('').slice(2).join('');
+    const YEAR = deal.end_date
+      .split('-')[0]
+      .split('')
+      .slice(2)
+      .join('');
     const MONTH = months[deal.end_date.split('-')[1] - 1];
     const DATE = deal.end_date.split('-')[2];
     // console.log(YEAR);

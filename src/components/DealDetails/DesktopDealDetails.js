@@ -16,7 +16,20 @@ import {
 import DefaultImage from '../../assets/images/default_deal.jpg';
 import PlaneIcon from '../../assets/images/plane.png';
 
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+];
 
 const styles = theme => ({
   root: {
@@ -81,7 +94,11 @@ const styles = theme => ({
 class DesktopDealDetails extends Component {
   render = () => {
     const { classes, deal, open, onClose } = this.props;
-    const YEAR = deal.end_date.split('-')[0].split('').slice(2).join('');
+    const YEAR = deal.end_date
+      .split('-')[0]
+      .split('')
+      .slice(2)
+      .join('');
     const MONTH = months[deal.end_date.split('-')[1] - 1];
     const DATE = deal.end_date.split('-')[2];
 

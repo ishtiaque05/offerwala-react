@@ -14,7 +14,6 @@ import 'typeface-poppins';
 import Root from './Root';
 import App from './components/App';
 
-
 const theme = createMuiTheme({
   palette: {
     primary: {
