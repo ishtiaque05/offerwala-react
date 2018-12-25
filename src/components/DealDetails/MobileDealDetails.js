@@ -24,6 +24,8 @@ function Transition(props) {
   return <Slide direction="left" {...props} />;
 }
 
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 const styles = theme => ({
   root: {
     padding: '0'
@@ -75,6 +77,9 @@ const styles = theme => ({
 class MobileDealDetails extends Component {
   render = () => {
     const { classes, deal, open, onClose } = this.props;
+    const YEAR = deal.end_date.split('-')[0].split('').slice(2).join('');
+    const MONTH = months[deal.end_date.split('-')[1] - 1];
+    const DATE = deal.end_date.split('-')[2];
 
     return (
       <Dialog
@@ -111,7 +116,7 @@ class MobileDealDetails extends Component {
                   {deal.title}
                 </Typography>
                 <Typography variant="h6" className={classes.date}>
-                  Ends: {deal.end_date}
+                  Ends: {`${DATE} ${MONTH}'${YEAR}`}
                 </Typography>
               </div>
               <div>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-component';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {Cube} from 'react-preloaders';
+import {Circle} from 'react-preloaders';
 import { withStyles, Typography } from '@material-ui/core';
 
 import { fetchStoreDeals } from '../actions';
@@ -53,7 +53,7 @@ class StoreDeals extends Component {
     const self = this;
     setTimeout(function() {
       self.setState({ isLoading: false });
-    }, 2000);
+    }, 2500);
     this.props.fetchStoreDeals();
   }
 
@@ -87,7 +87,7 @@ class StoreDeals extends Component {
     }
     
     if(this.state.isLoading) {
-      return <Cube />
+      return <Circle />
     }
 
     return (

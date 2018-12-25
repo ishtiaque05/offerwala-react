@@ -60,7 +60,7 @@ const DesktopContent = ({ classes, location }) => {
                   <FilterBar />
                 </div>
               </StickyBox>
-              <Grid item>
+              <Grid item style={{ position: 'relative' }}>
                 <Routes />
               </Grid>
             </Grid>

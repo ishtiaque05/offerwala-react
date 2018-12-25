@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-component';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {Cube} from 'react-preloaders';
+import {Circle} from 'react-preloaders';
 import { Typography, withStyles } from '@material-ui/core';
 
 import { fetchAllDeals } from '../actions';
@@ -52,30 +52,21 @@ class AllDeals extends Component {
     const self = this;
     setTimeout(function() {
       self.setState({ isLoading: false });
-    }, 2000);
+    }, 2500);
     this.props.fetchAllDeals();
-  }
-
-  componentWillUpdate(params) {
-    // console.log(this.props.match.path === params.match.path);
-    // if(this.props.match.path === params.match.path) {
-    //   this.setState({ isLoading: true });
-    // }
-    // setTimeout(() => {
-    //   this.setState({ isLoading: false });
-    // }, 2000);
   }
 
   fetchMoreData = () => {
     this.setState({ page: this.state.page + 1 });
     this.props.fetchAllDeals(this.state.page);
-    this.setState({ deals: [...this.state.deals, ...this.props.deals] });
+    this.setState({ deals: [...this.props.deals, ...this.state.deals] });
   };
 
   render = () => {
     const { classes, error } = this.props;
 
-    // console.log(history)
+    // console.log(this.state.deals);
+    // console.log(this.props.deals);
 
     const childElements = this.props.deals.map((deal, index) => (
       <React.Fragment key={index}>
@@ -98,7 +89,7 @@ class AllDeals extends Component {
     }
     
     if(this.state.isLoading) {
-      return <Cube />
+      return <Circle />
     }
 
     return (

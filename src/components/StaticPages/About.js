@@ -43,7 +43,7 @@ const About = ({ classes }) => (
       <h2 className={classes.headingPrimary}>About Us</h2>
       <div>
         <p>
-          Welcome to Jossdeals, the first user-bespoke, savings-inspired
+          Welcome to Jossdeals, the first <b>user</b>-bespoke, savings-inspired
           deal-listing platform.
         </p>
         <p>
