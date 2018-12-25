@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-component';
 import InfiniteScroll from 'react-infinite-scroll-component';
-
+import {Circle} from 'react-preloaders';
 import { Typography, withStyles } from '@material-ui/core';
 
 import { fetchAllDeals } from '../actions';
@@ -43,21 +44,29 @@ class AllDeals extends Component {
     super(props);
     this.state = {
       page: 0,
-      deals: []
+      deals: [], 
+      isLoading: true
     };
   }
   componentDidMount() {
+    const self = this;
+    setTimeout(function() {
+      self.setState({ isLoading: false });
+    }, 2500);
     this.props.fetchAllDeals();
   }
 
   fetchMoreData = () => {
     this.setState({ page: this.state.page + 1 });
     this.props.fetchAllDeals(this.state.page);
-    this.setState({ deals: [...this.state.deals, ...this.props.deals] });
+    this.setState({ deals: [...this.props.deals, ...this.state.deals] });
   };
 
   render = () => {
     const { classes, error } = this.props;
+
+    // console.log(this.state.deals);
+    // console.log(this.props.deals);
 
     const childElements = this.props.deals.map((deal, index) => (
       <React.Fragment key={index}>
@@ -77,6 +86,10 @@ class AllDeals extends Component {
           <Typography variant="body1">Error! {error.message}</Typography>
         </div>
       );
+    }
+    
+    if(this.state.isLoading) {
+      return <Circle />
     }
 
     return (
@@ -116,4 +129,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { fetchAllDeals }
-)(withStyles(styles)(AllDeals));
+)(withStyles(styles)(withRouter(AllDeals)));

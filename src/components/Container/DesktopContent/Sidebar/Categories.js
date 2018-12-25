@@ -58,6 +58,14 @@ const styles = theme => ({
   },
   selectedListItem: {
     borderRadius: '50px'
+  },
+  heading: {
+    fontSize: '25px',
+    color: 'rgba(0, 0, 0, .2)',
+    display: 'inline-block',
+    borderBottom: '1px solid rgba(0, 0, 0, .2)',
+    marginBottom: '20px', 
+    marginLeft: '25px'
   }
 });
 
@@ -113,16 +121,9 @@ class Categories extends Component {
 
     return (
       <List component="nav" className={classes.list}>
-        <h5
-          style={{
-            margin: '10px 30px',
-            display: 'inline-block',
-            textTransform: 'uppercase',
-            color: 'rgba(0, 0, 0, .5)',
-            borderBottom: '1px solid rgba(0, 0, 0, .3)'
-          }}>
+        <Typography variant="h6" className={classes.heading}>
           Categories
-        </h5>
+        </Typography>
         {items.map((item, index) => (
           <Link
             to={`${links[index]}`}

@@ -182,10 +182,10 @@ const PartnerPage = ({ classes }) => (
           <ul>
             <li>Content strategy consultation</li>
             <li>Hashtags/ keywords optimization for organic growth</li>
-            <li>Introduce you to brands</li>
-            <li>Design campaigns that benefits both you & the brand</li>
+            <li>Introduce influencers to brands</li>
+            <li>Design campaigns that benefits both Influencers & the brand</li>
             <li>Product placement management</li>
-            <li>latforms where brands can directly find you (Coming Soon)</li>
+            <li>Platform where brands can directly find Influencers (Coming Soon)</li>
           </ul>
         </div>
       </div>
