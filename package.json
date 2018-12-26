@@ -2,7 +2,6 @@
   "name": "jossdeals-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/build/static",
   "dependencies": {
     "@cra-express/core": "^4.2.0",
     "@material-ui/core": "^3.5.1",
