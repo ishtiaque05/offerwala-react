@@ -9,7 +9,7 @@ import CarouselComp from './Carousel';
 import Routes from '../../../Routes';
 
 import RightSidebar from './RightSidebar';
-import StickyBox from 'react-sticky-box/dist/esnext';
+import StickyBox from 'react-sticky-box';
 
 const styles = theme => ({
   root: {
