@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="51.587" height="51.587" viewBox="0 0 51.587 51.587">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        opacity: 0;
+      }
+
+      .cls-2 {
+        fill: #000;
+        stroke: #000;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_162" data-name="Group 162" transform="translate(0)">
+    <rect id="Rectangle_503" data-name="Rectangle 503" class="cls-1" width="51.587" height="51.587" transform="translate(0)"/>
+    <g id="Group_137" data-name="Group 137" transform="translate(11.2 11.225)">
+      <g id="Rectangle_494" data-name="Rectangle 494" class="cls-2" transform="translate(0 0)">
+        <rect class="cls-3" width="5.473" height="5.473"/>
+        <rect class="cls-4" x="0.5" y="0.5" width="4.473" height="4.473"/>
+      </g>
+      <g id="Rectangle_499" data-name="Rectangle 499" class="cls-2" transform="translate(0 11.857)">
+        <rect class="cls-3" width="5.473" height="5.473"/>
+        <rect class="cls-4" x="0.5" y="0.5" width="4.473" height="4.473"/>
+      </g>
+      <g id="Rectangle_502" data-name="Rectangle 502" class="cls-2" transform="translate(0 23.714)">
+        <rect class="cls-3" width="5.473" height="5.473"/>
+        <rect class="cls-4" x="0.5" y="0.5" width="4.473" height="4.473"/>
+      </g>
+      <g id="Rectangle_495" data-name="Rectangle 495" class="cls-2" transform="translate(11.857 0)">
+        <rect class="cls-3" width="5.473" height="5.473"/>
+        <rect class="cls-4" x="0.5" y="0.5" width="4.473" height="4.473"/>
+      </g>
+      <g id="Rectangle_498" data-name="Rectangle 498" class="cls-2" transform="translate(11.857 11.857)">
+        <rect class="cls-3" width="5.473" height="5.473"/>
+        <rect class="cls-4" x="0.5" y="0.5" width="4.473" height="4.473"/>
+      </g>
+      <g id="Rectangle_501" data-name="Rectangle 501" class="cls-2" transform="translate(11.857 23.714)">
+        <rect class="cls-3" width="5.473" height="5.473"/>
+        <rect class="cls-4" x="0.5" y="0.5" width="4.473" height="4.473"/>
+      </g>
+      <g id="Rectangle_496" data-name="Rectangle 496" class="cls-2" transform="translate(23.714 0)">
+        <rect class="cls-3" width="5.473" height="5.473"/>
+        <rect class="cls-4" x="0.5" y="0.5" width="4.473" height="4.473"/>
+      </g>
+      <g id="Rectangle_497" data-name="Rectangle 497" class="cls-2" transform="translate(23.714 11.857)">
+        <rect class="cls-3" width="5.473" height="5.473"/>
+        <rect class="cls-4" x="0.5" y="0.5" width="4.473" height="4.473"/>
+      </g>
+      <g id="Rectangle_500" data-name="Rectangle 500" class="cls-2" transform="translate(23.714 23.714)">
+        <rect class="cls-3" width="5.473" height="5.473"/>
+        <rect class="cls-4" x="0.5" y="0.5" width="4.473" height="4.473"/>
+      </g>
+    </g>
+  </g>
+</svg>
