@@ -4,7 +4,7 @@ import { withStyles, Grid } from '@material-ui/core';
 
 import Sidebar from './Sidebar';
 import SubNav from './SubNav';
-import FilterBar from './FilterBar';
+// import FilterBar from './FilterBar';
 import CarouselComp from './Carousel';
 import Routes from '../../../Routes';
 
@@ -39,11 +39,9 @@ const DesktopContent = ({ classes, location }) => {
         justify="space-between"
         wrap="nowrap"
         alignItems="flex-start">
-        {/*<Grid item alignItems="flex-start">*/}
         <StickyBox offsetTop={86} className={classes.leftSidebar}>
           <Sidebar />
         </StickyBox>
-        {/*</Grid>*/}
         <Grid item className={classes.mainContent}>
           <Grid item container direction="column" spacing={16}>
             <Grid item>
@@ -57,7 +55,7 @@ const DesktopContent = ({ classes, location }) => {
               <StickyBox offsetTop={80} style={{ zIndex: '1' }}>
                 <div style={{ paddingBottom: '4px', background: '#f8f8f8' }}>
                   <SubNav />
-                  <FilterBar />
+                  {/* <FilterBar /> */}
                 </div>
               </StickyBox>
               <Grid item style={{ position: 'relative' }}>
@@ -66,13 +64,9 @@ const DesktopContent = ({ classes, location }) => {
             </Grid>
           </Grid>
         </Grid>
-        {/* <Grid item spacing={16} className={ classes.rightSidebar }> */}
-        {/* <Grid item> */}
         <StickyBox offsetTop={90} className={classes.rightSidebar}>
           <RightSidebar />
         </StickyBox>
-        {/* </Grid> */}
-        {/* </Grid> */}
       </Grid>
     </div>
   );

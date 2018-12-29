@@ -77,8 +77,8 @@ const styles = {
   },
   action: {
     '& span': {
-      filter: 'invert(0.9)',
-      color: '#f8f8f8',
+      // filter: 'invert(0.9)',
+      color: 'rgba(0, 0, 0, 0.54)',
       fontSize: '10px'
     }
   },

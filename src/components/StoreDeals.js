@@ -44,35 +44,26 @@ class StoreDeals extends Component {
     super(props);
     this.state = {
       page: 0,
-      deals: [],
-      isLoading: true
+      deals: []
     };
   }
 
-  componentDidMount() {
-    const self = this;
-    setTimeout(function() {
-      self.setState({ isLoading: false });
-    }, 2500);
-    this.props.fetchStoreDeals();
+  async componentDidMount() {
+    const deals = await this.props.fetchStoreDeals();
+    this.setState({deals});
   }
 
-  fetchMoreData = () => {
+  fetchMoreData = async () => {
     this.setState({ page: this.state.page + 1 });
-    this.props.fetchStoreDeals(this.state.page);
-    this.setState({ deals: [...this.state.deals, ...this.props.deals] });
+    const deals = await this.props.fetchStoreDeals(this.state.page);
+    this.setState({ deals: [...this.state.deals, ...deals] });
   };
 
   render = () => {
     const { classes, error } = this.props;
+    console.log(this.state.deals);
 
-    const childElements = this.props.deals.map((deal, index) => (
-      <React.Fragment key={index}>
-        <Deal deal={deal} />
-      </React.Fragment>
-    ));
-
-    const moreElements = this.state.deals.map((deal, index) => (
+    const storeDeals = this.state.deals.map((deal, index) => (
       <React.Fragment key={index}>
         <Deal deal={deal} />
       </React.Fragment>
@@ -86,14 +77,14 @@ class StoreDeals extends Component {
       );
     }
 
-    if (this.state.isLoading) {
+    if (this.state.deals.length < 1) {
       return <Circle />;
     }
 
     return (
       <div className={classes.root}>
         <InfiniteScroll
-          dataLength={moreElements.length}
+          dataLength={storeDeals.length}
           next={this.fetchMoreData}
           hasMore={true}
           loader={<h4>Loading...</h4>}>
@@ -102,8 +93,7 @@ class StoreDeals extends Component {
             elementType={'div'}
             options={masonryOptions}
             updateOnEachImageLoad={false}>
-            {childElements}
-            {moreElements}
+            {storeDeals}
           </Masonry>
         </InfiniteScroll>
       </div>
