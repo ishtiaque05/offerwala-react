@@ -17,7 +17,7 @@ const styles = theme => ({
   icon: {
     width: '20px',
     height: '20px',
-    // filter: 'invert(.8)'
+    filter: 'invert(.8)'
   },
   text: {
     fontSize: '10px',
