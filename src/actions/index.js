@@ -126,7 +126,7 @@ export const fetchStorenameDeals = (storeId, page = 1) => {
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/v1/guests/shops/${storeId}/deals`,
+        `/api/v1/guests/shops/${storeId}/deals`,
         {
           params: { page }
         }
