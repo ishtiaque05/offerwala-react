@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchAllDeals } from '../actions';
 import DealList from './DealList';
@@ -48,4 +47,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { fetchAllDeals }
-)(withRouter(AllDeals));
+)(AllDeals);
