@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Masonry from 'react-masonry-component';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Circle } from 'react-preloaders';
 import { Typography, withStyles } from '@material-ui/core';
 
 import { fetchAllDeals } from '../actions';
+import DealList from './DealList';
 
 import Deal from './Deal';
 
@@ -27,18 +27,8 @@ const styles = theme => ({
       width: '96%',
       margin: '0 auto'
     }
-  },
-  masonry: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between'
   }
 });
-
-const masonryOptions = {
-  transitionDuration: 3
-};
-
 class AllDeals extends Component {
   constructor(props) {
     super(props);
@@ -49,9 +39,8 @@ class AllDeals extends Component {
   }
 
   async componentDidMount() {
-
     const deals = await this.props.fetchAllDeals();
-    this.setState({deals});
+    this.setState({ deals });
   }
 
   fetchMoreData = async () => {
@@ -90,13 +79,7 @@ class AllDeals extends Component {
           next={this.fetchMoreData}
           hasMore={true}
           loader={<h4>Loading...</h4>}>
-          <Masonry
-            className={classes.masonry}
-            elementType={'div'}
-            options={masonryOptions}
-            updateOnEachImageLoad={false}>
-            {allDeals}
-          </Masonry>
+          <DealList deals={allDeals} />
         </InfiniteScroll>
       </div>
     );
@@ -119,4 +102,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { fetchAllDeals }
-)(withStyles(styles)(withRouter(AllDeals)));
+)(withRouter(withStyles(styles)(AllDeals)));
