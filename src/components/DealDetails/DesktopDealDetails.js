@@ -81,6 +81,16 @@ class DesktopDealDetails extends Component {
     return moment(this.props.deal.end_date).format("D MMM'YY");
   }
 
+  onShopNameClick = () => {
+    localStorage.setItem('storeId', this.props.deal.shop.id);
+    let path = `/store/${this.props.deal.shop.title
+      .toLowerCase()
+      .replace('.', '')
+      .split(' ')
+      .join('-')}`;
+    this.props.history.push(path);
+  };
+
   render() {
     const { classes, deal, open, onClose } = this.props;
 
@@ -113,7 +123,10 @@ class DesktopDealDetails extends Component {
                   marginTop: '15px',
                   cursor: 'pointer'
                 }}>
-                <Typography variant="h6" className={classes.shopName}>
+                <Typography
+                  variant="h6"
+                  className={classes.shopName}
+                  onClick={this.onShopNameClick}>
                   {deal.shop !== undefined ? deal.shop.title : ''}
                 </Typography>
                 <hr width="1" size="25" className={classes.hr} />

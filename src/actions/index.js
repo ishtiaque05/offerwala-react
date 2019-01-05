@@ -120,12 +120,17 @@ export const fetchDealsEnding = endingTerm => {
   };
 };
 
-export const fetchStorenameDeals = storeName => {
+export const fetchStorenameDeals = (storeId, page = 1) => {
   return async dispatch => {
     dispatch(fetchStorenameDealsBegin());
 
     try {
-      const response = await axios.get(`/api/v1/guests/store/${storeName}`);
+      const response = await axios.get(
+        `http://localhost:5000/api/v1/guests/shops/${storeId}/deals`,
+        {
+          params: { page }
+        }
+      );
       dispatch(fetchStorenameDealsSuccess(response.data.deals));
       return response.data.deals;
     } catch (error) {

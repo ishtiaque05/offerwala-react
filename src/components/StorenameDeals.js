@@ -7,18 +7,22 @@ import DealList from './DealList';
 class StorenameDeals extends Component {
   state = {
     page: 0,
+    storeId: localStorage.getItem('storeId'),
     deals: []
   };
 
   async componentDidMount() {
-    const deals = await this.props.fetchStorenameDeals();
+    const deals = await this.props.fetchStorenameDeals(this.state.storeId);
     this.setState({ deals });
   }
 
   fetchMoreData = async () => {
-    this.setState({ page: this.state.page + 1 });
-    const deals = await this.props.fetchStorenameDeals(this.state.page);
-    this.setState({ deals: [...this.state.deals, ...deals] });
+    // this.setState({ page: this.state.page + 1 });
+    // const deals = await this.props.fetchStorenameDeals(
+    //   this.state.storeId,
+    //   this.state.page
+    // );
+    // this.setState({ deals: [...this.state.deals, ...deals] });
   };
 
   render() {

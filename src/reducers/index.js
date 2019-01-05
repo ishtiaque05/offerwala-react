@@ -4,12 +4,12 @@ import dealsReducer from './dealsReducer';
 import searchedDealsReducer from './searchReducer';
 import categoryDealsReducer from './categoryReducer';
 import dealsEndingReducer from './dealsEndingReducer';
-import storenameDealsReducer from '../components/storenameDealsReducer';
+import storenameDealsReducer from './storenameDealsReducer';
 
 export default combineReducers({
   deals: dealsReducer,
   searchedDeals: searchedDealsReducer,
   category: categoryDealsReducer,
-  dealsEnding: dealsEndingReducer
+  dealsEnding: dealsEndingReducer,
   storenameDeals: storenameDealsReducer
 });
