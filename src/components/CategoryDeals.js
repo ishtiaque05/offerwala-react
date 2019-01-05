@@ -49,68 +49,62 @@ const masonryOptions = {
 class CategoryDeals extends Component {
   state = {
     page: 0,
-    deals: [],
-    isLoading: true
+    deals: []
   };
 
-  componentDidMount() {
-    const self = this;
-    setTimeout(function() {
-      self.setState({ isLoading: false });
-    }, 2500);
-    this.props.fetchDealsByCategory(
+  async componentDidMount() {
+    const deals = await this.props.fetchDealsByCategory(
       categoryId[this.props.match.params.categoryName]
     );
+
+    this.setState({deals});
+
   }
 
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps) {
     if (
       this.props.match.params.categoryName !==
       prevProps.match.params.categoryName
     ) {
-      this.props.fetchDealsByCategory(
+      const deals = await this.props.fetchDealsByCategory(
         categoryId[this.props.match.params.categoryName]
       );
+      this.setState({deals});
       // TODO: Fix windows reload to component reload
       window.location.reload();
     }
   }
 
-  fetchMoreData = () => {
+  fetchMoreData = async () => {
     this.setState({ page: this.state.page + 1 });
-    this.props.fetchDealsByCategory(
+    const deals = await this.props.fetchDealsByCategory(
       categoryId[this.props.match.params.categoryName],
       this.state.page
     );
-    this.setState({ deals: [...this.state.deals, ...this.props.deals] });
+    this.setState({ deals: [...this.state.deals, ...deals] });
   };
 
   render() {
     const { classes } = this.props;
+    console.log(this.state.deals);
 
-    const childElements = this.props.deals.map((deal, index) => (
+    const categoryDeals = this.state.deals.map((deal, index) => (
       <React.Fragment key={index}>
         <Deal deal={deal} />
       </React.Fragment>
     ));
 
-    const moreElements = this.state.deals.map((deal, index) => (
-      <React.Fragment key={index}>
-        <Deal deal={deal} />
-      </React.Fragment>
-    ));
-
-    if (this.state.isLoading) {
+    if (this.state.deals.length < 1) {
       return <Circle />;
     }
 
     return (
       <div className={classes.root}>
         <InfiniteScroll
-          dataLength={moreElements.length}
+          dataLength={categoryDeals.length}
           next={this.fetchMoreData}
           hasMore={true}
-          // loader={<h4>Loading...</h4>}
+          loader={<h4>Loading...</h4>}
           // endMessage={
           //   <p style={{ textAlign: 'center' }}>
           //     <b>Yay! You have seen it all</b>
@@ -122,8 +116,7 @@ class CategoryDeals extends Component {
             elementType={'div'}
             options={masonryOptions}
             updateOnEachImageLoad={false}>
-            {childElements}
-            {moreElements}
+            {categoryDeals}
           </Masonry>
         </InfiniteScroll>
       </div>

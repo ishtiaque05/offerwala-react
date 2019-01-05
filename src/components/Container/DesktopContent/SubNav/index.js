@@ -53,25 +53,10 @@ class DesktopSubNav extends Component {
                 exact
                 activeClassName={classes.active}
                 className={classes.link}>
-                <Typography variant="h5">{nav.name}</Typography>
+                <Typography style={{ fontSize: '1rem' }} variant="h5">{nav.name}</Typography>
               </NavLink>
             </li>
           ))}
-          {/*{*/}
-          {/*navigations.map((navigation, i) => {*/}
-          {/*return (*/}
-          {/*<li className={classes.li} key={ i }>*/}
-          {/*<Link*/}
-          {/*className={*/}
-          {/*window.location.pathname === navigation.route ? classes.active : classes.link*/}
-          {/*}*/}
-          {/*to={ navigation.route }>*/}
-          {/*<Typography variant="headline">{ navigation.name }</Typography>*/}
-          {/*</Link>*/}
-          {/*</li>*/}
-          {/*);*/}
-          {/*})*/}
-          {/*}*/}
         </ul>
       </nav>
     );
