@@ -1,9 +1,7 @@
 import React from 'react';
-import { hydrate } from 'react-dom';
-import { Provider } from 'react-redux';
+import { render } from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import 'typeface-poppins';
 
 import AboutPage from './components/StaticPages/About';
 import PrivacyPage from './components/StaticPages/Privacy';
@@ -11,8 +9,10 @@ import FaqPage from './components/StaticPages/faq';
 import PartnerPage from './components/StaticPages/Partner';
 import ErrorPage from './components/StaticPages/Error';
 
+import 'typeface-poppins';
+
+import Root from './Root';
 import App from './components/App';
-import configureStore from './store';
 
 const theme = createMuiTheme({
   palette: {
@@ -39,14 +39,9 @@ const theme = createMuiTheme({
   }
 });
 
-const preloadedState = window.__PRELOADED_STATE__;
-delete window.__PRELOADED_STATE__;
-
-const store = configureStore(preloadedState);
-
-hydrate(
-  <Provider store={store}>
-    <BrowserRouter>
+render(
+  <Root>
+    <Router>
       <MuiThemeProvider theme={theme}>
         <Switch>
           <Route path="/about" component={AboutPage} />
@@ -57,7 +52,7 @@ hydrate(
           <Route component={ErrorPage} />
         </Switch>
       </MuiThemeProvider>
-    </BrowserRouter>
-  </Provider>,
+    </Router>
+  </Root>,
   document.getElementById('root')
 );

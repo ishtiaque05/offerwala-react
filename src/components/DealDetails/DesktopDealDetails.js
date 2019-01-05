@@ -155,9 +155,9 @@ class DesktopDealDetails extends Component {
                 <div style={{ marginTop: '20px' }}>
                   {deal.tags.map((tag, index) => (
                     <NavLink
-                      key={index}
                       to={`/search/${tag.title}`}
-                      style={{ textDecoration: 'none' }}>
+                      style={{ textDecoration: 'none' }}
+                      key={index}>
                       <Chip className={classes.chip} label={tag.title} />
                     </NavLink>
                   ))}
