@@ -154,7 +154,7 @@ class Deal extends Component {
             />
             <CardContent>
               <Typography gutterBottom variant="h6">
-                {deal.title}
+                {deal.title.toUpperCase()}
               </Typography>
               <div>
                 <Typography className={classes.shopName}>
