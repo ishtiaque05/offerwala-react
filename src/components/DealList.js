@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-component';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Typography, withStyles } from '@material-ui/core';
+import { Circle } from 'react-preloaders';
+import Deal from './Deal';
 
 const styles = theme => ({
   root: {
@@ -31,6 +33,16 @@ const styles = theme => ({
 const masonryOptions = { transitionDuration: 3 };
 
 const DealList = ({ classes, error, deals, loadMore }) => {
+  const allDeals = deals.map((deal, index) => (
+    <React.Fragment key={index}>
+      <Deal deal={deal} />
+    </React.Fragment>
+  ));
+
+  if (deals.length < 1) {
+    return <Circle />;
+  }
+
   if (error) {
     return (
       <div className={classes.root}>
@@ -51,7 +63,7 @@ const DealList = ({ classes, error, deals, loadMore }) => {
           elementType={'div'}
           options={masonryOptions}
           updateOnEachImageLoad={false}>
-          {deals}
+          {allDeals}
         </Masonry>
       </InfiniteScroll>
     </div>

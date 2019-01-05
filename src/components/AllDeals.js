@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Circle } from 'react-preloaders';
-
 import { fetchAllDeals } from '../actions';
-
-import Deal from './Deal';
 import DealList from './DealList';
 
 class AllDeals extends Component {
@@ -26,25 +22,15 @@ class AllDeals extends Component {
     this.setState({ deals: [...this.state.deals, ...deals] });
   };
 
-  render = () => {
-    const allDeals = this.state.deals.map((deal, index) => (
-      <React.Fragment key={index}>
-        <Deal deal={deal} />
-      </React.Fragment>
-    ));
-
-    if (this.state.deals.length < 1) {
-      return <Circle />;
-    }
-
+  render() {
     return (
       <DealList
         loadMore={this.fetchMoreData}
-        deals={allDeals}
+        deals={this.state.deals}
         error={this.props.error}
       />
     );
-  };
+  }
 }
 
 AllDeals.propTypes = {
