@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-
 import {
   withStyles,
   Card,
@@ -10,25 +9,10 @@ import {
   Typography,
   Hidden
 } from '@material-ui/core';
-
+import moment from 'moment';
 import DefaultImage from '../assets/images/default_deal.jpg';
 import DesktopDealDetails from './DealDetails/DesktopDealDetails';
 import MobileDealDetails from './DealDetails/MobileDealDetails';
-
-const months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec'
-];
 
 const styles = theme => ({
   card: {
@@ -112,16 +96,12 @@ class Deal extends Component {
     this.setState({ open: false });
   };
 
+  getEndDate() {
+    return moment(this.props.deal.end_date).format("D MMM'YY");
+  }
+
   render() {
     const { classes, deal } = this.props;
-    const YEAR = deal.end_date
-      .split('-')[0]
-      .split('')
-      .slice(2)
-      .join('');
-    const MONTH = months[deal.end_date.split('-')[1] - 1];
-    const DATE = deal.end_date.split('-')[2];
-    // console.log(YEAR);
 
     return (
       <Fragment>
@@ -160,7 +140,7 @@ class Deal extends Component {
                 <Typography className={classes.shopName}>
                   {deal.shop !== undefined ? deal.shop.title : ''}
                 </Typography>
-                <Typography>Ends: {`${DATE} ${MONTH}'${YEAR}`}</Typography>
+                <Typography>Ends: {this.getEndDate()}</Typography>
               </div>
             </CardContent>
           </CardActionArea>

@@ -15,9 +15,8 @@ import {
   Toolbar,
   AppBar
 } from '@material-ui/core';
-
+import moment from 'moment';
 import { NavigateBefore } from '@material-ui/icons';
-
 import DefaultImage from '../../assets/images/default_deal.jpg';
 
 function Transition(props) {
@@ -88,15 +87,12 @@ const styles = theme => ({
 });
 
 class MobileDealDetails extends Component {
-  render = () => {
+  getEndDate() {
+    return moment(this.props.deal.end_date).format("D MMM'YY");
+  }
+
+  render() {
     const { classes, deal, open, onClose } = this.props;
-    const YEAR = deal.end_date
-      .split('-')[0]
-      .split('')
-      .slice(2)
-      .join('');
-    const MONTH = months[deal.end_date.split('-')[1] - 1];
-    const DATE = deal.end_date.split('-')[2];
 
     return (
       <Dialog
@@ -133,7 +129,7 @@ class MobileDealDetails extends Component {
                   {deal.title}
                 </Typography>
                 <Typography variant="h6" className={classes.date}>
-                  Ends: {`${DATE} ${MONTH}'${YEAR}`}
+                  Ends: {this.getEndDate()}
                 </Typography>
               </div>
               <div>
@@ -195,7 +191,7 @@ class MobileDealDetails extends Component {
         </DialogContent>
       </Dialog>
     );
-  };
+  }
 }
 
 MobileDealDetails.propTypes = {

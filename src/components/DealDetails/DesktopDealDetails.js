@@ -12,24 +12,9 @@ import {
   Button,
   Chip
 } from '@material-ui/core';
-
+import moment from 'moment';
 import DefaultImage from '../../assets/images/default_deal.jpg';
 import PlaneIcon from '../../assets/images/plane.png';
-
-const months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec'
-];
 
 const styles = theme => ({
   root: {
@@ -92,15 +77,12 @@ const styles = theme => ({
 });
 
 class DesktopDealDetails extends Component {
-  render = () => {
+  getEndDate() {
+    return moment(this.props.deal.end_date).format("D MMM'YY");
+  }
+
+  render() {
     const { classes, deal, open, onClose } = this.props;
-    const YEAR = deal.end_date
-      .split('-')[0]
-      .split('')
-      .slice(2)
-      .join('');
-    const MONTH = months[deal.end_date.split('-')[1] - 1];
-    const DATE = deal.end_date.split('-')[2];
 
     return (
       <Dialog
@@ -118,7 +100,7 @@ class DesktopDealDetails extends Component {
             <CardContent className={classes.title}>
               <div style={{ display: 'block' }}>
                 <Typography variant="h6" className={classes.date}>
-                  Ends: {`${DATE} ${MONTH}'${YEAR}`}
+                  Ends: {this.getEndDate()}
                 </Typography>
                 <Typography variant="h4" className={classes.title}>
                   {deal.title}
@@ -190,7 +172,7 @@ class DesktopDealDetails extends Component {
         </DialogContent>
       </Dialog>
     );
-  };
+  }
 }
 
 DesktopDealDetails.propTypes = {
