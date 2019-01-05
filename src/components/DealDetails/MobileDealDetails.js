@@ -23,21 +23,6 @@ function Transition(props) {
   return <Slide direction="left" {...props} />;
 }
 
-const months = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec'
-];
-
 const styles = theme => ({
   root: {
     padding: '0'

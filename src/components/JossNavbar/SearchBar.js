@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import { withRouter } from 'react-router-dom';
 import SearchIcon from '../../assets/images/search.png';
 
 const styles = theme => ({
@@ -65,12 +66,18 @@ class SearchBar extends Component {
   searchHandler = e => {
     if (e.key === 'Enter' && e.target.value) {
       window.location.pathname = 'search/' + e.target.value;
+      this.setState({ term: e.target.value });
     }
   };
 
+  renderSearchTerm() {
+    return this.props.location.pathname.includes('search')
+      ? this.props.location.pathname.replace('/search/', '')
+      : 'Search...';
+  }
+
   render() {
     const { classes } = this.props;
-
     return (
       <div className={classes.search}>
         <div className={classes.wrapper}>
@@ -78,7 +85,7 @@ class SearchBar extends Component {
             <img src={SearchIcon} alt="Search Icon" />
           </div>
           <InputBase
-            placeholder="Search…"
+            placeholder={this.renderSearchTerm()}
             classes={{
               root: classes.inputRoot,
               input: classes.searchInput
@@ -94,4 +101,4 @@ SearchBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SearchBar);
+export default withRouter(withStyles(styles)(SearchBar));
