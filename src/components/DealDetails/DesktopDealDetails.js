@@ -106,7 +106,13 @@ class DesktopDealDetails extends Component {
                   {deal.title}
                 </Typography>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginTop: '15px',
+                  cursor: 'pointer'
+                }}>
                 <Typography variant="h6" className={classes.shopName}>
                   {deal.shop !== undefined ? deal.shop.title : ''}
                 </Typography>

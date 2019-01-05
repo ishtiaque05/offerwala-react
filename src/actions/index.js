@@ -1,32 +1,21 @@
 import axios from 'axios';
 import {
-  FETCH_DEALS_BEGIN,
-  FETCH_DEALS_FAILURE,
-  FETCH_DEALS_SUCCESS,
-  FETCH_DEALS_BY_CATEGORY_BEGIN,
-  FETCH_DEALS_BY_CATEGORY_FAILURE,
-  FETCH_DEALS_BY_CATEGORY_SUCCESS,
-  FETCH_SEARCHED_DEALS_BEGIN,
-  FETCH_SEARCHED_DEALS_FAILURE,
-  FETCH_SEARCHED_DEALS_SUCCESS,
-  FETCH_DEALS_ENDING_BEGIN,
-  FETCH_DEALS_ENDING_SUCCESS,
-  FETCH_DEALS_ENDING_FAILURE
-} from './types';
-
-export const fetchDealsBegin = () => ({
-  type: FETCH_DEALS_BEGIN
-});
-
-export const fetchDealsSuccess = deals => ({
-  type: FETCH_DEALS_SUCCESS,
-  payload: { deals }
-});
-
-export const fetchDealsFailure = error => ({
-  type: FETCH_DEALS_FAILURE,
-  payload: { error }
-});
+  fetchDealsBegin,
+  fetchDealsSuccess,
+  fetchDealsFailure,
+  fetchSearchedDealsBegin,
+  fetchSearchedDealsSuccess,
+  fetchSearchedDealsFailure,
+  fetchDealsByCategoryBegin,
+  fetchDealsByCategorySuccess,
+  fetchDealsByCategoryFailure,
+  fetchDealsEndingBegin,
+  fetchDealsEndingSuccess,
+  fetchDealsEndingFailure,
+  fetchStorenameDealsBegin,
+  fetchStorenameDealsSuccess,
+  fetchStorenameDealsFailure
+} from './actionsHelper';
 
 export const fetchAllDeals = (page = 1) => {
   return async dispatch => {
@@ -79,20 +68,6 @@ export const fetchStoreDeals = (page = 1) => {
   };
 };
 
-export const fetchSearchedDealsBegin = () => ({
-  type: FETCH_SEARCHED_DEALS_BEGIN
-});
-
-export const fetchSearchedDealsSuccess = deals => ({
-  type: FETCH_SEARCHED_DEALS_SUCCESS,
-  payload: { deals }
-});
-
-export const fetchSearchedDealsFailure = error => ({
-  type: FETCH_SEARCHED_DEALS_FAILURE,
-  payload: { error }
-});
-
 export const fetchSearchedDeals = tagName => {
   return async dispatch => {
     dispatch(fetchSearchedDealsBegin());
@@ -109,20 +84,6 @@ export const fetchSearchedDeals = tagName => {
     }
   };
 };
-
-export const fetchDealsByCategoryBegin = () => ({
-  type: FETCH_DEALS_BY_CATEGORY_BEGIN
-});
-
-export const fetchDealsByCategorySuccess = deals => ({
-  type: FETCH_DEALS_BY_CATEGORY_SUCCESS,
-  payload: { deals }
-});
-
-export const fetchDealsByCategoryFailure = error => ({
-  type: FETCH_DEALS_BY_CATEGORY_FAILURE,
-  payload: { error }
-});
 
 export const fetchDealsByCategory = (id, page = 1) => {
   return async dispatch => {
@@ -144,20 +105,6 @@ export const fetchDealsByCategory = (id, page = 1) => {
   };
 };
 
-export const fetchDealsEndingBegin = () => ({
-  type: FETCH_DEALS_ENDING_BEGIN
-});
-
-export const fetchDealsEndingSuccess = deals => ({
-  type: FETCH_DEALS_ENDING_SUCCESS,
-  payload: { deals }
-});
-
-export const fetchDealsEndingFailure = error => ({
-  type: FETCH_DEALS_ENDING_FAILURE,
-  payload: { error }
-});
-
 export const fetchDealsEnding = endingTerm => {
   return async dispatch => {
     dispatch(fetchDealsEndingBegin());
@@ -168,6 +115,21 @@ export const fetchDealsEnding = endingTerm => {
       return response.data.deals;
     } catch (error) {
       dispatch(fetchDealsEndingFailure(error));
+      throw new Error(error);
+    }
+  };
+};
+
+export const fetchStorenameDeals = storeName => {
+  return async dispatch => {
+    dispatch(fetchStorenameDealsBegin());
+
+    try {
+      const response = await axios.get(`/api/v1/guests/store/${storeName}`);
+      dispatch(fetchStorenameDealsSuccess(response.data.deals));
+      return response.data.deals;
+    } catch (error) {
+      dispatch(fetchStorenameDealsFailure(error));
       throw new Error(error);
     }
   };
